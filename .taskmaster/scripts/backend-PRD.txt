@@ -1,0 +1,544 @@
+# Property Website Backend API - Product Requirements Document
+
+## Project Overview
+
+### Vision
+Build a robust, scalable backend API and admin panel that serves as the single source of truth for all real estate platform data. The backend provides secure, multilingual REST APIs and a comprehensive admin interface for managing properties, agents, bookings, and user interactions.
+
+### Project Goals
+- Create secure, performant REST APIs for all frontend functionality
+- Build comprehensive admin panel for content management
+- Implement multilingual content storage and retrieval (Bulgarian, English, Russian)
+- Provide real-time data synchronization with frontend applications
+- Enable scalable file upload and email notification systems
+- Deliver role-based access control and security features
+
+### Target Users
+- **Primary**: Frontend applications consuming REST APIs
+- **Secondary**: Platform administrators managing content via admin panel
+- **Tertiary**: Real estate agents with limited admin access (Phase 2)
+
+## Technical Specifications
+
+### Core Technology Stack
+- **Framework**: Next.js 15.4 with App Router (API Routes + Admin UI)
+- **Language**: TypeScript for type safety
+- **Database**: PostgreSQL via Neon.tech (serverless)
+- **ORM**: Prisma with TypeScript integration
+- **Authentication**: Clerk or NextAuth.js (admin roles)
+- **Validation**: Zod schemas (shared with frontend via @shared/types)
+- **File Storage**: Local file system with organized directory structure
+- **Image Processing**: Sharp for automatic WebP conversion and optimization
+- **Email Service**: Resend API for transactional emails
+- **Deployment**: Vercel with serverless functions
+
+### Architecture Requirements
+- **Monorepo Structure**: Shared types and validation via `@shared/types` package
+- **API Design**: RESTful endpoints with consistent response formats
+- **Database Strategy**: Normalized schema with proper indexing for performance
+- **Caching**: Response caching headers for frontend SWR integration
+- **Security**: JWT-based authentication, input validation, rate limiting
+- **Scalability**: Serverless functions with horizontal scaling capability
+
+### Database Schema Design
+- **Core Entities**: Listings, Agents, Users, Bookings, Alerts, Categories, Locations
+- **Multilingual Support**: JSON fields for translatable content (en, bg, ru)
+- **Relationships**: Proper foreign keys and indexed associations
+- **Performance**: Strategic indexing on search and filter fields
+- **Audit Trail**: Created/updated timestamps and user tracking
+
+### Local Image Storage Architecture
+- **Directory Structure**: Organized file system hierarchy
+  ```
+  /public/images/
+  ├── listings/
+  │   ├── {listingId}/
+  │   │   ├── cover.webp
+  │   │   ├── kitchen.webp
+  │   │   ├── bedroom.webp
+  │   │   └── bathroom.webp
+  │   └── {anotherListingId}/
+  └── agents/
+      ├── {agentId}/
+      │   └── profile.webp
+  ```
+- **Image Processing Pipeline**:
+  1. Accept PNG/JPG uploads via multipart/form-data
+  2. Validate file type, size, and security
+  3. Convert to WebP format using Sharp library
+  4. Apply compression (quality: 80-85)
+  5. Generate unique filename with timestamp
+  6. Save to organized directory structure
+  7. Return public URL for database storage
+- **URL Generation**: Public URLs accessible as `/images/listings/{listingId}/{filename}.webp`
+- **Frontend Integration**: Direct image loading via Next.js Image component or standard img tags
+
+## API Endpoint Requirements
+
+### 1. Listings Management API
+**Priority: High**
+- **GET /api/listings**
+  - Paginated property listings with filtering
+  - Query parameters: type, city, price_min, price_max, bedrooms, lang, page, limit
+  - Sort options: newest, price_asc, price_desc, size_asc, size_desc
+  - Include agent information in response
+  - Response caching headers for frontend optimization
+
+- **GET /api/listings/:id**
+  - Individual property details
+  - Language-specific content based on lang parameter
+  - Include related properties suggestions
+  - Agent contact information
+  - View count tracking
+
+- **POST /api/listings** (Admin only)
+  - Create new property listing
+  - Multilingual content validation
+  - Local image storage integration with WebP conversion
+  - Agent assignment and validation
+  - Automatic slug generation
+  - Directory creation for listing images
+
+- **PUT /api/listings/:id** (Admin only)
+  - Update existing property
+  - Partial updates support
+  - Maintain multilingual content integrity
+  - Handle image updates and deletions
+  - Update search indexes
+
+- **DELETE /api/listings/:id** (Admin only)
+  - Soft delete implementation
+  - Cascade handling for related bookings
+  - Local image directory cleanup and file removal
+  - Orphaned image detection and cleanup
+
+### 2. Agents Management API
+**Priority: High**
+- **GET /api/agents**
+  - List all active agents
+  - Include basic profile information
+  - Listing count per agent
+  - Multilingual bio content
+
+- **GET /api/agents/:id**
+  - Detailed agent profile
+  - All listings by agent
+  - Contact information
+  - Performance metrics (if available)
+
+- **Admin CRUD operations** for agent management
+  - Profile creation and updates
+  - Image upload for agent photos
+  - Contact information management
+
+### 3. Categories and Metadata API
+**Priority: High**
+- **GET /api/categories**
+  - Property categories (Houses, Apartments, Villas, etc.)
+  - Multilingual category names
+  - Category-specific filters
+
+- **GET /api/property-types**
+  - Detailed property type classifications
+  - Associated filter options
+  - Localized descriptions
+
+- **GET /api/locations**
+  - Cities and neighborhoods with coordinates
+  - Autocomplete search support
+  - Multilingual location names
+  - Popular locations prioritization
+
+### 4. User Interactions API
+**Priority: High**
+- **Favorites System**
+  - GET /api/user/favorites (authenticated)
+  - POST /api/user/favorites (add property)
+  - DELETE /api/user/favorites/:listingId (remove)
+  - Sync across user sessions
+
+- **Visit Bookings**
+  - POST /api/bookings (create visit request)
+  - GET /api/bookings (user's bookings, admin view all)
+  - Email notification triggers via Resend
+  - Calendar integration data
+
+- **Contact Forms**
+  - POST /api/contact (general inquiries)
+  - POST /api/contact/property/:id (property-specific)
+  - Spam protection and validation
+  - Email delivery confirmation
+
+### 5. Alerts and Notifications
+**Priority: Medium**
+- **Search Alerts**
+  - POST /api/alerts (create search alert)
+  - GET /api/user/alerts (user's active alerts)
+  - PUT /api/alerts/:id (modify alert criteria)
+  - DELETE /api/alerts/:id (remove alert)
+
+- **Alert Processing**
+  - Background job for matching new listings
+  - Email notification via Resend
+  - Alert frequency management
+  - Unsubscribe handling
+
+### 6. File Upload and Image Processing API
+**Priority: High**
+- **POST /api/upload/images**
+  - Local file system storage in organized directory structure
+  - Automatic conversion from PNG/JPG to WebP format
+  - Image optimization and compression using Sharp
+  - Multiple file upload support
+  - Organized storage: `/public/images/listings/{listingId}/`
+  - Security validation for file types and sizes
+  - Automatic filename generation with timestamps
+  - Image metadata extraction and storage
+  - Public URL generation for frontend consumption
+
+### Image Upload API Implementation Example
+**POST /api/upload/images**
+
+**Request Format:**
+```typescript
+// Multipart form data
+{
+  file: File, // PNG or JPG file
+  listingId: string, // Target listing ID
+  category?: string // Optional: 'cover', 'gallery', 'floorplan'
+}
+```
+
+**Processing Steps:**
+1. Validate file type (PNG/JPG only) and size (max 5MB)
+2. Sanitize filename and prevent path traversal
+3. Create directory structure: `/public/images/listings/{listingId}/`
+4. Convert image to WebP using Sharp with 80% quality
+5. Generate unique filename with timestamp
+6. Save processed image to target directory
+7. Return public URL for database storage
+
+**Response Format:**
+```typescript
+{
+  success: true,
+  data: {
+    url: "/images/listings/{listingId}/{timestamp}.webp",
+    filename: "{timestamp}.webp",
+    size: 245000, // bytes
+    dimensions: { width: 1200, height: 800 }
+  }
+}
+```
+
+**Implementation Example:**
+```typescript
+// /apps/backend/app/api/upload/images/route.ts
+import { writeFile, mkdir } from "fs/promises";
+import path from "path";
+import sharp from "sharp";
+
+export async function POST(req: Request) {
+  try {
+    const formData = await req.formData();
+    const file = formData.get("file") as File;
+    const listingId = formData.get("listingId") as string;
+
+    // Validation
+    if (!file || !listingId) {
+      return Response.json({ error: "Missing file or listingId" }, { status: 400 });
+    }
+
+    const allowedTypes = ['image/png', 'image/jpeg'];
+    if (!allowedTypes.includes(file.type)) {
+      return Response.json({ error: "Only PNG and JPG files allowed" }, { status: 400 });
+    }
+
+    if (file.size > 5 * 1024 * 1024) { // 5MB limit
+      return Response.json({ error: "File too large" }, { status: 400 });
+    }
+
+    // Process file
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+
+    // Create directory structure
+    const uploadDir = path.join(process.cwd(), "public", "images", "listings", listingId);
+    await mkdir(uploadDir, { recursive: true });
+
+    // Generate filename and process image
+    const timestamp = Date.now();
+    const filename = `${timestamp}.webp`;
+    const outputPath = path.join(uploadDir, filename);
+
+    const processedImage = await sharp(buffer)
+      .webp({ quality: 80 })
+      .resize(1200, 800, { fit: 'inside', withoutEnlargement: true })
+      .toFile(outputPath);
+
+    // Generate public URL
+    const publicUrl = `/images/listings/${listingId}/${filename}`;
+
+    return Response.json({
+      success: true,
+      data: {
+        url: publicUrl,
+        filename: filename,
+        size: processedImage.size,
+        dimensions: { 
+          width: processedImage.width, 
+          height: processedImage.height 
+        }
+      }
+    });
+
+  } catch (error) {
+    console.error('Upload error:', error);
+    return Response.json({ error: "Upload failed" }, { status: 500 });
+  }
+}
+```
+
+## Admin Panel Requirements
+
+### 1. Authentication and Authorization
+**Priority: High**
+- **Admin Login System**
+  - Secure authentication via Clerk/NextAuth
+  - Role-based access control (Admin, Super Admin)
+  - Session management and security
+  - Password policies and 2FA support
+
+### 2. Listings Management Interface
+**Priority: High**
+- **Listing CRUD Interface**
+  - Rich text editor for property descriptions
+  - Multilingual content tabs (Bulgarian, English, Russian)
+  - Local image upload with automatic WebP conversion
+    - Drag-and-drop interface for PNG/JPG files
+    - Real-time preview during upload process
+    - Automatic organization by listing ID
+    - Image category selection (cover, gallery, floorplan)
+  - Agent assignment dropdown
+  - Feature checklist interface
+  - Location picker with map integration
+  - Price and specification inputs with validation
+
+- **Listings Dashboard**
+  - Sortable and filterable table view
+  - Bulk operations support
+  - Status indicators (active, pending, sold)
+  - Quick edit capabilities
+  - Search and filter interface
+
+### 3. Agent Management Interface
+**Priority: High**
+- **Agent Profile Management**
+  - Profile creation and editing forms
+  - Photo upload and cropping
+  - Contact information management
+  - Biography editor with multilingual support
+  - Agent performance metrics display
+
+### 4. Metadata Management
+**Priority: Medium**
+- **Categories and Types Management**
+  - Add/edit/delete property categories
+  - Multilingual category names
+  - Icon and image assignment
+  - Sorting and organization tools
+
+- **Location Management**
+  - City and neighborhood administration
+  - Coordinate management
+  - Popular locations flagging
+  - Geographic hierarchy management
+
+### 5. Bookings and Communications
+**Priority: Medium**
+- **Booking Management Dashboard**
+  - View all visit requests
+  - Booking status updates
+  - Agent assignment for bookings
+  - Calendar view integration
+  - Email communication log
+
+- **Contact Form Management**
+  - View all inquiries
+  - Response tracking
+  - Spam management
+  - Export functionality
+
+## Internationalization Implementation
+
+### Content Storage Strategy
+- **Database Fields**: JSON columns for multilingual content
+  ```json
+  {
+    "title": {
+      "en": "Beautiful Apartment",
+      "bg": "Прекрасен Апартамент", 
+      "ru": "Прекрасная Квартира"
+    }
+  }
+  ```
+- **API Response Format**: Language-specific content based on `lang` query parameter
+- **Fallback Logic**: Default to English if requested language unavailable
+- **Admin Interface**: Tabbed editing for each language with validation
+
+### Translation Management
+- **Content Validation**: Ensure required languages have content
+- **Translation Status**: Track completion status per language
+- **Bulk Translation**: Tools for managing large content updates
+- **Quality Control**: Review process for translated content
+
+## Email System Requirements
+
+### Transactional Emails via Resend
+**Priority: High**
+- **Booking Confirmations**
+  - User confirmation with booking details
+  - Agent notification with visitor information
+  - Calendar event generation
+  - Reminder emails before visit
+
+- **Contact Form Responses**
+  - Auto-acknowledgment to sender
+  - Internal notification to admin team
+  - Property-specific routing to agents
+  - Template customization per inquiry type
+
+- **Alert Notifications**
+  - New property match alerts
+  - Price change notifications
+  - Market update summaries
+  - Unsubscribe management
+
+### Email Template System
+- **Template Management**: Admin interface for email templates
+- **Multilingual Templates**: Language-specific email content
+- **Dynamic Content**: Property and user data injection
+- **Delivery Tracking**: Open rates and delivery confirmation
+
+## Performance and Scalability Requirements
+
+### Database Optimization
+- **Indexing Strategy**: Optimize for common query patterns
+  - Compound indexes on (city, type, price)
+  - Full-text search indexes on descriptions
+  - Agent relationship indexes
+  - Created/updated timestamp indexes
+
+- **Query Optimization**
+  - Pagination for all list endpoints
+  - Selective field inclusion
+  - Join optimization for related data
+  - Query result caching where appropriate
+
+### API Performance
+- **Response Time**: < 200ms for cached responses, < 500ms for database queries
+- **Caching Strategy**: Response caching headers for frontend SWR
+- **Rate Limiting**: Protect against abuse and ensure fair usage
+- **Compression**: Gzip compression for API responses
+
+### File Upload and Storage Optimization
+- **Local Storage Structure**: Organized directory hierarchy by listing ID
+- **Automatic WebP Conversion**: Sharp-based conversion from PNG/JPG to WebP
+- **Image Optimization**: Compression and quality settings for optimal file sizes
+- **Upload Limits**: File size (5MB max), type restrictions (PNG, JPG only)
+- **Security Validation**: MIME type checking and malware prevention
+- **Storage Management**: Cleanup jobs for orphaned images and disk space optimization
+- **Fast Serving**: Direct serving from public directory via Next.js static file handling
+
+## Security Requirements
+
+### Authentication and Authorization
+- **JWT Security**: Secure token generation and validation
+- **Role-Based Access**: Granular permissions for different user types
+- **Session Management**: Secure session handling and expiration
+- **API Key Management**: Secure storage and rotation of third-party keys
+
+### Data Protection
+- **Input Validation**: Comprehensive Zod schema validation for all inputs
+- **SQL Injection Prevention**: Parameterized queries via Prisma ORM
+- **XSS Protection**: Content sanitization and CSP headers
+- **HTTPS Enforcement**: SSL certificates and secure headers
+- **GDPR Compliance**: Data privacy and user consent management
+
+### Infrastructure Security
+- **Environment Variables**: Secure configuration management
+- **Database Security**: Connection encryption and access controls
+- **File Upload Security**: 
+  - Path traversal prevention (restrict uploads to designated directories)
+  - File type validation (PNG, JPG only)
+  - File size limits (5MB maximum)
+  - MIME type verification
+  - Malicious file detection
+  - Directory traversal protection
+  - Filename sanitization
+- **Monitoring**: Security event logging and alerting
+
+## Quality Assurance Requirements
+
+### Testing Strategy
+- **Unit Tests**: Database models, API endpoints, business logic
+- **Integration Tests**: API workflow testing with test database
+- **Load Testing**: Performance testing under expected traffic
+- **Security Testing**: Vulnerability scanning and penetration testing
+
+### Code Quality
+- **TypeScript**: Strict type checking and error prevention
+- **ESLint/Prettier**: Code formatting and quality standards
+- **Code Reviews**: Peer review process for all changes
+- **Documentation**: Comprehensive API documentation with examples
+
+## Deployment and DevOps
+
+### Deployment Strategy
+- **Vercel Deployment**: Serverless functions with automatic scaling
+- **Environment Separation**: Development, staging, and production environments
+- **Database Migrations**: Version-controlled schema changes via Prisma
+- **Rollback Capability**: Quick rollback procedures for critical issues
+
+### Monitoring and Observability
+- **Error Tracking**: Comprehensive error logging and alerting
+- **Performance Monitoring**: API response times and database performance
+- **Uptime Monitoring**: Service availability tracking
+- **Usage Analytics**: API usage patterns and optimization opportunities
+
+## Success Metrics and KPIs
+
+### Technical Metrics
+- **API Response Times**: 95th percentile under 500ms
+- **Uptime**: 99.9% availability target
+- **Error Rates**: < 0.1% error rate for API calls
+- **Database Performance**: Query execution times under 100ms
+
+### Business Metrics
+- **Data Integrity**: Zero data loss incidents
+- **Admin Efficiency**: Time to publish new listings under 5 minutes
+- **Email Delivery**: 99%+ successful email delivery rate
+- **User Engagement**: API usage growth and retention rates
+
+## Dependencies and Constraints
+
+### External Dependencies
+- **Neon.tech Database**: PostgreSQL serverless database hosting
+- **Resend API**: Email delivery service for transactional emails
+- **Authentication Provider**: Clerk or NextAuth.js for user management
+- **Sharp Library**: Image processing and WebP conversion (Node.js package)
+- **Node.js File System**: Local file storage and management capabilities
+
+### Technical Constraints
+- **Vercel Limits**: Function execution time and bandwidth limits for serverless functions
+- **Local Storage**: File system storage capacity and backup requirements
+- **Image Processing**: Server-side processing overhead for WebP conversion
+- **File System Security**: Path traversal and upload security considerations
+
+### Development Dependencies
+- **Sharp**: Image processing library for WebP conversion and optimization
+- **Multer**: File upload handling middleware for multipart/form-data
+- **Path/FS**: Node.js core modules for file system operations
+- **MIME**: File type detection and validation
+
+This PRD serves as the technical foundation for building a robust, scalable backend system that powers the multilingual real estate platform while providing comprehensive administrative capabilities. 

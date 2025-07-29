@@ -1,0 +1,696 @@
+# Shared Types Package - Product Requirements Document
+
+## Project Overview
+
+### Vision
+Create a centralized package containing all shared TypeScript types, Zod schemas, and validation logic used across the real estate platform's frontend and backend applications. This package ensures type safety, prevents API drift, and provides consistent validation across the entire monorepo.
+
+### Project Goals
+- Provide unified TypeScript types for all data models
+- Create comprehensive Zod schemas for runtime validation
+- Ensure type safety between frontend and backend APIs
+- Enable consistent data validation across applications
+- Support multilingual content type definitions
+- Facilitate easy maintenance and updates of shared contracts
+
+### Target Consumers
+- **Frontend Application**: Type definitions for API responses and form validation
+- **Backend Application**: Request/response validation and database model types
+- **Development Tools**: Build-time type checking and IDE support
+
+## Technical Specifications
+
+### Core Technology Stack
+- **Language**: TypeScript with strict type checking
+- **Validation**: Zod for runtime schema validation
+- **Build System**: TypeScript compiler with declaration files
+- **Package Management**: Part of monorepo with proper workspace dependencies
+- **Documentation**: TSDoc comments for all exported types
+
+### Package Structure
+```
+packages/shared/
+├── src/
+│   ├── types/
+│   │   ├── listing.ts
+│   │   ├── agent.ts
+│   │   ├── user.ts
+│   │   ├── booking.ts
+│   │   ├── alert.ts
+│   │   ├── image.ts (NEW: Local image types)
+│   │   └── common.ts
+│   ├── schemas/
+│   │   ├── listing.ts
+│   │   ├── agent.ts
+│   │   ├── user.ts
+│   │   ├── booking.ts
+│   │   ├── alert.ts
+│   │   ├── image.ts (NEW: Image validation schemas)
+│   │   └── common.ts
+│   ├── validators/
+│   │   └── index.ts
+│   ├── utils/
+│   │   ├── images.ts (NEW: Image utility functions)
+│   │   └── validation.ts (NEW: File validation utilities)
+│   ├── constants/
+│   │   └── images.ts (NEW: Image system constants)
+│   └── index.ts
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+
+## Core Type Definitions
+
+### 1. Listing Types
+**Priority: High**
+
+#### Base Listing Interface
+```typescript
+interface Listing {
+  id: string;
+  slug: string;
+  title: MultilingualText;
+  description: MultilingualText;
+  price: number;
+  currency: Currency;
+  type: PropertyType;
+  status: ListingStatus;
+  specifications: PropertySpecs;
+  features: PropertyFeature[];
+  location: Location;
+  images: LocalImage[];
+  coverImage: string; // Primary image URL from local storage
+  agent: Agent;
+  createdAt: Date;
+  updatedAt: Date;
+  viewCount: number;
+  isFeatured: boolean;
+}
+
+interface LocalImage {
+  id: string;
+  url: string; // Local storage URL: /images/listings/{listingId}/{filename}.webp
+  filename: string; // Original filename with .webp extension
+  category: ImageCategory; // 'cover', 'gallery', 'floorplan'
+  alt: MultilingualText; // Alt text for accessibility
+  dimensions: {
+    width: number;
+    height: number;
+  };
+  size: number; // File size in bytes
+  uploadedAt: Date;
+}
+
+type ImageCategory = 'cover' | 'gallery' | 'floorplan' | 'exterior' | 'interior';
+```
+
+#### Supporting Types
+- **PropertyType**: Enum for Houses, Apartments, Villas, Offices, etc.
+- **ListingStatus**: Active, Pending, Sold, Rented, Inactive
+- **PropertySpecs**: Bedrooms, bathrooms, size, year built, etc.
+- **PropertyFeature**: Balcony, Garden, Parking, Pool, etc.
+- **Currency**: BGN, EUR, USD with conversion rates
+
+### 2. Agent Types
+**Priority: High**
+
+#### Agent Interface
+```typescript
+interface Agent {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  avatar?: string; // Local storage URL: /images/agents/{agentId}/profile.webp
+  biography: MultilingualText;
+  specializations: string[];
+  isActive: boolean;
+  listingsCount: number;
+  performanceMetrics?: AgentMetrics;
+  createdAt: Date;
+  updatedAt: Date;
+}
+```
+
+### 3. User and Authentication Types
+**Priority: High**
+
+#### User Interface
+```typescript
+interface User {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  phone?: string;
+  role: UserRole;
+  preferences: UserPreferences;
+  createdAt: Date;
+  updatedAt: Date;
+}
+```
+
+#### Authentication Types
+- **UserRole**: User, Agent, Admin, SuperAdmin
+- **UserPreferences**: Language, currency, notification settings
+- **AuthToken**: JWT token structure and claims
+
+### 4. Booking Types
+**Priority: High**
+
+#### Booking Interface
+```typescript
+interface Booking {
+  id: string;
+  listingId: string;
+  userId: string;
+  agentId: string;
+  contactInfo: ContactInfo;
+  preferredDate: Date;
+  preferredTime: TimeSlot;
+  visitType: VisitType;
+  status: BookingStatus;
+  notes?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+```
+
+#### Supporting Types
+- **VisitType**: InPerson, Virtual, Flexible
+- **BookingStatus**: Pending, Confirmed, Completed, Cancelled
+- **TimeSlot**: Morning, Afternoon, Evening with specific times
+- **ContactInfo**: Name, email, phone validation
+
+### 5. Search and Filter Types
+**Priority: High**
+
+#### Search Interface
+```typescript
+interface SearchFilters {
+  query?: string;
+  type?: PropertyType[];
+  location?: LocationFilter;
+  priceRange?: PriceRange;
+  sizeRange?: SizeRange;
+  bedrooms?: number;
+  bathrooms?: number;
+  features?: PropertyFeature[];
+  yearBuilt?: YearRange;
+  sortBy?: SortOption;
+  page?: number;
+  limit?: number;
+  language?: Language;
+}
+```
+
+#### Filter Supporting Types
+- **LocationFilter**: City, neighborhood, coordinates, radius
+- **PriceRange**: Min/max with currency
+- **SizeRange**: Min/max square meters
+- **SortOption**: Newest, price ascending/descending, size, etc.
+
+### 6. Common Utility Types
+**Priority: High**
+
+#### Multilingual Support
+```typescript
+interface MultilingualText {
+  en: string;
+  bg: string;
+  ru: string;
+}
+
+type Language = 'en' | 'bg' | 'ru';
+
+// Image system constants
+export const IMAGE_CONSTRAINTS = {
+  MAX_FILE_SIZE: 5 * 1024 * 1024, // 5MB
+  ALLOWED_MIME_TYPES: ['image/png', 'image/jpeg'] as const,
+  OUTPUT_FORMAT: 'webp' as const,
+  QUALITY: 80,
+  MAX_DIMENSIONS: { width: 1200, height: 800 },
+} as const;
+
+export const IMAGE_CATEGORIES = [
+  'cover',
+  'gallery', 
+  'floorplan',
+  'exterior',
+  'interior'
+] as const;
+```
+
+#### Location Types
+```typescript
+interface Location {
+  address: string;
+  city: string;
+  neighborhood?: string;
+  country: string;
+  coordinates: Coordinates;
+  localizedNames: MultilingualText;
+}
+
+interface Coordinates {
+  latitude: number;
+  longitude: number;
+}
+```
+
+#### API Response Types
+```typescript
+interface ApiResponse<T> {
+  data: T;
+  success: boolean;
+  message?: string;
+  errors?: ApiError[];
+}
+
+interface PaginatedResponse<T> extends ApiResponse<T[]> {
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
+}
+```
+
+## Zod Schema Definitions
+
+### 1. Validation Schemas
+**Priority: High**
+
+#### Listing Validation
+```typescript
+export const CreateListingSchema = z.object({
+  title: MultilingualTextSchema,
+  description: MultilingualTextSchema,
+  price: z.number().min(0),
+  currency: CurrencySchema,
+  type: PropertyTypeSchema,
+  specifications: PropertySpecsSchema,
+  features: z.array(PropertyFeatureSchema),
+  location: LocationSchema,
+  agentId: z.string().uuid(),
+  images: z.array(LocalImageSchema).min(1).max(20),
+  coverImage: z.string().url(), // Primary image URL
+});
+
+export const UpdateListingSchema = CreateListingSchema.partial();
+
+// Local Image Schema for backend storage
+export const LocalImageSchema = z.object({
+  id: z.string().uuid(),
+  url: z.string().url(), // /images/listings/{listingId}/{filename}.webp
+  filename: z.string().regex(/^.*\.webp$/), // Must be .webp extension
+  category: z.enum(['cover', 'gallery', 'floorplan', 'exterior', 'interior']),
+  alt: MultilingualTextSchema,
+  dimensions: z.object({
+    width: z.number().min(1),
+    height: z.number().min(1),
+  }),
+  size: z.number().min(1), // File size in bytes
+  uploadedAt: z.date(),
+});
+
+// Image Upload Schema for API endpoints
+export const ImageUploadSchema = z.object({
+  file: z.instanceof(File).refine(
+    (file) => ['image/png', 'image/jpeg'].includes(file.type),
+    { message: "Only PNG and JPG files are allowed" }
+  ).refine(
+    (file) => file.size <= 5 * 1024 * 1024, // 5MB limit
+    { message: "File size must be less than 5MB" }
+  ),
+  listingId: z.string().uuid(),
+  category: z.enum(['cover', 'gallery', 'floorplan', 'exterior', 'interior']).optional().default('gallery'),
+  alt: MultilingualTextSchema.optional(),
+});
+
+// Image Upload Response Schema
+export const ImageUploadResponseSchema = z.object({
+  success: z.boolean(),
+  data: z.object({
+    url: z.string().url(),
+    filename: z.string(),
+    size: z.number(),
+    dimensions: z.object({
+      width: z.number(),
+      height: z.number(),
+    }),
+  }),
+  error: z.string().optional(),
+});
+```
+
+#### Search and Filter Validation
+```typescript
+export const SearchFiltersSchema = z.object({
+  query: z.string().optional(),
+  type: z.array(PropertyTypeSchema).optional(),
+  location: LocationFilterSchema.optional(),
+  priceRange: PriceRangeSchema.optional(),
+  sizeRange:angeSchema.optional(),
+  bedrooms: z.number().min(0).max(10).optional(),
+  bathrooms: z.number().min(0).max(10).optional(),
+  features: z.array(PropertyFeatureSchema).optional(),
+  sortBy: SortOptionSchema.optional(),
+  page: z.number().min(1).default(1),
+  limit: z.number().min(1).max(100).default(20),
+  language: LanguageSchema.default('en'),
+});
+```
+
+### 2. Form Validation Schemas
+**Priority: High**
+
+#### Contact Form Schema
+```typescript
+export const ContactFormSchema = z.object({
+  name: z.string().min(2).max(100),
+  email: z.string().email(),
+  phone: z.string().regex(PHONE_REGEX).optional(),
+  subject: z.string().min(5).max(200),
+  message: z.string().min(10).max(2000),
+  listingId: z.string().uuid().optional(),
+  language: LanguageSchema.default('en'),
+});
+```
+
+#### Booking Form Schema
+```typescript
+export const BookingFormSchema = z.object({
+  listingId: z.string().uuid(),
+  contactInfo: ContactInfoSchema,
+  preferredDate: z.date().min(new Date()),
+  preferredTime: TimeSlotSchema,
+  visitType: VisitTypeSchema,
+  notes: z.string().max(500).optional(),
+  language: LanguageSchema.default('en'),
+});
+```
+
+### 3. API Request/Response Schemas
+**Priority: High**
+
+#### API Response Validation
+```typescript
+export const ApiResponseSchema = <T>(dataSchema: z.ZodSchema<T>) =>
+  z.object({
+    data: dataSchema,
+    success: z.boolean(),
+    message: z.string().optional(),
+    errors: z.array(ApiErrorSchema).optional(),
+  });
+
+export const PaginatedResponseSchema = <T>(dataSchema: z.ZodSchema<T>) =>
+  z.object({
+    data: z.array(dataSchema),
+    success: z.boolean(),
+    message: z.string().optional(),
+    pagination: PaginationSchema,
+  });
+```
+
+## Validation Utilities
+
+### 1. Custom Validators
+**Priority: Medium**
+
+#### Multilingual Content Validation
+```typescript
+export const validateMultilingualContent = (
+  content: MultilingualText,
+  requiredLanguages: Language[] = ['en']
+): boolean => {
+  return requiredLanguages.every(lang => 
+    content[lang] && content[lang].trim().length > 0
+  );
+};
+```
+
+#### Bulgarian Phone Number Validation
+```typescript
+export const BULGARIAN_PHONE_REGEX = /^(\+359|0)[0-9]{8,9}$/;
+export const validateBulgarianPhone = (phone: string): boolean => {
+  return BULGARIAN_PHONE_REGEX.test(phone);
+};
+```
+
+### 2. Schema Transformers
+**Priority: Medium**
+
+#### Price Conversion
+```typescript
+export const PriceConverter = {
+  toEur: (price: number, currency: Currency): number => {
+    // Conversion logic based on current rates
+  },
+  format: (price: number, currency: Currency, locale: string): string => {
+    // Localized price formatting
+  },
+};
+```
+
+## Type Guards and Utilities
+
+### 1. Type Guards
+**Priority: Medium**
+
+```typescript
+export const isListing = (obj: unknown): obj is Listing => {
+  return ListingSchema.safeParse(obj).success;
+};
+
+export const isAgent = (obj: unknown): obj is Agent => {
+  return AgentSchema.safeParse(obj).success;
+};
+
+export const isMultilingualText = (obj: unknown): obj is MultilingualText => {
+  return MultilingualTextSchema.safeParse(obj).success;
+};
+
+export const isLocalImage = (obj: unknown): obj is LocalImage => {
+  return LocalImageSchema.safeParse(obj).success;
+};
+
+export const isImageUploadValid = (obj: unknown): obj is z.infer<typeof ImageUploadSchema> => {
+  return ImageUploadSchema.safeParse(obj).success;
+};
+```
+
+### 2. Utility Functions
+**Priority: Medium**
+
+```typescript
+export const getLocalizedText = (
+  content: MultilingualText,
+  language: Language,
+  fallback: Language = 'en'
+): string => {
+  return content[language] || content[fallback] || content.en;
+};
+
+export const createSlug = (title: string): string => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9 -]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .trim('-');
+};
+
+// Image utilities for local storage integration
+export const getImageUrl = (
+  baseUrl: string,
+  entityType: 'listings' | 'agents',
+  entityId: string,
+  filename: string
+): string => {
+  return `${baseUrl}/images/${entityType}/${entityId}/${filename}`;
+};
+
+export const isWebPImage = (filename: string): boolean => {
+  return filename.toLowerCase().endsWith('.webp');
+};
+
+export const generateImageFilename = (
+  originalName?: string,
+  category?: ImageCategory
+): string => {
+  const timestamp = Date.now();
+  const categoryPrefix = category ? `${category}-` : '';
+  return `${categoryPrefix}${timestamp}.webp`;
+};
+
+export const validateImageFile = (file: File): { isValid: boolean; error?: string } => {
+  const allowedTypes = ['image/png', 'image/jpeg'];
+  const maxSize = 5 * 1024 * 1024; // 5MB
+
+  if (!allowedTypes.includes(file.type)) {
+    return { isValid: false, error: 'Only PNG and JPG files are allowed' };
+  }
+
+  if (file.size > maxSize) {
+    return { isValid: false, error: 'File size must be less than 5MB' };
+  }
+
+  return { isValid: true };
+};
+```
+
+## Build and Export Configuration
+
+### 1. Package Configuration
+**Priority: High**
+
+#### package.json
+```json
+{
+  "name": "@shared/types",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src --ext .ts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}
+```
+
+#### TypeScript Configuration
+```json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+}
+```
+
+### 2. Export Strategy
+**Priority: High**
+
+#### Main Index File
+```typescript
+// Types
+export * from './types/listing';
+export * from './types/agent';
+export * from './types/user';
+export * from './types/booking';
+export * from './types/alert';
+export * from './types/common';
+
+// Schemas
+export * from './schemas/listing';
+export * from './schemas/agent';
+export * from './schemas/user';
+export * from './schemas/booking';
+export * from './schemas/alert';
+export * from './schemas/common';
+
+// Validators and Utilities
+export * from './validators';
+
+// Image utilities and helpers
+export * from './utils/images';
+export * from './utils/validation';
+```
+
+## Testing Requirements
+
+### 1. Schema Testing
+**Priority: High**
+
+- **Valid Data Tests**: Ensure schemas accept valid data
+- **Invalid Data Tests**: Ensure schemas reject invalid data
+- **Edge Case Tests**: Test boundary values and edge cases
+- **Multilingual Tests**: Validate multilingual content handling
+- **Image Schema Tests**: Validate local image storage schemas and WebP format requirements
+- **File Upload Tests**: Test file validation and upload response schemas
+
+### 2. Type Safety Tests
+**Priority: Medium**
+
+- **Compilation Tests**: Ensure types compile correctly
+- **Integration Tests**: Test type compatibility between packages
+- **Migration Tests**: Test type changes don't break consumers
+
+## Documentation Requirements
+
+### 1. API Documentation
+**Priority: High**
+
+- **Type Definitions**: Comprehensive JSDoc comments
+- **Schema Examples**: Example valid/invalid data for all types including image handling
+- **Usage Guides**: How to use types in frontend/backend, including image integration
+- **Image Integration Guide**: Complete documentation for local storage image handling
+- **Migration Guides**: Breaking change documentation
+
+### 2. Development Documentation
+**Priority: Medium**
+
+- **Contributing Guidelines**: How to add new types
+- **Testing Instructions**: How to test schema changes
+- **Release Process**: Versioning and deployment procedures
+
+## Success Metrics
+
+### Technical Metrics
+- **Type Coverage**: 100% type coverage across frontend/backend including image handling
+- **Build Success**: Zero build errors in dependent packages
+- **Schema Validation**: 100% runtime validation coverage including file upload validation
+- **Bundle Size**: Minimal impact on frontend bundle size
+- **Image Type Safety**: Complete type safety for local storage image system
+
+### Developer Experience
+- **IDE Support**: Full IntelliSense and error detection
+- **Refactoring Safety**: Breaking changes caught at build time
+- **Documentation Quality**: Clear examples and usage patterns
+- **Maintenance Ease**: Simple process for adding new types
+
+This shared types package serves as the foundation for type safety and data consistency across the entire real estate platform, ensuring reliable communication between frontend and backend applications while providing excellent developer experience.
+
+## Local Image Storage Integration
+
+The shared types package provides complete type support for the monorepo's local image storage system:
+
+### **Backend Integration**
+- **Image Processing Types**: Complete schemas for Sharp-based WebP conversion
+- **Upload Validation**: File type, size, and security validation schemas
+- **Storage Types**: Directory structure and URL generation types
+
+### **Frontend Integration**  
+- **Image Loading Types**: Type-safe URL construction for Next.js Image component
+- **WebP Support**: Complete type definitions for WebP image consumption
+- **Error Handling**: Types for graceful fallbacks and progressive loading
+
+### **Cross-Application Benefits**
+- **Type Safety**: Prevents API drift between image upload (backend) and consumption (frontend)
+- **Validation Consistency**: Same validation rules applied in both frontend and backend
+- **Utility Functions**: Shared helper functions for image URL generation and validation
+- **Constants**: Centralized configuration for file sizes, formats, and constraints
+
+This ensures that image handling remains consistent, type-safe, and maintainable across the entire monorepo while supporting the local storage architecture. 

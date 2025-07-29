@@ -1,0 +1,77 @@
+{
+	"meta": {
+		"generatedAt": "2025-07-29T11:30:41.751Z",
+		"tasksAnalyzed": 8,
+		"totalTasks": 8,
+		"analysisCount": 8,
+		"thresholdScore": 5,
+		"projectName": "Taskmaster",
+		"usedResearch": true
+	},
+	"complexityAnalysis": [
+		{
+			"taskId": 1,
+			"taskTitle": "Setup Project Structure and Configuration",
+			"complexityScore": 5,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Break down the setup into: (1) Create directory and file structure, (2) Initialize package.json with scripts and dependencies, (3) Configure tsconfig.json with strict settings, (4) Scaffold index.ts with exports, (5) Write initial README.md, (6) Validate setup with build and import tests.",
+			"reasoning": "This task is foundational and involves multiple configuration files and conventions, but each step is well-defined and follows standard patterns for TypeScript monorepos. Complexity is moderate due to the need for accuracy and cross-tool integration, but not algorithmically complex."
+		},
+		{
+			"taskId": 2,
+			"taskTitle": "Implement Common Utility Types",
+			"complexityScore": 6,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Expand into: (1) Define multilingual and language types, (2) Implement location and coordinates types, (3) Create API response and pagination types, (4) Implement currency and image types, (5) Write Zod schemas for all types and add unit tests.",
+			"reasoning": "This task requires careful modeling of foundational types and their validation schemas, which will be reused throughout the codebase. The need for generic types and schema composition adds moderate complexity, especially to ensure type safety and extensibility."
+		},
+		{
+			"taskId": 3,
+			"taskTitle": "Implement Listing Types and Schemas",
+			"complexityScore": 7,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Decompose into: (1) Define enums and supporting types (PropertyType, ListingStatus, PropertyFeature, PropertySpecs), (2) Implement Listing interface, (3) Create CreateListingInput and UpdateListingInput types, (4) Write Zod schemas for all types, (5) Add validation for nested and array fields, (6) Write comprehensive unit tests for all schemas.",
+			"reasoning": "Listings are central and highly interconnected, requiring careful modeling of nested structures, enums, and validation logic. The complexity is increased by the need to support partial updates, enforce constraints, and ensure compatibility with other types."
+		},
+		{
+			"taskId": 4,
+			"taskTitle": "Implement Agent and User Types",
+			"complexityScore": 7,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Split into: (1) Define Agent and AgentMetrics types, (2) Implement User, UserPreferences, and authentication types, (3) Create input types for creation and updates, (4) Write Zod schemas for all types, (5) Implement validation for phone numbers and roles, (6) Add unit tests for all schemas and edge cases.",
+			"reasoning": "Agent and user types involve sensitive data, authentication, and role management, requiring robust validation and security considerations. The schemas must handle optional fields, enums, and nested objects, increasing the implementation and testing complexity."
+		},
+		{
+			"taskId": 5,
+			"taskTitle": "Implement Booking and Search Types",
+			"complexityScore": 8,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Break down into: (1) Define booking enums and types, (2) Implement search filter and range types, (3) Create Zod schemas for booking and search, (4) Add validation for date, time, and contact info, (5) Implement search filter logic and constraints, (6) Write unit tests for booking and search schemas, (7) Test edge cases and invalid input scenarios.",
+			"reasoning": "This task combines two domains (booking and search), each with complex validation (dates, enums, ranges, nested filters). Ensuring correctness and flexibility for both user input and backend integration raises the complexity, especially for edge cases and extensibility."
+		},
+		{
+			"taskId": 6,
+			"taskTitle": "Implement Validation Utilities",
+			"complexityScore": 6,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Expand into: (1) Implement phone number validation utility, (2) Create multilingual content validation, (3) Develop price conversion and formatting utilities, (4) Implement slug and localization helpers, (5) Write type guard functions and unit tests for all utilities.",
+			"reasoning": "While each utility is individually straightforward, the set covers a range of concerns (regex, localization, currency, type guards) and must be robust and reusable. Ensuring correctness and coverage across all supported types and languages adds moderate complexity."
+		},
+		{
+			"taskId": 7,
+			"taskTitle": "Implement Contact Form and Alert Types",
+			"complexityScore": 5,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Decompose into: (1) Define alert enums and types, (2) Implement contact form and newsletter types, (3) Write Zod schemas for alerts and contact forms, (4) Add validation for phone, message, and language fields, (5) Write unit tests for all schemas and validation rules.",
+			"reasoning": "This task involves standard form and notification modeling with validation, following common patterns. Complexity is moderate due to the need for robust validation and support for optional fields, but the domain is well-understood and not deeply nested."
+		},
+		{
+			"taskId": 8,
+			"taskTitle": "Create Documentation and Tests",
+			"complexityScore": 7,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Expand into: (1) Add JSDoc comments to all types and schemas, (2) Write a comprehensive README with usage examples, (3) Create unit tests for all schemas, (4) Implement tests for validation utilities and type guards, (5) Set up Jest configuration and coverage thresholds, (6) Review and verify documentation completeness and accuracy.",
+			"reasoning": "Comprehensive documentation and testing are critical for maintainability and onboarding. This task requires attention to detail, coverage of all modules, and adherence to best practices for both code and documentation, making it moderately complex and time-consuming."
+		}
+	]
+}

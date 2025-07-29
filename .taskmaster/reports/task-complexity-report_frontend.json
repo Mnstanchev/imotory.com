@@ -1,0 +1,109 @@
+{
+	"meta": {
+		"generatedAt": "2025-07-29T11:29:26.054Z",
+		"tasksAnalyzed": 12,
+		"totalTasks": 12,
+		"analysisCount": 12,
+		"thresholdScore": 5,
+		"projectName": "Taskmaster",
+		"usedResearch": true
+	},
+	"complexityAnalysis": [
+		{
+			"taskId": 1,
+			"taskTitle": "Project Setup and Architecture Configuration",
+			"complexityScore": 6,
+			"recommendedSubtasks": 8,
+			"expansionPrompt": "Break down the project setup into discrete subtasks: Next.js initialization, TypeScript configuration, TailwindCSS setup, Shadcn UI installation, monorepo structure creation, TypeScript path configuration, ESLint/Prettier setup, and environment variable management.",
+			"reasoning": "This task involves multiple tool integrations and foundational architectural decisions, but each step is well-documented and follows standard patterns. Complexity is moderate due to the need for correct configuration and cross-tool compatibility, but not algorithmically complex."
+		},
+		{
+			"taskId": 2,
+			"taskTitle": "Internationalization Implementation",
+			"complexityScore": 7,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Expand into subtasks for Next.js i18n config, locale directory setup, translation file creation, translation utility implementation, language switcher component, middleware for language detection, and locale-specific layout files.",
+			"reasoning": "Internationalization requires careful handling of routing, translation loading, and user experience. While Next.js provides good support, ensuring seamless language switching, fallback, and localization structure adds notable complexity."
+		},
+		{
+			"taskId": 3,
+			"taskTitle": "Authentication System Implementation",
+			"complexityScore": 8,
+			"recommendedSubtasks": 10,
+			"expansionPrompt": "Decompose into subtasks for provider installation, provider configuration, each authentication component (SignIn, SignUp, ForgotPassword, ResetPassword, EmailVerification), social login setup, protected route implementation, session management, authentication hooks, account verification flow, and user profile integration.",
+			"reasoning": "Authentication is inherently complex due to security, multiple flows (social, email, verification), and integration with backend and UI. Each flow must be robust and secure, and industry standards require comprehensive testing and error handling."
+		},
+		{
+			"taskId": 4,
+			"taskTitle": "Home Page Implementation",
+			"complexityScore": 7,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Split into subtasks for layout creation, hero search widget, property categories section, featured listings, call-to-action sections, and responsive design implementation.",
+			"reasoning": "The home page is feature-rich and highly interactive, requiring integration of search, data fetching, and responsive UI. While each section is standard, the combination and need for localization and performance optimization increase complexity."
+		},
+		{
+			"taskId": 5,
+			"taskTitle": "Property Search and Filtering System",
+			"complexityScore": 9,
+			"recommendedSubtasks": 8,
+			"expansionPrompt": "Divide into subtasks for search page layout, filter sidebar, results display (grid/list, pagination), map integration, URL-based filter state, filter persistence, mobile optimization, and error handling/performance optimization.",
+			"reasoning": "This task is highly complex due to advanced filtering, state management, map integration, and performance requirements. It involves significant UI/UX considerations, API integration, and must handle large datasets efficiently."
+		},
+		{
+			"taskId": 6,
+			"taskTitle": "Property Detail Page Implementation",
+			"complexityScore": 8,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Expand into subtasks for page layout, media gallery, property information sections, engagement features, related content, structured data/SEO, and OpenGraph/social sharing tags.",
+			"reasoning": "The detail page aggregates diverse features (media, engagement, recommendations, SEO) and requires robust data handling, UI composition, and integration with other systems (favorites, booking, sharing)."
+		},
+		{
+			"taskId": 7,
+			"taskTitle": "Booking System Implementation",
+			"complexityScore": 8,
+			"recommendedSubtasks": 10,
+			"expansionPrompt": "Break down into subtasks for booking modal, date/time selection, contact form, visit type selection, special requests, booking submission handler, confirmation page, email integration, email template creation, and booking history/dashboard integration.",
+			"reasoning": "Booking systems involve complex form flows, backend integration, email notifications, and user dashboard updates. Each step must be reliable and user-friendly, with robust error handling and localization."
+		},
+		{
+			"taskId": 8,
+			"taskTitle": "User Dashboard Implementation",
+			"complexityScore": 7,
+			"recommendedSubtasks": 8,
+			"expansionPrompt": "Expand into subtasks for dashboard layout, navigation, saved properties management, search alerts, booking history, profile management, notification preferences, and dashboard overview/statistics.",
+			"reasoning": "The dashboard aggregates multiple user-centric features, each with its own data flows and UI. While individually standard, the integration and state management across sections add to the complexity."
+		},
+		{
+			"taskId": 9,
+			"taskTitle": "Agent Profiles Implementation",
+			"complexityScore": 6,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Decompose into subtasks for agent profile page, agent information section, contact form, agent listings section, agent search functionality, agent card component, and structured data implementation.",
+			"reasoning": "Agent profiles require data display, filtering, and contact flows, but follow established patterns. Complexity is moderate, with some additional effort for structured data and search."
+		},
+		{
+			"taskId": 10,
+			"taskTitle": "Property Comparison Feature",
+			"complexityScore": 7,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Split into subtasks for comparison page, state management, comparison UI components, add-to-comparison integration, floating button, share functionality, and comparison limit notifications.",
+			"reasoning": "Comparison features require careful state management, UI synchronization, and user feedback. While not algorithmically complex, the UX and persistence requirements increase the implementation effort."
+		},
+		{
+			"taskId": 11,
+			"taskTitle": "SEO and Performance Optimization",
+			"complexityScore": 8,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Expand into subtasks for SEO metadata components, structured data implementation, sitemap generation, robots.txt setup, image optimization, performance optimizations, and Core Web Vitals monitoring.",
+			"reasoning": "Comprehensive SEO and performance work spans multiple concerns (metadata, structured data, sitemaps, images, code splitting). Each area is well-understood but requires careful, standards-compliant implementation and ongoing monitoring."
+		},
+		{
+			"taskId": 12,
+			"taskTitle": "Content Pages and Static Pages Implementation",
+			"complexityScore": 5,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Break down into subtasks for contact page, FAQ section, legal pages, help/support documentation, breadcrumb navigation, content management integration, and reusable layout components.",
+			"reasoning": "Content and static pages are mostly CRUD and UI work, following standard patterns. Complexity is lower, but accessibility, localization, and content management integration add some additional considerations."
+		}
+	]
+}
