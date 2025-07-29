@@ -1,0 +1,15 @@
+{
+  "name": "@property-website/shared",
+  "version": "1.0.0",
+  "description": "Shared utilities, types, and components",
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./types": "./types/index.ts",
+    "./utils": "./utils/index.ts",
+    "./constants": "./constants/index.ts",
+    "./components": "./components/index.ts",
+    "./hooks": "./hooks/index.ts"
+  }
+} 
