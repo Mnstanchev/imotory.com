@@ -4,13 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "cp -r ../shared ./shared-temp || true",
     "build": "next build",
+    "postbuild": "rm -rf ./shared-temp || true",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@property-website/shared": "*",
     "@tanstack/react-query": "^5.84.2",
     "@tanstack/react-query-devtools": "^5.84.2",
+    "lightningcss": "^1.26.0",
     "lucide-react": "^0.471.2",
     "mapbox-gl": "^3.8.0",
     "next": "15.4.4",

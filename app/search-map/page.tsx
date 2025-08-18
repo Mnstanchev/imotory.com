@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useQuery } from "@tanstack/react-query";
@@ -13,7 +13,7 @@ import { useLanguage } from "@/contexts/language-context";
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN as string | undefined;
 mapboxgl.accessToken = MAPBOX_TOKEN || "";
 
-export default function SearchMapPage() {
+function SearchMapContent() {
   const { t, currentLanguage } = useLanguage();
   const searchParams = useSearchParams();
   const [filters, setFilters] = useState<Record<string, any>>({
@@ -1528,4 +1528,10 @@ function MapView({ listings, onSelectListing, selectedId, onSelectRegions, selec
   return <div ref={mapContainer} className="w-full h-full" />;
 }
 
-
+export default function SearchMapPage() {
+  return (
+    <Suspense fallback={<div className="w-full h-screen flex items-center justify-center">Loading...</div>}>
+      <SearchMapContent />
+    </Suspense>
+  );
+}

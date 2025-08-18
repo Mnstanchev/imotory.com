@@ -1,12 +1,13 @@
 "use client";
 
+import { Suspense } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getListings } from "../../lib/api";
 import ListingCard from "../../components/ListingCard";
 import { useSearchParams } from "next/navigation";
 import { useLanguage } from "@/contexts/language-context";
 
-export default function SearchPage() {
+function SearchContent() {
   const { t } = useLanguage();
   const params = useSearchParams();
   const queryParams: Record<string, string> = {};
@@ -33,4 +34,11 @@ export default function SearchPage() {
   );
 }
 
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div className="mx-auto max-w-6xl px-4 py-8"><div className="text-gray-700">Loading...</div></div>}>
+      <SearchContent />
+    </Suspense>
+  );
+}
 
