@@ -24,3 +24,41 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Mapbox: remove default white popup container for price labels */
+.mapboxgl-popup.price-popup {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.mapboxgl-popup.price-popup .mapboxgl-popup-content {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.mapboxgl-popup.price-popup .mapboxgl-popup-tip {
+  display: none !important;
+  border: none !important;
+}
+
+/* Global cursor pointer for interactive controls */
+button,
+[type="button"],
+[type="submit"],
+[type="reset"],
+a[href],
+input[type="checkbox"],
+input[type="radio"],
+select,
+summary,
+[role="button"],
+label[for] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type="button"]:disabled,
+[type="submit"]:disabled,
+[type="reset"]:disabled {
+  cursor: not-allowed;
+}

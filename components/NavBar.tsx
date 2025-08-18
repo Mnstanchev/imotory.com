@@ -1,0 +1,101 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { useLanguage } from "@/contexts/language-context";
+import { Globe } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+
+export default function NavBar() {
+  const { t } = useLanguage();
+  return (
+    <header className="w-full bg-white border-b border-gray-200">
+      <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Link href="/" className="inline-flex items-center" aria-label={t('nav.brand')}>
+            <Image
+              src="/imotory-logo-black.svg"
+              alt={t('nav.brand')}
+              width={140}
+              height={28}
+              priority
+            />
+          </Link>
+        </div>
+        <div className="flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-6 text-gray-700">
+            <a className="hover:text-gray-900" href="/search-map">{t('nav.explore')}</a>
+            <a className="hover:text-gray-900" href="/about">{t('nav.about')}</a>
+            <a className="hover:text-gray-900" href="/concierge">{t('nav.concierge')}</a>
+            <a className="hover:text-gray-900" href="/contact">{t('nav.contact')}</a>
+          </nav>
+          <div className="ml-0">
+            <LanguageSwitcher />
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function LanguageSwitcher() {
+  const { currentLanguage, setLanguage, t } = useLanguage();
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    function onDocClick(e: MouseEvent) {
+      if (!containerRef.current) return;
+      if (!containerRef.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener('click', onDocClick);
+    return () => document.removeEventListener('click', onDocClick);
+  }, []);
+
+  const languages = [
+    { code: 'bg', label: t('languages.bg') },
+    { code: 'en', label: t('languages.en') },
+    { code: 'ru', label: t('languages.ru') },
+  ] as const;
+
+  return (
+    <div className="relative" ref={containerRef}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-label={t('languages.select')}
+        className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 p-2"
+      >
+        <Globe className="w-5 h-5" />
+      </button>
+      {open ? (
+        <div
+          role="menu"
+          aria-label={t('languages.select')}
+          className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 shadow-md rounded-md py-1 z-50"
+        >
+          {languages.map((lng) => (
+            <button
+              key={lng.code}
+              role="menuitemradio"
+              aria-checked={currentLanguage === lng.code}
+              onClick={() => {
+                setLanguage(lng.code as any);
+                setOpen(false);
+              }}
+              className={`w-full text-left px-3 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-50 hover:text-gray-900 ${
+                currentLanguage === lng.code ? 'bg-gray-100 text-gray-900' : ''
+              }`}
+            >
+              {lng.label}
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+
