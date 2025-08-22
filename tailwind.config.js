@@ -14,4 +14,8 @@ module.exports = {
     },
   },
   plugins: [],
+  // Explicitly set for v3 compatibility
+  corePlugins: {
+    preflight: true,
+  },
 }
