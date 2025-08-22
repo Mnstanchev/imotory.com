@@ -72,11 +72,33 @@ export function getLatestListings() {
 }
 
 export function resolveAssetUrl(path?: string) {
-  if (!path) return "/next.svg";
-  if (/^https?:\/\//.test(path)) return path;
+  // Handle null, undefined, empty string, or whitespace-only strings
+  if (!path || typeof path !== 'string' || path.trim() === '') {
+    return "/next.svg";
+  }
+
+  // Trim whitespace
+  path = path.trim();
+
+  // Handle absolute URLs (Vercel Blob, external URLs)
+  if (/^https?:\/\//.test(path)) {
+    return path;
+  }
+
+  // Handle data URLs (base64 fallbacks)
+  if (path.startsWith('data:')) {
+    return path;
+  }
+
+  // Handle local paths - construct full URL
   const baseApi = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3000/api";
   const origin = baseApi.replace(/\/?api\/?$/, "");
   return `${origin}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+// Helper function to get the first valid image from an array
+export function getFirstValidImage(images?: string[]): string | undefined {
+  return images?.find(img => img && typeof img === 'string' && img.trim() !== '');
 }
 
 export async function getListing(id: string) {

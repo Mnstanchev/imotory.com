@@ -4,7 +4,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useQuery } from "@tanstack/react-query";
-import { getListings, type Listing, resolveAssetUrl, getPropertyTypes, getListingTypes, searchLocations } from "../../lib/api";
+import { getListings, type Listing, resolveAssetUrl, getFirstValidImage, getPropertyTypes, getListingTypes, searchLocations } from "../../lib/api";
 import Link from "next/link";
 import { trackGuestFavorite } from "../../lib/analytics";
 import { useSearchParams } from "next/navigation";
@@ -990,7 +990,7 @@ function MainList({
 
 function ListingRow({ listing, highlighted, strongHighlight }: { listing: Listing; highlighted?: boolean; strongHighlight?: boolean }) {
   const { t, currentLanguage } = useLanguage();
-  const img = resolveAssetUrl(listing.images?.[0]);
+  const img = resolveAssetUrl(getFirstValidImage(listing.images));
   const [saved, setSaved] = useState(false);
   useEffect(() => {
     try {
@@ -1057,7 +1057,7 @@ function ListingRow({ listing, highlighted, strongHighlight }: { listing: Listin
 
 function ListingCard({ listing, highlighted, strongHighlight }: { listing: Listing; highlighted?: boolean; strongHighlight?: boolean }) {
   const { t, currentLanguage } = useLanguage();
-  const img = resolveAssetUrl(listing.images?.[0]);
+  const img = resolveAssetUrl(getFirstValidImage(listing.images));
   const [saved, setSaved] = useState(false);
   useEffect(() => {
     try {

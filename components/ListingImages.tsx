@@ -14,25 +14,27 @@ export default function ListingImages({ images }: { images: string[] }) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const [first, second, third] = images;
-  const countLabel = `${images.length}+`;
+  // Filter out invalid images (null, undefined, empty strings)
+  const validImages = images?.filter(img => img && typeof img === 'string' && img.trim() !== '') || [];
+  const [first, second, third] = validImages;
+  const countLabel = `${validImages.length}+`;
 
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         <div className="md:col-span-2 aspect-[16/9] relative overflow-hidden rounded-lg bg-gray-100">
-          {first && <img src={resolveAssetUrl(first)} alt="Image 1" className="w-full h-full object-cover" />}
+          {first && <img src={resolveAssetUrl(first)} alt="Image 1" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = "/next.svg"; }} />}
         </div>
         <div className="grid grid-rows-2 gap-3">
           <div className="aspect-[16/9] relative overflow-hidden rounded-lg bg-gray-100">
-            {second && <img src={resolveAssetUrl(second)} alt="Image 2" className="w-full h-full object-cover" />}
+            {second && <img src={resolveAssetUrl(second)} alt="Image 2" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = "/next.svg"; }} />}
           </div>
           <button
             type="button"
             onClick={() => setIsOpen(true)}
             className="relative aspect-[16/9] overflow-hidden rounded-lg bg-gray-100 text-gray-900"
           >
-            {third && <img src={resolveAssetUrl(third)} alt="Image 3" className="w-full h-full object-cover" />}
+            {third && <img src={resolveAssetUrl(third)} alt="Image 3" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = "/next.svg"; }} />}
             <span className="absolute inset-0 bg-gray-900/40 flex items-center justify-center text-white text-2xl font-semibold">
               {countLabel}
             </span>
@@ -55,9 +57,9 @@ export default function ListingImages({ images }: { images: string[] }) {
               </button>
             </div>
             <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-              {images.map((src, i) => (
+              {validImages.map((src, i) => (
                 <div key={i} className="relative aspect-[16/9] overflow-hidden rounded-md bg-gray-100">
-                  <img src={resolveAssetUrl(src)} alt={`Image ${i + 1}`} className="w-full h-full object-cover" />
+                  <img src={resolveAssetUrl(src)} alt={`Image ${i + 1}`} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = "/next.svg"; }} />
                 </div>
               ))}
             </div>

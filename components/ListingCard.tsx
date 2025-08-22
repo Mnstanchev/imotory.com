@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { addFavorite, removeFavorite, type Listing, resolveAssetUrl } from "../lib/api";
+import { addFavorite, removeFavorite, type Listing, resolveAssetUrl, getFirstValidImage } from "../lib/api";
 import { trackListingClick, trackGuestFavorite } from "../lib/analytics";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -97,7 +97,7 @@ export default function ListingCard({ listing }: { listing: Listing }) {
     },
   });
 
-  const cover = resolveAssetUrl(listing.images?.[0]);
+  const cover = resolveAssetUrl(getFirstValidImage(listing.images));
 
   const qc = useQueryClient();
 
