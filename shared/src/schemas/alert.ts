@@ -36,7 +36,15 @@ export const NotificationPreferencesSchema = z.object({
   push: z.boolean().default(true),
   inApp: z.boolean().default(true),
   frequency: z.enum(['immediate', 'daily', 'weekly']).default('immediate'),
-  types: z.record(AlertTypeSchema, z.boolean()).default({})
+  types: z.record(AlertTypeSchema, z.boolean()).default({
+    price_change: true,
+    new_listing: true,
+    status_change: true,
+    saved_search: true,
+    booking_update: true,
+    system: true,
+    marketing: false
+  })
 });
 
 /**

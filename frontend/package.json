@@ -11,7 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@property-website/shared": "*",
+    "@property-website/shared": "file:../shared",
     "@tanstack/react-query": "^5.84.2",
     "@tanstack/react-query-devtools": "^5.84.2",
     "lightningcss": "^1.26.0",
