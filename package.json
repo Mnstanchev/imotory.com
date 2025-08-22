@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "cp -r ../shared ./shared-temp || true",
+    "prebuild": "cp -r ./shared ./shared-temp || true",
     "build": "next build",
     "postbuild": "rm -rf ./shared-temp || true",
     "start": "next start",
@@ -19,10 +19,12 @@
     "mapbox-gl": "^3.8.0",
     "next": "15.4.4",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "zod": "^4.0.17"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/mapbox-gl": "^3.4.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
