@@ -1,5 +1,12 @@
 {
-  "buildCommand": "npm run build:shared && npm run build",
-  "installCommand": "npm install --include=dev",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "buildCommand": "cd shared && npm install && npm run build && cd ../frontend && npm install && npm run build",
+  "outputDirectory": "frontend/.next",
+  "installCommand": "cd shared && npm install && cd ../frontend && npm install",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/frontend/$1"
+    }
+  ]
 }
