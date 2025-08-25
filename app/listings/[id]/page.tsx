@@ -2,6 +2,8 @@ import Image from "next/image";
 import { getListingBySlug, getListing } from "@/lib/api";
 import { notFound, redirect } from "next/navigation";
 import React from "react";
+import type { Metadata } from "next";
+import { generateListingMetadata } from "@/lib/metadata";
 import ListingImages from "@/components/ListingImages";
 import ListingHeader from "@/components/listing/ListingHeader";
 import OverviewBadges from "@/components/listing/OverviewBadges";
@@ -13,7 +15,34 @@ import MapCard from "@/components/listing/MapCard";
 import LatestListings from "@/components/LatestListings";
 import { getLatestListings } from "@/lib/api";
 import LocalizedListingSections from "@/components/listing/LocalizedListingSections";
-import { useLanguage } from "@/contexts/language-context";
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  try {
+    let listing;
+    try {
+      listing = await getListingBySlug(id);
+    } catch {
+      try {
+        listing = await getListing(id);
+      } catch {}
+    }
+    
+    if (!listing) {
+      return {
+        title: 'Property Not Found | Imotory',
+        description: 'The requested property could not be found.',
+      };
+    }
+    
+    return generateListingMetadata(listing, 'bg');
+  } catch {
+    return {
+      title: 'Property | Imotory',
+      description: 'View property details on Imotory.',
+    };
+  }
+}
 
 export default async function ListingPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

@@ -1,6 +1,34 @@
 import { getListings, type Listing, resolveAssetUrl, getFirstValidImage } from "@/lib/api";
 import Link from "next/link";
 import { Bed, Bath, Ruler } from "lucide-react";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  try {
+    const listings = await getListings({ agentId: id, limit: 1 });
+    const agentName = listings[0]?.agent?.name?.en || `Agent ${id}`;
+    
+    return {
+      title: `${agentName} - Real Estate Agent | Imotory`,
+      description: `View all properties listed by ${agentName}. Browse exclusive real estate listings and premium properties in Bulgaria.`,
+      openGraph: {
+        title: `${agentName} - Real Estate Agent | Imotory`,
+        description: `View all properties listed by ${agentName}. Browse exclusive real estate listings and premium properties in Bulgaria.`,
+        url: `https://imotory.com/agents/${id}`,
+        type: 'profile',
+      },
+      alternates: {
+        canonical: `https://imotory.com/agents/${id}`,
+      },
+    };
+  } catch {
+    return {
+      title: 'Real Estate Agent | Imotory',
+      description: 'View agent properties and listings on Imotory.',
+    };
+  }
+}
 
 export default async function AgentListingsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
