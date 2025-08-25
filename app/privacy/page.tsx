@@ -1,13 +1,10 @@
-import type { Metadata } from "next";
-import { generatePageMetadata } from "../../lib/metadata";
-
-export async function generateMetadata(): Promise<Metadata> {
-  return generatePageMetadata('privacy', 'bg');
-}
-
 "use client";
 
 import { useLanguage } from "@/contexts/language-context";
+import type { Metadata } from "next";
+import { generatePageMetadata } from "../../lib/metadata";
+
+// Note: metadata moved to layout or handled differently
 
 export default function PrivacyPage() {
   const { t } = useLanguage();

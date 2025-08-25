@@ -1,13 +1,10 @@
-import type { Metadata } from "next";
-import { generatePageMetadata } from "../../lib/metadata";
-
-export async function generateMetadata(): Promise<Metadata> {
-  return generatePageMetadata('search', 'bg');
-}
-
 "use client";
 
 import { Suspense } from "react";
+import type { Metadata } from "next";
+import { generatePageMetadata } from "../../lib/metadata";
+
+// Note: metadata moved to layout or handled differently
 import { useQuery } from "@tanstack/react-query";
 import { getListings } from "../../lib/api";
 import ListingCard from "../../components/ListingCard";
