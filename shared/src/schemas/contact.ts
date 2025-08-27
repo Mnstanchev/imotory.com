@@ -79,7 +79,7 @@ export const ContactFormSchema = z.object({
   agentId: z.string().uuid().optional(),
   language: ContactLanguageSchema.default('en'),
   source: z.string().max(50).optional(),
-  ipAddress: z.string().ip().optional(),
+  ipAddress: z.string().optional(),
   userAgent: z.string().max(500).optional(),
   isSpam: z.boolean().default(false),
   createdAt: z.date().optional(),
@@ -114,7 +114,7 @@ export const NewsletterSubscriptionSchema = z.object({
   subscribedAt: z.date().optional(),
   unsubscribedAt: z.date().optional(),
   source: z.string().max(50).optional(),
-  ipAddress: z.string().ip().optional(),
+  ipAddress: z.string().optional(),
   preferences: z.object({
     frequency: z.enum(['immediate', 'daily', 'weekly', 'monthly']).default('weekly'),
     categories: z.array(z.string().min(1).max(50)).max(10, "Too many categories").optional()

@@ -117,7 +117,7 @@ function createValidator<T>(schema: z.ZodSchema<T>) {
  * @returns Safe validation function that returns result object
  */
 function createSafeValidator<T>(schema: z.ZodSchema<T>) {
-  return (value: unknown): z.SafeParseReturnType<unknown, T> => {
+  return (value: unknown) => {
     return schema.safeParse(value);
   };
 }

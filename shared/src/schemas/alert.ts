@@ -36,15 +36,7 @@ export const NotificationPreferencesSchema = z.object({
   push: z.boolean().default(true),
   inApp: z.boolean().default(true),
   frequency: z.enum(['immediate', 'daily', 'weekly']).default('immediate'),
-  types: z.record(AlertTypeSchema, z.boolean()).default({
-    price_change: true,
-    new_listing: true,
-    status_change: true,
-    saved_search: true,
-    booking_update: true,
-    system: true,
-    marketing: false
-  })
+  types: z.record(AlertTypeSchema, z.boolean()).optional()
 });
 
 /**
@@ -62,7 +54,7 @@ export const AlertSchema = z.object({
   relatedEntityId: z.string().uuid().optional(),
   relatedEntityType: z.enum(['listing', 'user', 'booking', 'agent', 'system']).optional(),
   actionUrl: z.string().url().optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
   expiresAt: z.date().optional(),
   createdAt: z.date().default(() => new Date()),
   updatedAt: z.date().default(() => new Date())
@@ -80,7 +72,7 @@ export const CreateAlertInputSchema = z.object({
   relatedEntityId: z.string().uuid().optional(),
   relatedEntityType: z.enum(['listing', 'user', 'booking', 'agent', 'system']).optional(),
   actionUrl: z.string().url().optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
   expiresAt: z.date().optional()
 });
 

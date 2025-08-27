@@ -180,6 +180,6 @@ export const SearchSuggestionSchema = z.object({
   type: z.enum(['city', 'neighborhood', 'agent', 'property']),
   value: z.string().min(1),
   label: z.string().min(1),
-  metadata: z.record(z.any()).optional()
+  metadata: z.record(z.string(), z.any()).optional()
 });
 
