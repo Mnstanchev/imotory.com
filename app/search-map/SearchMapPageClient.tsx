@@ -13,6 +13,12 @@ import { useLanguage } from "@/contexts/language-context";
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN as string | undefined;
 mapboxgl.accessToken = MAPBOX_TOKEN || "";
 
+// Disable Mapbox telemetry to prevent analytics requests
+if (typeof window !== 'undefined') {
+  mapboxgl.prewarm();
+  (mapboxgl as any).getEventBuffer = () => ({ flush: () => {} });
+}
+
 function SearchMapContent() {
   const { t, currentLanguage } = useLanguage();
   const searchParams = useSearchParams();

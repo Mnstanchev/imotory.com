@@ -1418,17 +1418,32 @@ function MapView({ listings, onSelectListing, selectedId, onSelectRegions, selec
               },
             });
           } else {
-            // Fallback to default marker
-            map.addLayer({
-              id: layerId,
-              type: "symbol",
-              source: sourceId,
-              layout: {
-                "icon-image": "marker-15",
-                "icon-allow-overlap": true,
-                "icon-ignore-placement": true
-              }
-            });
+            // Fallback to custom pin or create a simple circle marker
+            if (map.hasImage("custom-pin")) {
+              map.addLayer({
+                id: layerId,
+                type: "symbol",
+                source: sourceId,
+                layout: {
+                  "icon-image": "custom-pin",
+                  "icon-allow-overlap": true,
+                  "icon-ignore-placement": true
+                }
+              });
+            } else {
+              // Create a simple circle marker as final fallback
+              map.addLayer({
+                id: layerId,
+                type: "circle",
+                source: sourceId,
+                paint: {
+                  "circle-radius": 6,
+                  "circle-color": "#FF5733",
+                  "circle-stroke-color": "#fff",
+                  "circle-stroke-width": 2
+                }
+              });
+            }
           }
         });
       }

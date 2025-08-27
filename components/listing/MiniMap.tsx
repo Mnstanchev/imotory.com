@@ -9,6 +9,11 @@ if (MAPBOX_TOKEN) {
   mapboxgl.accessToken = MAPBOX_TOKEN;
 }
 
+// Disable Mapbox telemetry to prevent analytics requests
+if (typeof window !== 'undefined') {
+  (mapboxgl as any).getEventBuffer = () => ({ flush: () => {} });
+}
+
 export default function MiniMap({ lat, lng, query }: { lat?: number; lng?: number; query?: string }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
