@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   // Enable transpilation of shared package
   transpilePackages: ['@property-website/shared'],
   
+  // Enable standalone output for Docker deployment
+  output: 'standalone',
+  
   // Experimental features for better monorepo support
   experimental: {
     externalDir: true,
