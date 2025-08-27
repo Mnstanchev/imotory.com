@@ -1,4 +1,9 @@
-export const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3000/api";
+// Use internal network for server-side calls, external URL for client-side calls
+const isServer = typeof window === 'undefined';
+const internalBackendUrl = process.env.INTERNAL_BACKEND_URL; // e.g., "http://backend-service:3000/api"
+const externalBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3000/api";
+
+export const API_BASE = isServer && internalBackendUrl ? internalBackendUrl : externalBackendUrl;
 
 export type Listing = {
   id: string;
