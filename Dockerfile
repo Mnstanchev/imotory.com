@@ -8,16 +8,9 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat python3 make g++
 WORKDIR /app
 
-# Install dependencies based on the preferred package manager
-COPY package.json package-lock.json* bun.lock* ./
-RUN \
-  if [ -f bun.lock ]; then \
-    npm install -g bun && bun install --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then \
-    npm ci && npm rebuild; \
-  else \
-    echo "Lockfile not found." && exit 1; \
-  fi
+# Install dependencies using npm
+COPY package.json package-lock.json* ./
+RUN npm ci && npm rebuild
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -29,12 +22,7 @@ COPY . .
 RUN cd shared && npm install && npm run build
 
 # Build the application
-RUN \
-  if [ -f bun.lock ]; then \
-    npm install -g bun && bun run build; \
-  else \
-    npm run build; \
-  fi
+RUN npm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner
