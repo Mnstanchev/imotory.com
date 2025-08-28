@@ -161,9 +161,28 @@ function SearchMapContent() {
     markersRef.current.forEach(marker => marker.remove());
     markersRef.current = [];
 
+    // Bulgaria bounds for validation
+    const bulgariaBounds = {
+      north: 44.22,
+      south: 41.22,
+      east: 28.72,
+      west: 22.35
+    };
+
+    const isValidBulgarianCoords = (lng: number, lat: number) => {
+      return lng >= bulgariaBounds.west && lng <= bulgariaBounds.east &&
+             lat >= bulgariaBounds.south && lat <= bulgariaBounds.north;
+    };
+
     // Add new markers
     listings.forEach((listing) => {
       if (!listing.latitude || !listing.longitude) return;
+      
+      // Validate coordinates are within Bulgaria bounds
+      if (!isValidBulgarianCoords(listing.longitude, listing.latitude)) {
+        console.warn(`Invalid coordinates for listing ${listing.id}: [${listing.longitude}, ${listing.latitude}] - outside Bulgaria bounds`);
+        return;
+      }
 
       const markerEl = document.createElement("div");
       markerEl.className = "marker";
@@ -216,7 +235,7 @@ function SearchMapContent() {
     // Fit map to markers if there are any
     if (listings.length > 0) {
       const validCoords = listings
-        .filter(l => l.latitude && l.longitude)
+        .filter(l => l.latitude && l.longitude && isValidBulgarianCoords(l.longitude, l.latitude))
         .map(l => [l.longitude!, l.latitude!] as [number, number]);
 
       if (validCoords.length > 0) {

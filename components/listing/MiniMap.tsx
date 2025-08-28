@@ -34,17 +34,46 @@ export default function MiniMap({ lat, lng, query }: { lat?: number; lng?: numbe
 
     async function placeMarker() {
       let coordinates: [number, number] | null = null;
+      
+      // Bulgaria bounds for validation
+      const bulgariaBounds = {
+        north: 44.22,
+        south: 41.22,
+        east: 28.72,
+        west: 22.35
+      };
+
+      const isValidBulgarianCoords = (lng: number, lat: number) => {
+        return lng >= bulgariaBounds.west && lng <= bulgariaBounds.east &&
+               lat >= bulgariaBounds.south && lat <= bulgariaBounds.north;
+      };
+
       if (typeof lat === "number" && typeof lng === "number") {
-        coordinates = [lng, lat];
+        if (isValidBulgarianCoords(lng, lat)) {
+          coordinates = [lng, lat];
+        } else {
+          console.warn(`Invalid coordinates provided: [${lng}, ${lat}] - outside Bulgaria bounds`);
+        }
       } else if (query) {
         try {
           const url = new URL(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json`);
           url.searchParams.set("access_token", MAPBOX_TOKEN!);
-          url.searchParams.set("limit", "1");
+          url.searchParams.set("limit", "5");
+          url.searchParams.set("country", "bg");
+          url.searchParams.set("proximity", "23.3219,42.6977");
           const res = await fetch(url.toString());
           const data = (await res.json()) as any;
-          const feat = data?.features?.[0];
-          if (feat?.center) coordinates = feat.center as [number, number];
+          
+          // Find the first result that's actually in Bulgaria
+          const validFeature = data?.features?.find((feat: any) => {
+            if (!feat?.center) return false;
+            const [lngResult, latResult] = feat.center;
+            return isValidBulgarianCoords(lngResult, latResult);
+          });
+
+          if (validFeature?.center) {
+            coordinates = validFeature.center as [number, number];
+          }
         } catch {}
       }
       if (coordinates && map) {
@@ -79,17 +108,46 @@ export default function MiniMap({ lat, lng, query }: { lat?: number; lng?: numbe
     let cancelled = false;
     (async () => {
       let coordinates: [number, number] | null = null;
+      
+      // Bulgaria bounds for validation
+      const bulgariaBounds = {
+        north: 44.22,
+        south: 41.22,
+        east: 28.72,
+        west: 22.35
+      };
+
+      const isValidBulgarianCoords = (lng: number, lat: number) => {
+        return lng >= bulgariaBounds.west && lng <= bulgariaBounds.east &&
+               lat >= bulgariaBounds.south && lat <= bulgariaBounds.north;
+      };
+
       if (typeof lat === 'number' && typeof lng === 'number') {
-        coordinates = [lng, lat];
+        if (isValidBulgarianCoords(lng, lat)) {
+          coordinates = [lng, lat];
+        } else {
+          console.warn(`Invalid coordinates provided: [${lng}, ${lat}] - outside Bulgaria bounds`);
+        }
       } else if (query) {
         try {
           const url = new URL(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json`);
           url.searchParams.set('access_token', MAPBOX_TOKEN!);
-          url.searchParams.set('limit', '1');
+          url.searchParams.set('limit', '5');
+          url.searchParams.set('country', 'bg');
+          url.searchParams.set('proximity', '23.3219,42.6977');
           const res = await fetch(url.toString());
           const data = (await res.json()) as any;
-          const feat = data?.features?.[0];
-          if (feat?.center) coordinates = feat.center as [number, number];
+          
+          // Find the first result that's actually in Bulgaria
+          const validFeature = data?.features?.find((feat: any) => {
+            if (!feat?.center) return false;
+            const [lngResult, latResult] = feat.center;
+            return isValidBulgarianCoords(lngResult, latResult);
+          });
+
+          if (validFeature?.center) {
+            coordinates = validFeature.center as [number, number];
+          }
         } catch {}
       }
       if (!cancelled && coordinates && mapRef.current === map) {

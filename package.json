@@ -14,6 +14,7 @@
     "@property-website/shared": "file:./shared",
     "@tanstack/react-query": "^5.84.2",
     "@tanstack/react-query-devtools": "^5.84.2",
+    "dotenv": "^17.2.1",
     "lucide-react": "^0.471.2",
     "mapbox-gl": "^3.14.0",
     "next": "15.4.4",

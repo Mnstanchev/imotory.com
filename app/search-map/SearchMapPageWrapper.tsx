@@ -1172,33 +1172,105 @@ function MapView({ listings, onSelectListing, selectedId, onSelectRegions, selec
 
     (async () => {
       const updates: Record<string, [number, number]> = {};
+      
+      // Bulgaria bounds for validation
+      const bulgariaBounds = {
+        north: 44.22,
+        south: 41.22,
+        east: 28.72,
+        west: 22.35
+      };
+
+      const isValidBulgarianCoords = (lng: number, lat: number) => {
+        return lng >= bulgariaBounds.west && lng <= bulgariaBounds.east &&
+               lat >= bulgariaBounds.south && lat <= bulgariaBounds.north;
+      };
+
       for (const l of withoutCoords) {
+        // Build better search query with location context
         const anyAddr: any = l.address as any;
-        const q = (typeof anyAddr === 'string' ? anyAddr : (anyAddr?.en || anyAddr?.bg || anyAddr?.ru)) || (l as any).title?.en || (l as any).slug || (l as any).location?.name?.en;
+        const address = typeof anyAddr === 'string' ? anyAddr : (anyAddr?.en || anyAddr?.bg || anyAddr?.ru);
+        const locationName = (l as any).location?.name?.en || (l as any).location?.name?.bg || (l as any).location?.name?.ru;
+        const title = (l as any).title?.en || (l as any).title?.bg || (l as any).title?.ru;
+        
+        // Construct query with Bulgaria context for better accuracy
+        let q = '';
+        if (address && locationName) {
+          q = `${address}, ${locationName}, Bulgaria`;
+        } else if (address) {
+          q = `${address}, Bulgaria`;
+        } else if (locationName) {
+          q = `${locationName}, Bulgaria`;
+        } else if (title) {
+          q = `${title}, Bulgaria`;
+        } else {
+          q = (l as any).slug + ', Bulgaria';
+        }
+
         if (!q) continue;
+
         try {
+          // Add country code and bias towards Bulgaria
           const res = await fetch(
-            `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(q)}.json?limit=1&access_token=${MAPBOX_TOKEN}`
+            `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(q)}.json?` +
+            `limit=5&country=bg&access_token=${MAPBOX_TOKEN}&proximity=23.3219,42.6977`
           );
           const data = await res.json();
-          const feat = data?.features?.[0];
-          if (feat?.center) {
-            updates[l.id] = [feat.center[0], feat.center[1]];
+          
+          // Find the first result that's actually in Bulgaria
+          const validFeature = data?.features?.find((feat: any) => {
+            if (!feat?.center) return false;
+            const [lng, lat] = feat.center;
+            return isValidBulgarianCoords(lng, lat);
+          });
+
+          if (validFeature?.center) {
+            const [lng, lat] = validFeature.center;
+            updates[l.id] = [lng, lat];
+            console.log(`Geocoded ${l.id}: ${q} -> [${lng}, ${lat}]`);
+          } else {
+            console.warn(`Failed to geocode ${l.id}: ${q} - no valid Bulgarian coordinates found`);
           }
-        } catch {}
+        } catch (error) {
+          console.error(`Geocoding error for ${l.id}: ${q}`, error);
+        }
       }
+      
       if (Object.keys(updates).length) {
+        console.log(`Geocoded ${Object.keys(updates).length} listings`);
         setCoordsMap((prev) => ({ ...prev, ...updates }));
       }
     })();
   }, [listings]);
 
   const points = useMemo(() => {
+    // Bulgaria bounds for validation
+    const bulgariaBounds = {
+      north: 44.22,
+      south: 41.22,
+      east: 28.72,
+      west: 22.35
+    };
+
+    const isValidBulgarianCoords = (lng: number, lat: number) => {
+      return lng >= bulgariaBounds.west && lng <= bulgariaBounds.east &&
+             lat >= bulgariaBounds.south && lat <= bulgariaBounds.north;
+    };
+
     return listings
       .map((l) => {
         const lng = l.longitude ?? coordsMap[l.id]?.[0];
         const lat = l.latitude ?? coordsMap[l.id]?.[1];
+        
+        // Skip if no coordinates available
         if (lng == null || lat == null) return null;
+        
+        // Validate coordinates are within Bulgaria bounds
+        if (!isValidBulgarianCoords(lng, lat)) {
+          console.warn(`Invalid coordinates for listing ${l.id}: [${lng}, ${lat}] - outside Bulgaria bounds`);
+          return null;
+        }
+        
         return {
           type: "Feature",
           geometry: { type: "Point", coordinates: [lng, lat] },
