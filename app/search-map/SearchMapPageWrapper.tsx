@@ -1164,27 +1164,30 @@ function MapView({ listings, onSelectListing, selectedId, onSelectRegions, selec
 
   const [coordsMap, setCoordsMap] = useState<Record<string, [number, number]>>({});
 
+  // Debug: Check what coordinates we have
+  useEffect(() => {
+    console.log('🔍 Checking listings coordinates:');
+    listings.slice(0, 3).forEach(l => {
+      console.log(`Listing ${l.id}: lat=${l.latitude} (${typeof l.latitude}), lng=${l.longitude} (${typeof l.longitude})`);
+    });
+  }, [listings]);
+
   // Geocode listings without coordinates using Mapbox
   useEffect(() => {
     if (!MAPBOX_TOKEN) return;
     const withoutCoords = listings.filter((l) => !l.longitude || !l.latitude);
+    const withCoords = listings.filter((l) => l.longitude && l.latitude);
+    
+    console.log(`📊 Listings status: ${withCoords.length} have coordinates, ${withoutCoords.length} need geocoding`);
+    
     if (!withoutCoords.length) return;
+    
+    console.log(`🔄 Starting geocoding for ${withoutCoords.length} listings without coordinates`);
 
     (async () => {
       const updates: Record<string, [number, number]> = {};
       
-      // Bulgaria bounds for validation
-      const bulgariaBounds = {
-        north: 44.22,
-        south: 41.22,
-        east: 28.72,
-        west: 22.35
-      };
-
-      const isValidBulgarianCoords = (lng: number, lat: number) => {
-        return lng >= bulgariaBounds.west && lng <= bulgariaBounds.east &&
-               lat >= bulgariaBounds.south && lat <= bulgariaBounds.north;
-      };
+      // No coordinate restrictions - trust the geocoding with "Bulgaria" context
 
       for (const l of withoutCoords) {
         // Build better search query with location context
@@ -1200,7 +1203,18 @@ function MapView({ listings, onSelectListing, selectedId, onSelectRegions, selec
         } else if (address) {
           q = `${address}, Bulgaria`;
         } else if (locationName) {
-          q = `${locationName}, Bulgaria`;
+          // Be more specific for Bulgarian Black Sea coast towns
+          if (locationName.toLowerCase().includes('nesebar') || locationName.toLowerCase().includes('несебър')) {
+            q = 'Nesebar, Burgas Province, Bulgaria, Black Sea coast';
+          } else if (locationName.toLowerCase().includes('sozopol') || locationName.toLowerCase().includes('созопол')) {
+            q = 'Sozopol, Burgas Province, Bulgaria, Black Sea coast';
+          } else if (locationName.toLowerCase().includes('ravda') || locationName.toLowerCase().includes('равда')) {
+            q = 'Ravda, Burgas Province, Bulgaria, Black Sea coast';
+          } else if (locationName.toLowerCase().includes('sveti vlas') || locationName.toLowerCase().includes('свети влас')) {
+            q = 'Sveti Vlas, Burgas Province, Bulgaria, Black Sea coast';
+          } else {
+            q = `${locationName}, Bulgaria`;
+          }
         } else if (title) {
           q = `${title}, Bulgaria`;
         } else {
@@ -1217,19 +1231,12 @@ function MapView({ listings, onSelectListing, selectedId, onSelectRegions, selec
           );
           const data = await res.json();
           
-          // Find the first result that's actually in Bulgaria
-          const validFeature = data?.features?.find((feat: any) => {
-            if (!feat?.center) return false;
+          // Use the first/best result from Mapbox (already filtered by country=bg)
+          const feat = data?.features?.[0];
+          if (feat?.center) {
             const [lng, lat] = feat.center;
-            return isValidBulgarianCoords(lng, lat);
-          });
-
-          if (validFeature?.center) {
-            const [lng, lat] = validFeature.center;
             updates[l.id] = [lng, lat];
-            console.log(`Geocoded ${l.id}: ${q} -> [${lng}, ${lat}]`);
-          } else {
-            console.warn(`Failed to geocode ${l.id}: ${q} - no valid Bulgarian coordinates found`);
+            console.log(`🗺️ Geocoded ${l.id}: "${q}" -> [${lng}, ${lat}] (${feat.place_name})`);
           }
         } catch (error) {
           console.error(`Geocoding error for ${l.id}: ${q}`, error);
@@ -1244,19 +1251,6 @@ function MapView({ listings, onSelectListing, selectedId, onSelectRegions, selec
   }, [listings]);
 
   const points = useMemo(() => {
-    // Bulgaria bounds for validation
-    const bulgariaBounds = {
-      north: 44.22,
-      south: 41.22,
-      east: 28.72,
-      west: 22.35
-    };
-
-    const isValidBulgarianCoords = (lng: number, lat: number) => {
-      return lng >= bulgariaBounds.west && lng <= bulgariaBounds.east &&
-             lat >= bulgariaBounds.south && lat <= bulgariaBounds.north;
-    };
-
     return listings
       .map((l) => {
         const lng = l.longitude ?? coordsMap[l.id]?.[0];
@@ -1265,11 +1259,7 @@ function MapView({ listings, onSelectListing, selectedId, onSelectRegions, selec
         // Skip if no coordinates available
         if (lng == null || lat == null) return null;
         
-        // Validate coordinates are within Bulgaria bounds
-        if (!isValidBulgarianCoords(lng, lat)) {
-          console.warn(`Invalid coordinates for listing ${l.id}: [${lng}, ${lat}] - outside Bulgaria bounds`);
-          return null;
-        }
+        console.log(`✅ Using coordinates for listing ${l.id} (${l.title?.en}): [${lng}, ${lat}]`);
         
         return {
           type: "Feature",
