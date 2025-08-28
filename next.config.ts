@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import path from "path";
 
 const nextConfig: NextConfig = {
   // Enable transpilation of shared package
@@ -37,15 +36,42 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=3600, s-maxage=3600',
+            value: 'public, max-age=3600, s-maxage=3600', // Cache for 1 hour
           },
           {
             key: 'Content-Type',
-            value: 'application/xml',
+            value: 'application/xml; charset=utf-8',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex', // Don't index the sitemap itself
+          },
+        ],
+      },
+      {
+        source: '/sitemap-dynamic.xml',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=1800, s-maxage=1800', // Cache for 30 minutes
+          },
+          {
+            key: 'Content-Type',
+            value: 'application/xml; charset=utf-8',
           },
         ],
       },
     ];
+  },
+  
+  // Configure webpack to avoid minification issues
+  webpack: (config, { isServer, dev }) => {
+    // Completely disable minification to avoid webpack plugin errors
+    if (!dev) {
+      config.optimization.minimize = false;
+      config.optimization.minimizer = [];
+    }
+    return config;
   },
 };
 
