@@ -42,10 +42,6 @@ const nextConfig: NextConfig = {
             key: 'Content-Type',
             value: 'application/xml; charset=utf-8',
           },
-          {
-            key: 'X-Robots-Tag',
-            value: 'noindex', // Don't index the sitemap itself
-          },
         ],
       },
       {
