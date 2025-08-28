@@ -1164,23 +1164,21 @@ function MapView({ listings, onSelectListing, selectedId, onSelectRegions, selec
 
   const [coordsMap, setCoordsMap] = useState<Record<string, [number, number]>>({});
 
-  // Debug: Check what coordinates we have
+  // Debug: Check coordinate status
   useEffect(() => {
-    console.log('🔍 Checking listings coordinates:');
-    listings.slice(0, 3).forEach(l => {
-      console.log(`Listing ${l.id}: lat=${l.latitude} (${typeof l.latitude}), lng=${l.longitude} (${typeof l.longitude})`);
-    });
+    const withCoords = listings.filter(l => l.latitude && l.longitude);
+    const withoutCoords = listings.filter(l => !l.latitude || !l.longitude);
+    console.log(`📊 Coordinate Status: ${withCoords.length} have coordinates, ${withoutCoords.length} need geocoding`);
   }, [listings]);
 
   // Geocode listings without coordinates using Mapbox
   useEffect(() => {
     if (!MAPBOX_TOKEN) return;
     const withoutCoords = listings.filter((l) => !l.longitude || !l.latitude);
-    const withCoords = listings.filter((l) => l.longitude && l.latitude);
-    
-    console.log(`📊 Listings status: ${withCoords.length} have coordinates, ${withoutCoords.length} need geocoding`);
-    
-    if (!withoutCoords.length) return;
+    if (!withoutCoords.length) {
+      console.log(`✅ All listings have coordinates - no geocoding needed!`);
+      return;
+    }
     
     console.log(`🔄 Starting geocoding for ${withoutCoords.length} listings without coordinates`);
 
