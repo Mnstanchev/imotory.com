@@ -107,7 +107,9 @@ export function resolveAssetUrl(path?: string, context?: { listingId?: string; e
   if (context?.listingId && context?.entityType && !path.includes('/')) {
     const baseApi = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3000/api";
     const origin = baseApi.replace(/\/?api\/?$/, "");
-    return `${origin}/images/${context.entityType}s/${context.listingId}/${path}`;
+    const finalUrl = `${origin}/images/${context.entityType}s/${context.listingId}/${path}`;
+    console.log(`🖼️ Resolving image: "${path}" with context:`, context, '-> Final URL:', finalUrl);
+    return finalUrl;
   }
 
   // Handle other local paths - construct full URL

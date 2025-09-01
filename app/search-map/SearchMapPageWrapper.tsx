@@ -990,7 +990,9 @@ function MainList({
 
 function ListingRow({ listing, highlighted, strongHighlight }: { listing: Listing; highlighted?: boolean; strongHighlight?: boolean }) {
   const { t, currentLanguage } = useLanguage();
-  const img = resolveAssetUrl(getFirstValidImage(listing.images), { listingId: listing.id, entityType: 'listing' });
+  const firstImage = getFirstValidImage(listing.images);
+  console.log(`🏠 Listing ${listing.id} images:`, listing.images, 'First valid:', firstImage);
+  const img = resolveAssetUrl(firstImage, { listingId: listing.id, entityType: 'listing' });
   const [saved, setSaved] = useState(false);
   useEffect(() => {
     try {
