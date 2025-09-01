@@ -99,7 +99,9 @@ export function resolveAssetUrl(path?: string, context?: { listingId?: string; e
   if (path.startsWith('/images/') || path.startsWith('/api/images/')) {
     const baseApi = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3000/api";
     const origin = baseApi.replace(/\/?api\/?$/, "");
-    return `${origin}${path}`;
+    const finalUrl = `${origin}${path}`;
+    console.log(`🖼️ Full path image: "${path}" -> Final URL:`, finalUrl);
+    return finalUrl;
   }
 
   // Handle filename-only paths (like "1756385555506-b778919d89563eeb.webp")
@@ -108,7 +110,7 @@ export function resolveAssetUrl(path?: string, context?: { listingId?: string; e
     const baseApi = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3000/api";
     const origin = baseApi.replace(/\/?api\/?$/, "");
     const finalUrl = `${origin}/images/${context.entityType}s/${context.listingId}/${path}`;
-    console.log(`🖼️ Resolving image: "${path}" with context:`, context, '-> Final URL:', finalUrl);
+    console.log(`🖼️ Filename-only image: "${path}" with context:`, context, '-> Final URL:', finalUrl);
     return finalUrl;
   }
 
