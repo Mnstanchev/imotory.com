@@ -990,7 +990,7 @@ function MainList({
 
 function ListingRow({ listing, highlighted, strongHighlight }: { listing: Listing; highlighted?: boolean; strongHighlight?: boolean }) {
   const { t, currentLanguage } = useLanguage();
-  const img = resolveAssetUrl(getFirstValidImage(listing.images));
+  const img = resolveAssetUrl(getFirstValidImage(listing.images), { listingId: listing.id, entityType: 'listing' });
   const [saved, setSaved] = useState(false);
   useEffect(() => {
     try {
@@ -1057,7 +1057,7 @@ function ListingRow({ listing, highlighted, strongHighlight }: { listing: Listin
 
 function ListingCard({ listing, highlighted, strongHighlight }: { listing: Listing; highlighted?: boolean; strongHighlight?: boolean }) {
   const { t, currentLanguage } = useLanguage();
-  const img = resolveAssetUrl(getFirstValidImage(listing.images));
+  const img = resolveAssetUrl(getFirstValidImage(listing.images), { listingId: listing.id, entityType: 'listing' });
   const [saved, setSaved] = useState(false);
   useEffect(() => {
     try {

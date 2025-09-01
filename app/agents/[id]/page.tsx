@@ -43,7 +43,7 @@ export default async function AgentListingsPage({ params }: { params: Promise<{ 
         {listings.map((l) => (
           <Link key={l.id} href={`/listings/${l.slug}`} className="block border border-gray-200 rounded-lg bg-white shadow-sm overflow-hidden">
             <div className="relative h-40 w-full overflow-hidden">
-              <img src={resolveAssetUrl(getFirstValidImage(l.images))} alt={l.title?.en || l.slug} className="w-full h-full object-cover" />
+              <img src={resolveAssetUrl(getFirstValidImage(l.images), { listingId: l.id, entityType: 'listing' })} alt={l.title?.en || l.slug} className="w-full h-full object-cover" />
             </div>
             <div className="p-3 space-y-1">
               <div className="text-gray-900 font-semibold">{l.price} {l.currency}</div>

@@ -76,7 +76,7 @@ export function getLatestListings() {
   return getListings({ limit: 12 });
 }
 
-export function resolveAssetUrl(path?: string) {
+export function resolveAssetUrl(path?: string, context?: { listingId?: string; entityType?: 'listing' | 'agent' | 'category' }) {
   // Handle null, undefined, empty string, or whitespace-only strings
   if (!path || typeof path !== 'string' || path.trim() === '') {
     return "/next.svg";
@@ -95,7 +95,22 @@ export function resolveAssetUrl(path?: string) {
     return path;
   }
 
-  // Handle local paths - construct full URL
+  // Handle paths that already start with /images/ or /api/images/
+  if (path.startsWith('/images/') || path.startsWith('/api/images/')) {
+    const baseApi = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3000/api";
+    const origin = baseApi.replace(/\/?api\/?$/, "");
+    return `${origin}${path}`;
+  }
+
+  // Handle filename-only paths (like "1756385555506-b778919d89563eeb.webp")
+  // These need to be resolved with context
+  if (context?.listingId && context?.entityType && !path.includes('/')) {
+    const baseApi = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3000/api";
+    const origin = baseApi.replace(/\/?api\/?$/, "");
+    return `${origin}/images/${context.entityType}s/${context.listingId}/${path}`;
+  }
+
+  // Handle other local paths - construct full URL
   const baseApi = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3000/api";
   const origin = baseApi.replace(/\/?api\/?$/, "");
   return `${origin}${path.startsWith("/") ? path : `/${path}`}`;

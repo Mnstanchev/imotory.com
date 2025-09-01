@@ -97,7 +97,7 @@ export default function ListingCard({ listing }: { listing: Listing }) {
     },
   });
 
-  const cover = resolveAssetUrl(getFirstValidImage(listing.images));
+  const cover = resolveAssetUrl(getFirstValidImage(listing.images), { listingId: listing.id, entityType: 'listing' });
 
   const qc = useQueryClient();
 

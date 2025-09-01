@@ -26,7 +26,7 @@ export default function LatestListings({ listings }: { listings: Listing[] }) {
           <Link key={l.id} href={`/listings/${l.slug}`} className="block border border-gray-200 rounded-lg bg-white shadow-sm overflow-hidden">
             <div className="relative h-40 w-full overflow-hidden">
               {/* image */}
-              <img src={resolveAssetUrl(getFirstValidImage(l.images))} alt={getLocalizedText(l.title) || l.slug} className="w-full h-full object-cover" />
+              <img src={resolveAssetUrl(getFirstValidImage(l.images), { listingId: l.id, entityType: 'listing' })} alt={getLocalizedText(l.title) || l.slug} className="w-full h-full object-cover" />
               <div className="absolute top-2 right-2 rounded-full bg-white/90 border border-gray-200 px-2 py-0.5 text-xs text-gray-900">
                 {banner(l.listingType)}
               </div>

@@ -186,7 +186,7 @@ function SearchMapContent() {
 
       const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
         <div style="padding: 8px; max-width: 200px;">
-          <img src="${resolveAssetUrl(getFirstValidImage(listing.images) || "")}" 
+          <img src="${resolveAssetUrl(getFirstValidImage(listing.images) || "", { listingId: listing.id, entityType: 'listing' })}" 
                alt="${listing.title?.[currentLanguage] || listing.title?.en || ""}" 
                style="width: 100%; height: 120px; object-fit: cover; border-radius: 4px; margin-bottom: 8px;" />
           <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: bold;">
@@ -560,7 +560,7 @@ function SearchMapContent() {
                       <Link href={`/listings/${listing.slug}`}>
                         <div className="relative">
                           <img
-                            src={resolveAssetUrl(getFirstValidImage(listing.images) || "")}
+                            src={resolveAssetUrl(getFirstValidImage(listing.images) || "", { listingId: listing.id, entityType: 'listing' })}
                             alt={listing.title?.[currentLanguage] || listing.title?.en || ""}
                             className="w-full h-32 object-cover"
                           />

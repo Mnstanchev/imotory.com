@@ -77,7 +77,7 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
     // Note: this is a Server Component. For translation of static labels, we will render keys directly from data; dynamic labels are handled in client components.
     return (
       <div className="mx-auto max-w-6xl px-4 py-8">
-        <ListingImages images={images} />
+        <ListingImages images={images} listingId={listing.id} />
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-2 space-y-6">
