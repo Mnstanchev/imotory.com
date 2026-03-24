@@ -69,6 +69,9 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
+
+  // Configure Turbopack for Next.js 16+
+  turbopack: {},
 };
 
 export default nextConfig;
