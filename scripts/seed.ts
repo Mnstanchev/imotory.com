@@ -1,9 +1,27 @@
 /* eslint-disable no-console */
 import { PrismaClient, ListingType, PropertyType, LocationType } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
 async function main() {
+  // Create admin user
+  const hashedPassword = await bcrypt.hash("admin123", 12);
+  await prisma.user.upsert({
+    where: { email: "admin@imotory.com" },
+    update: {},
+    create: {
+      email: "admin@imotory.com",
+      password: hashedPassword,
+      firstName: "Admin",
+      lastName: "User",
+      role: "ADMIN",
+      isEmailVerified: true,
+      isActive: true,
+    },
+  });
+  console.log("✓ Admin user created: admin@imotory.com / admin123");
+
   // Base data
   const [catApartments, catHouses] = await Promise.all([
     prisma.category.upsert({
