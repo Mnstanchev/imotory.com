@@ -1,6 +1,6 @@
 // Example API route using shared utilities in backend
 import { NextRequest, NextResponse } from 'next/server';
-import { Listing, User, ApiResponse, validateEmail, PriceConverter, PropertyType, ListingStatus, UserRole } from '@shared';
+import { Listing, User, ApiResponse, validateEmail, PriceConverter, PropertyType, ListingStatus, UserRole } from '@/lib/shared';
 
 // Mock constants for example purposes
 const API_ENDPOINTS = { LISTINGS: '/api/listings' };
