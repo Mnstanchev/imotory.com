@@ -1,0 +1,454 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                     String                  @id @default(cuid())
+  email                  String                  @unique
+  firstName              String?
+  lastName               String?
+  phone                  String?
+  role                   UserRole                @default(USER)
+  avatar                 String?
+  createdAt              DateTime                @default(now())
+  updatedAt              DateTime                @updatedAt
+  emailVerified          DateTime?
+  password               String?
+  accounts               Account[]
+  alerts                 Alert[]
+  bookings               Booking[]
+  contacts               Contact[]
+  favorites              Favorite[]
+  notificationPreference NotificationPreference?
+  notifications          Notification[]
+  sessions               Session[]
+  analyticsEvents        AnalyticsEvent[]
+
+  @@map("users")
+}
+
+model Agent {
+  id          String    @id @default(cuid())
+  name        Json
+  email       String    @unique
+  phone       String
+  bio         Json
+  avatar      String?
+  isActive    Boolean   @default(true)
+  socialLinks Json?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  bookings    Booking[]
+  listings    Listing[]
+
+  @@map("agents")
+}
+
+model Listing {
+  id                String         @id @default(cuid())
+  title             Json
+  description       Json
+  price             Decimal        @db.Decimal(12, 2)
+  currency          String         @default("EUR")
+  propertyType      PropertyType
+  listingType       ListingType
+  locationId        String
+  bedrooms          Int?
+  bathrooms         Int?
+  size              Int?
+  floor             Int?
+  totalFloors       Int?
+  yearBuilt         Int?
+  features          Json            // { bg: string[], en?: string[], ru?: string[] }
+  images            String[]
+  slug              String         @unique
+  viewCount         Int            @default(0)
+  isActive          Boolean        @default(true)
+  isFeatured        Boolean        @default(false)
+  categoryId        String
+  agentId           String
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  address           Json?          // { bg: string, en?: string, ru?: string }
+  airConditioning   Boolean?
+  availableFrom     DateTime?
+  balcony           Boolean?
+  buildingCondition Json?          // { bg: string, en?: string, ru?: string }
+  buildingType      BuildingType?
+  clicks            Int            @default(0)
+  elevator          Boolean?
+  furnished         Boolean?
+  garage            Boolean?
+  gardenSize        Int?
+  heatingType       HeatingType?
+  kitchens          Int?
+  lastViewedAt      DateTime?
+  latitude          Float?
+  livingRooms       Int?
+  longitude         Float?
+  maintenanceFee    Decimal?       @db.Decimal(10, 2)
+  mortgagePossible  Boolean?
+  ownershipType     OwnershipType?
+  parkingSpots      Int?
+  pool              Boolean?
+  postalCode        String?
+  pricePerSqM       Decimal?       @db.Decimal(12, 2)
+  status            ListingStatus  @default(ACTIVE)
+  tags              Json            // { bg: string[], en?: string[], ru?: string[] }
+  terraceSize       Int?
+  videoUrl          String?
+  virtualTourUrl    String?
+  bookings          Booking[]
+  contacts          Contact[]
+  favorites         Favorite[]
+  guestFavorites    GuestFavorite[]
+  analyticsEvents   AnalyticsEvent[]
+  agent             Agent          @relation(fields: [agentId], references: [id])
+  category          Category       @relation(fields: [categoryId], references: [id])
+  location          Location       @relation(fields: [locationId], references: [id])
+
+  @@index([locationId])
+  @@index([categoryId])
+  @@index([agentId])
+  @@index([isActive])
+  @@index([isFeatured])
+  @@index([status])
+  @@map("listings")
+}
+
+model AnalyticsEvent {
+  id         String              @id @default(cuid())
+  listingId  String?
+  userId     String?
+  type       AnalyticsEventType
+  createdAt  DateTime            @default(now())
+
+  listing    Listing?            @relation(fields: [listingId], references: [id])
+  user       User?               @relation(fields: [userId], references: [id])
+
+  @@index([listingId])
+  @@index([type])
+  @@index([createdAt])
+  @@map("analytics_events")
+}
+
+enum AnalyticsEventType {
+  LISTING_CLICK
+  AGENT_CONTACT_CLICK
+  CONTACT_SUBMIT
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        Json
+  slug        String    @unique
+  description Json?
+  icon        String?
+  isActive    Boolean   @default(true)
+  sortOrder   Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  listings    Listing[]
+
+  @@map("categories")
+}
+
+model Location {
+  id        String       @id @default(cuid())
+  name      Json
+  slug      String       @unique
+  type      LocationType
+  parentId  String?
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  isActive  Boolean      @default(true)
+  sortOrder Int          @default(0)
+  listings  Listing[]
+  parent    Location?    @relation("LocationHierarchy", fields: [parentId], references: [id])
+  children  Location[]   @relation("LocationHierarchy")
+
+  @@index([isActive])
+  @@map("locations")
+}
+
+model Favorite {
+  id        String   @id @default(cuid())
+  userId    String
+  listingId String
+  createdAt DateTime @default(now())
+  listing   Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, listingId])
+  @@index([userId])
+  @@index([listingId])
+  @@map("favorites")
+}
+
+model GuestFavorite {
+  id        String   @id @default(cuid())
+  listingId String
+  createdAt DateTime @default(now())
+  sofiaTime String?
+
+  listing   Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  @@index([listingId])
+  @@map("guest_favorites")
+}
+
+model Booking {
+  id           String        @id @default(cuid())
+  listingId    String
+  userId       String?
+  agentId      String
+  visitType    VisitType
+  scheduledAt  DateTime
+  duration     Int
+  contactName  String
+  contactEmail String
+  contactPhone String
+  message      String?
+  status       BookingStatus @default(PENDING)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  agent        Agent         @relation(fields: [agentId], references: [id])
+  listing      Listing       @relation(fields: [listingId], references: [id])
+  user         User?         @relation(fields: [userId], references: [id])
+
+  @@index([listingId])
+  @@index([userId])
+  @@index([agentId])
+  @@index([scheduledAt])
+  @@map("bookings")
+}
+
+model Alert {
+  id             String         @id @default(cuid())
+  userId         String
+  email          String
+  name           String
+  propertyType   PropertyType[]
+  listingType    ListingType[]
+  city           String[]
+  minPrice       Decimal?       @db.Decimal(12, 2)
+  maxPrice       Decimal?       @db.Decimal(12, 2)
+  minBedrooms    Int?
+  maxBedrooms    Int?
+  frequency      AlertFrequency @default(DAILY)
+  isActive       Boolean        @default(true)
+  lastNotifiedAt DateTime?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isActive])
+  @@map("alerts")
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  userId    String?
+  listingId String?
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  listing   Listing? @relation(fields: [listingId], references: [id])
+  user      User?    @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([listingId])
+  @@index([isRead])
+  @@map("contacts")
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  type      NotificationType
+  title     Json
+  message   Json
+  data      Json?
+  isRead    Boolean          @default(false)
+  emailSent Boolean          @default(false)
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isRead])
+  @@index([type])
+  @@map("notifications")
+}
+
+model NotificationPreference {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  emailNotifications Boolean  @default(true)
+  pushNotifications  Boolean  @default(true)
+  notifyNewListings  Boolean  @default(true)
+  notifyBookings     Boolean  @default(true)
+  notifyAlerts       Boolean  @default(true)
+  notifyMessages     Boolean  @default(true)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("notification_preferences")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model emailTemplate {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  type      String
+  subject   Json
+  body      Json
+  variables String[] @default([])
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([type])
+  @@index([isActive])
+  @@map("email_templates")
+}
+
+enum UserRole {
+  USER
+  AGENT
+  ADMIN
+  SUPERADMIN
+}
+
+enum PropertyType {
+  APARTMENT
+  HOUSE
+  VILLA
+  STUDIO
+  OFFICE
+  COMMERCIAL
+  LAND
+  INDUSTRIAL
+  PENTHOUSE
+  DUPLEX
+  LOFT
+}
+
+enum ListingType {
+  SALE
+  RENT
+  LEASE
+  AUCTION
+}
+
+enum LocationType {
+  COUNTRY
+  REGION
+  MUNICIPALITY
+  CITY
+  NEIGHBORHOOD
+}
+
+enum VisitType {
+  VIEWING
+  INSPECTION
+  CONSULTATION
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum AlertFrequency {
+  INSTANT
+  DAILY
+  WEEKLY
+}
+
+enum NotificationType {
+  NEW_LISTING
+  BOOKING_CONFIRMED
+  BOOKING_REQUEST
+  ALERT_MATCH
+  CONTACT_FORM
+  SYSTEM
+  SECURITY
+}
+
+enum HeatingType {
+  NONE
+  CENTRAL
+  ELECTRIC
+  GAS
+  WOOD
+  SOLAR
+  HEATPUMP
+}
+
+enum OwnershipType {
+  FREEHOLD
+  LEASEHOLD
+  COOPERATIVE
+}
+
+enum BuildingType {
+  PANEL
+  BRICK
+  NEW_BUILD
+  MONOLITHIC
+  WOOD
+  PREFAB
+}
+
+enum ListingStatus {
+  ACTIVE
+  RESERVED
+  SOLD
+  INACTIVE
+  UNDER_CONSTRUCTION
+}

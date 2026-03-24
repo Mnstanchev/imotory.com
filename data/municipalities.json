@@ -1,0 +1,4481 @@
+{
+  "country": {
+    "name": {
+      "en": "Bulgaria",
+      "bg": "България",
+      "ru": "Болгария"
+    },
+    "slug": "bulgaria"
+  },
+  "regions": [
+    {
+      "name": {
+        "en": "Blagoevgrad",
+        "bg": "Blagoevgrad",
+        "ru": "Blagoevgrad"
+      },
+      "slug": "blagoevgrad"
+    },
+    {
+      "name": {
+        "en": "Burgas",
+        "bg": "Burgas",
+        "ru": "Burgas"
+      },
+      "slug": "burgas"
+    },
+    {
+      "name": {
+        "en": "Dobrich",
+        "bg": "Dobrich",
+        "ru": "Dobrich"
+      },
+      "slug": "dobrich"
+    },
+    {
+      "name": {
+        "en": "Gabrovo",
+        "bg": "Gabrovo",
+        "ru": "Gabrovo"
+      },
+      "slug": "gabrovo"
+    },
+    {
+      "name": {
+        "en": "Haskovo",
+        "bg": "Haskovo",
+        "ru": "Haskovo"
+      },
+      "slug": "haskovo"
+    },
+    {
+      "name": {
+        "en": "Kardzhali",
+        "bg": "Kardzhali",
+        "ru": "Kardzhali"
+      },
+      "slug": "kardzhali"
+    },
+    {
+      "name": {
+        "en": "Kyustendil",
+        "bg": "Kyustendil",
+        "ru": "Kyustendil"
+      },
+      "slug": "kyustendil"
+    },
+    {
+      "name": {
+        "en": "Lovech",
+        "bg": "Lovech",
+        "ru": "Lovech"
+      },
+      "slug": "lovech"
+    },
+    {
+      "name": {
+        "en": "Montana",
+        "bg": "Montana",
+        "ru": "Montana"
+      },
+      "slug": "montana"
+    },
+    {
+      "name": {
+        "en": "Pazardzhik",
+        "bg": "Pazardzhik",
+        "ru": "Pazardzhik"
+      },
+      "slug": "pazardzhik"
+    },
+    {
+      "name": {
+        "en": "Pernik",
+        "bg": "Pernik",
+        "ru": "Pernik"
+      },
+      "slug": "pernik"
+    },
+    {
+      "name": {
+        "en": "Pleven",
+        "bg": "Pleven",
+        "ru": "Pleven"
+      },
+      "slug": "pleven"
+    },
+    {
+      "name": {
+        "en": "Plovdiv",
+        "bg": "Plovdiv",
+        "ru": "Plovdiv"
+      },
+      "slug": "plovdiv"
+    },
+    {
+      "name": {
+        "en": "Razgrad",
+        "bg": "Razgrad",
+        "ru": "Razgrad"
+      },
+      "slug": "razgrad"
+    },
+    {
+      "name": {
+        "en": "Ruse",
+        "bg": "Ruse",
+        "ru": "Ruse"
+      },
+      "slug": "ruse"
+    },
+    {
+      "name": {
+        "en": "Shumen",
+        "bg": "Shumen",
+        "ru": "Shumen"
+      },
+      "slug": "shumen"
+    },
+    {
+      "name": {
+        "en": "Silistra",
+        "bg": "Silistra",
+        "ru": "Silistra"
+      },
+      "slug": "silistra"
+    },
+    {
+      "name": {
+        "en": "Sliven",
+        "bg": "Sliven",
+        "ru": "Sliven"
+      },
+      "slug": "sliven"
+    },
+    {
+      "name": {
+        "en": "Smolyan",
+        "bg": "Smolyan",
+        "ru": "Smolyan"
+      },
+      "slug": "smolyan"
+    },
+    {
+      "name": {
+        "en": "Sofia",
+        "bg": "Sofia",
+        "ru": "Sofia"
+      },
+      "slug": "sofia"
+    },
+    {
+      "name": {
+        "en": "Sofia City",
+        "bg": "Sofia City",
+        "ru": "Sofia City"
+      },
+      "slug": "sofia-city"
+    },
+    {
+      "name": {
+        "en": "Stara Zagora",
+        "bg": "Stara Zagora",
+        "ru": "Stara Zagora"
+      },
+      "slug": "stara-zagora"
+    },
+    {
+      "name": {
+        "en": "Targovishte",
+        "bg": "Targovishte",
+        "ru": "Targovishte"
+      },
+      "slug": "targovishte"
+    },
+    {
+      "name": {
+        "en": "Varna",
+        "bg": "Varna",
+        "ru": "Varna"
+      },
+      "slug": "varna"
+    },
+    {
+      "name": {
+        "en": "Veliko Tarnovo",
+        "bg": "Veliko Tarnovo",
+        "ru": "Veliko Tarnovo"
+      },
+      "slug": "veliko-tarnovo"
+    },
+    {
+      "name": {
+        "en": "Vidin",
+        "bg": "Vidin",
+        "ru": "Vidin"
+      },
+      "slug": "vidin"
+    },
+    {
+      "name": {
+        "en": "Vratsa",
+        "bg": "Vratsa",
+        "ru": "Vratsa"
+      },
+      "slug": "vratsa"
+    },
+    {
+      "name": {
+        "en": "Yambol",
+        "bg": "Yambol",
+        "ru": "Yambol"
+      },
+      "slug": "yambol"
+    }
+  ],
+  "municipalities": [
+    {
+      "name": {
+        "en": "Velingrad",
+        "bg": "Velingrad",
+        "ru": "Velingrad"
+      },
+      "slug": "velingrad-pazardzhik",
+      "region": {
+        "name": {
+          "en": "Pazardzhik",
+          "bg": "Pazardzhik",
+          "ru": "Pazardzhik"
+        },
+        "slug": "pazardzhik"
+      }
+    },
+    {
+      "name": {
+        "en": "Kavarna",
+        "bg": "Kavarna",
+        "ru": "Kavarna"
+      },
+      "slug": "kavarna-dobrich",
+      "region": {
+        "name": {
+          "en": "Dobrich",
+          "bg": "Dobrich",
+          "ru": "Dobrich"
+        },
+        "slug": "dobrich"
+      }
+    },
+    {
+      "name": {
+        "en": "Shabla",
+        "bg": "Shabla",
+        "ru": "Shabla"
+      },
+      "slug": "shabla-dobrich",
+      "region": {
+        "name": {
+          "en": "Dobrich",
+          "bg": "Dobrich",
+          "ru": "Dobrich"
+        },
+        "slug": "dobrich"
+      }
+    },
+    {
+      "name": {
+        "en": "General Toshevo",
+        "bg": "General Toshevo",
+        "ru": "General Toshevo"
+      },
+      "slug": "general-toshevo-dobrich",
+      "region": {
+        "name": {
+          "en": "Dobrich",
+          "bg": "Dobrich",
+          "ru": "Dobrich"
+        },
+        "slug": "dobrich"
+      }
+    },
+    {
+      "name": {
+        "en": "Balchik",
+        "bg": "Balchik",
+        "ru": "Balchik"
+      },
+      "slug": "balchik-dobrich",
+      "region": {
+        "name": {
+          "en": "Dobrich",
+          "bg": "Dobrich",
+          "ru": "Dobrich"
+        },
+        "slug": "dobrich"
+      }
+    },
+    {
+      "name": {
+        "en": "Dobrichka",
+        "bg": "Dobrichka",
+        "ru": "Dobrichka"
+      },
+      "slug": "dobrichka-dobrich",
+      "region": {
+        "name": {
+          "en": "Dobrich",
+          "bg": "Dobrich",
+          "ru": "Dobrich"
+        },
+        "slug": "dobrich"
+      }
+    },
+    {
+      "name": {
+        "en": "Dobrich",
+        "bg": "Dobrich",
+        "ru": "Dobrich"
+      },
+      "slug": "dobrich-dobrich",
+      "region": {
+        "name": {
+          "en": "Dobrich",
+          "bg": "Dobrich",
+          "ru": "Dobrich"
+        },
+        "slug": "dobrich"
+      }
+    },
+    {
+      "name": {
+        "en": "Krushari",
+        "bg": "Krushari",
+        "ru": "Krushari"
+      },
+      "slug": "krushari-dobrich",
+      "region": {
+        "name": {
+          "en": "Dobrich",
+          "bg": "Dobrich",
+          "ru": "Dobrich"
+        },
+        "slug": "dobrich"
+      }
+    },
+    {
+      "name": {
+        "en": "Kaynardzha",
+        "bg": "Kaynardzha",
+        "ru": "Kaynardzha"
+      },
+      "slug": "kaynardzha-silistra",
+      "region": {
+        "name": {
+          "en": "Silistra",
+          "bg": "Silistra",
+          "ru": "Silistra"
+        },
+        "slug": "silistra"
+      }
+    },
+    {
+      "name": {
+        "en": "Aksakovo",
+        "bg": "Aksakovo",
+        "ru": "Aksakovo"
+      },
+      "slug": "aksakovo-varna",
+      "region": {
+        "name": {
+          "en": "Varna",
+          "bg": "Varna",
+          "ru": "Varna"
+        },
+        "slug": "varna"
+      }
+    },
+    {
+      "name": {
+        "en": "Varna",
+        "bg": "Varna",
+        "ru": "Varna"
+      },
+      "slug": "varna-varna",
+      "region": {
+        "name": {
+          "en": "Varna",
+          "bg": "Varna",
+          "ru": "Varna"
+        },
+        "slug": "varna"
+      }
+    },
+    {
+      "name": {
+        "en": "Dulovo",
+        "bg": "Dulovo",
+        "ru": "Dulovo"
+      },
+      "slug": "dulovo-silistra",
+      "region": {
+        "name": {
+          "en": "Silistra",
+          "bg": "Silistra",
+          "ru": "Silistra"
+        },
+        "slug": "silistra"
+      }
+    },
+    {
+      "name": {
+        "en": "Silistra",
+        "bg": "Silistra",
+        "ru": "Silistra"
+      },
+      "slug": "silistra-silistra",
+      "region": {
+        "name": {
+          "en": "Silistra",
+          "bg": "Silistra",
+          "ru": "Silistra"
+        },
+        "slug": "silistra"
+      }
+    },
+    {
+      "name": {
+        "en": "Sitovo",
+        "bg": "Sitovo",
+        "ru": "Sitovo"
+      },
+      "slug": "sitovo-silistra",
+      "region": {
+        "name": {
+          "en": "Silistra",
+          "bg": "Silistra",
+          "ru": "Silistra"
+        },
+        "slug": "silistra"
+      }
+    },
+    {
+      "name": {
+        "en": "Alfatar",
+        "bg": "Alfatar",
+        "ru": "Alfatar"
+      },
+      "slug": "alfatar-silistra",
+      "region": {
+        "name": {
+          "en": "Silistra",
+          "bg": "Silistra",
+          "ru": "Silistra"
+        },
+        "slug": "silistra"
+      }
+    },
+    {
+      "name": {
+        "en": "Tervel",
+        "bg": "Tervel",
+        "ru": "Tervel"
+      },
+      "slug": "tervel-dobrich",
+      "region": {
+        "name": {
+          "en": "Dobrich",
+          "bg": "Dobrich",
+          "ru": "Dobrich"
+        },
+        "slug": "dobrich"
+      }
+    },
+    {
+      "name": {
+        "en": "Tutrakan",
+        "bg": "Tutrakan",
+        "ru": "Tutrakan"
+      },
+      "slug": "tutrakan-silistra",
+      "region": {
+        "name": {
+          "en": "Silistra",
+          "bg": "Silistra",
+          "ru": "Silistra"
+        },
+        "slug": "silistra"
+      }
+    },
+    {
+      "name": {
+        "en": "Kubrat",
+        "bg": "Kubrat",
+        "ru": "Kubrat"
+      },
+      "slug": "kubrat-razgrad",
+      "region": {
+        "name": {
+          "en": "Razgrad",
+          "bg": "Razgrad",
+          "ru": "Razgrad"
+        },
+        "slug": "razgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Glavinitsa",
+        "bg": "Glavinitsa",
+        "ru": "Glavinitsa"
+      },
+      "slug": "glavinitsa-silistra",
+      "region": {
+        "name": {
+          "en": "Silistra",
+          "bg": "Silistra",
+          "ru": "Silistra"
+        },
+        "slug": "silistra"
+      }
+    },
+    {
+      "name": {
+        "en": "Zavet",
+        "bg": "Zavet",
+        "ru": "Zavet"
+      },
+      "slug": "zavet-razgrad",
+      "region": {
+        "name": {
+          "en": "Razgrad",
+          "bg": "Razgrad",
+          "ru": "Razgrad"
+        },
+        "slug": "razgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Isperih",
+        "bg": "Isperih",
+        "ru": "Isperih"
+      },
+      "slug": "isperih-razgrad",
+      "region": {
+        "name": {
+          "en": "Razgrad",
+          "bg": "Razgrad",
+          "ru": "Razgrad"
+        },
+        "slug": "razgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Vetrino",
+        "bg": "Vetrino",
+        "ru": "Vetrino"
+      },
+      "slug": "vetrino-varna",
+      "region": {
+        "name": {
+          "en": "Varna",
+          "bg": "Varna",
+          "ru": "Varna"
+        },
+        "slug": "varna"
+      }
+    },
+    {
+      "name": {
+        "en": "Kaolinovo",
+        "bg": "Kaolinovo",
+        "ru": "Kaolinovo"
+      },
+      "slug": "kaolinovo-shumen",
+      "region": {
+        "name": {
+          "en": "Shumen",
+          "bg": "Shumen",
+          "ru": "Shumen"
+        },
+        "slug": "shumen"
+      }
+    },
+    {
+      "name": {
+        "en": "Nikola Kozlevo",
+        "bg": "Nikola Kozlevo",
+        "ru": "Nikola Kozlevo"
+      },
+      "slug": "nikola-kozlevo-shumen",
+      "region": {
+        "name": {
+          "en": "Shumen",
+          "bg": "Shumen",
+          "ru": "Shumen"
+        },
+        "slug": "shumen"
+      }
+    },
+    {
+      "name": {
+        "en": "Novi Pazar",
+        "bg": "Novi Pazar",
+        "ru": "Novi Pazar"
+      },
+      "slug": "novi-pazar-shumen",
+      "region": {
+        "name": {
+          "en": "Shumen",
+          "bg": "Shumen",
+          "ru": "Shumen"
+        },
+        "slug": "shumen"
+      }
+    },
+    {
+      "name": {
+        "en": "Valchi Dol",
+        "bg": "Valchi Dol",
+        "ru": "Valchi Dol"
+      },
+      "slug": "valchi-dol-varna",
+      "region": {
+        "name": {
+          "en": "Varna",
+          "bg": "Varna",
+          "ru": "Varna"
+        },
+        "slug": "varna"
+      }
+    },
+    {
+      "name": {
+        "en": "Suvorovo",
+        "bg": "Suvorovo",
+        "ru": "Suvorovo"
+      },
+      "slug": "suvorovo-varna",
+      "region": {
+        "name": {
+          "en": "Varna",
+          "bg": "Varna",
+          "ru": "Varna"
+        },
+        "slug": "varna"
+      }
+    },
+    {
+      "name": {
+        "en": "Devnya",
+        "bg": "Devnya",
+        "ru": "Devnya"
+      },
+      "slug": "devnya-varna",
+      "region": {
+        "name": {
+          "en": "Varna",
+          "bg": "Varna",
+          "ru": "Varna"
+        },
+        "slug": "varna"
+      }
+    },
+    {
+      "name": {
+        "en": "Slivo Pole",
+        "bg": "Slivo Pole",
+        "ru": "Slivo Pole"
+      },
+      "slug": "slivo-pole-ruse",
+      "region": {
+        "name": {
+          "en": "Ruse",
+          "bg": "Ruse",
+          "ru": "Ruse"
+        },
+        "slug": "ruse"
+      }
+    },
+    {
+      "name": {
+        "en": "Vetovo",
+        "bg": "Vetovo",
+        "ru": "Vetovo"
+      },
+      "slug": "vetovo-ruse",
+      "region": {
+        "name": {
+          "en": "Ruse",
+          "bg": "Ruse",
+          "ru": "Ruse"
+        },
+        "slug": "ruse"
+      }
+    },
+    {
+      "name": {
+        "en": "Tsar Kaloyan",
+        "bg": "Tsar Kaloyan",
+        "ru": "Tsar Kaloyan"
+      },
+      "slug": "tsar-kaloyan-razgrad",
+      "region": {
+        "name": {
+          "en": "Razgrad",
+          "bg": "Razgrad",
+          "ru": "Razgrad"
+        },
+        "slug": "razgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Razgrad",
+        "bg": "Razgrad",
+        "ru": "Razgrad"
+      },
+      "slug": "razgrad-razgrad",
+      "region": {
+        "name": {
+          "en": "Razgrad",
+          "bg": "Razgrad",
+          "ru": "Razgrad"
+        },
+        "slug": "razgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Ivanovo",
+        "bg": "Ivanovo",
+        "ru": "Ivanovo"
+      },
+      "slug": "ivanovo-ruse",
+      "region": {
+        "name": {
+          "en": "Ruse",
+          "bg": "Ruse",
+          "ru": "Ruse"
+        },
+        "slug": "ruse"
+      }
+    },
+    {
+      "name": {
+        "en": "Ruse",
+        "bg": "Ruse",
+        "ru": "Ruse"
+      },
+      "slug": "ruse-ruse",
+      "region": {
+        "name": {
+          "en": "Ruse",
+          "bg": "Ruse",
+          "ru": "Ruse"
+        },
+        "slug": "ruse"
+      }
+    },
+    {
+      "name": {
+        "en": "Popovo",
+        "bg": "Popovo",
+        "ru": "Popovo"
+      },
+      "slug": "popovo-targovishte",
+      "region": {
+        "name": {
+          "en": "Targovishte",
+          "bg": "Targovishte",
+          "ru": "Targovishte"
+        },
+        "slug": "targovishte"
+      }
+    },
+    {
+      "name": {
+        "en": "Antonovo",
+        "bg": "Antonovo",
+        "ru": "Antonovo"
+      },
+      "slug": "antonovo-targovishte",
+      "region": {
+        "name": {
+          "en": "Targovishte",
+          "bg": "Targovishte",
+          "ru": "Targovishte"
+        },
+        "slug": "targovishte"
+      }
+    },
+    {
+      "name": {
+        "en": "Tsenovo",
+        "bg": "Tsenovo",
+        "ru": "Tsenovo"
+      },
+      "slug": "tsenovo-ruse",
+      "region": {
+        "name": {
+          "en": "Ruse",
+          "bg": "Ruse",
+          "ru": "Ruse"
+        },
+        "slug": "ruse"
+      }
+    },
+    {
+      "name": {
+        "en": "Borovo",
+        "bg": "Borovo",
+        "ru": "Borovo"
+      },
+      "slug": "borovo-ruse",
+      "region": {
+        "name": {
+          "en": "Ruse",
+          "bg": "Ruse",
+          "ru": "Ruse"
+        },
+        "slug": "ruse"
+      }
+    },
+    {
+      "name": {
+        "en": "Byala",
+        "bg": "Byala",
+        "ru": "Byala"
+      },
+      "slug": "byala-ruse",
+      "region": {
+        "name": {
+          "en": "Ruse",
+          "bg": "Ruse",
+          "ru": "Ruse"
+        },
+        "slug": "ruse"
+      }
+    },
+    {
+      "name": {
+        "en": "Dve Mogili",
+        "bg": "Dve Mogili",
+        "ru": "Dve Mogili"
+      },
+      "slug": "dve-mogili-ruse",
+      "region": {
+        "name": {
+          "en": "Ruse",
+          "bg": "Ruse",
+          "ru": "Ruse"
+        },
+        "slug": "ruse"
+      }
+    },
+    {
+      "name": {
+        "en": "Opaka",
+        "bg": "Opaka",
+        "ru": "Opaka"
+      },
+      "slug": "opaka-targovishte",
+      "region": {
+        "name": {
+          "en": "Targovishte",
+          "bg": "Targovishte",
+          "ru": "Targovishte"
+        },
+        "slug": "targovishte"
+      }
+    },
+    {
+      "name": {
+        "en": "Targovishte",
+        "bg": "Targovishte",
+        "ru": "Targovishte"
+      },
+      "slug": "targovishte-targovishte",
+      "region": {
+        "name": {
+          "en": "Targovishte",
+          "bg": "Targovishte",
+          "ru": "Targovishte"
+        },
+        "slug": "targovishte"
+      }
+    },
+    {
+      "name": {
+        "en": "Omurtag",
+        "bg": "Omurtag",
+        "ru": "Omurtag"
+      },
+      "slug": "omurtag-targovishte",
+      "region": {
+        "name": {
+          "en": "Targovishte",
+          "bg": "Targovishte",
+          "ru": "Targovishte"
+        },
+        "slug": "targovishte"
+      }
+    },
+    {
+      "name": {
+        "en": "Samuil",
+        "bg": "Samuil",
+        "ru": "Samuil"
+      },
+      "slug": "samuil-razgrad",
+      "region": {
+        "name": {
+          "en": "Razgrad",
+          "bg": "Razgrad",
+          "ru": "Razgrad"
+        },
+        "slug": "razgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Venets",
+        "bg": "Venets",
+        "ru": "Venets"
+      },
+      "slug": "venets-shumen",
+      "region": {
+        "name": {
+          "en": "Shumen",
+          "bg": "Shumen",
+          "ru": "Shumen"
+        },
+        "slug": "shumen"
+      }
+    },
+    {
+      "name": {
+        "en": "Hitrino",
+        "bg": "Hitrino",
+        "ru": "Hitrino"
+      },
+      "slug": "hitrino-shumen",
+      "region": {
+        "name": {
+          "en": "Shumen",
+          "bg": "Shumen",
+          "ru": "Shumen"
+        },
+        "slug": "shumen"
+      }
+    },
+    {
+      "name": {
+        "en": "Loznitsa",
+        "bg": "Loznitsa",
+        "ru": "Loznitsa"
+      },
+      "slug": "loznitsa-razgrad",
+      "region": {
+        "name": {
+          "en": "Razgrad",
+          "bg": "Razgrad",
+          "ru": "Razgrad"
+        },
+        "slug": "razgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Kaspichan",
+        "bg": "Kaspichan",
+        "ru": "Kaspichan"
+      },
+      "slug": "kaspichan-shumen",
+      "region": {
+        "name": {
+          "en": "Shumen",
+          "bg": "Shumen",
+          "ru": "Shumen"
+        },
+        "slug": "shumen"
+      }
+    },
+    {
+      "name": {
+        "en": "Shumen",
+        "bg": "Shumen",
+        "ru": "Shumen"
+      },
+      "slug": "shumen-shumen",
+      "region": {
+        "name": {
+          "en": "Shumen",
+          "bg": "Shumen",
+          "ru": "Shumen"
+        },
+        "slug": "shumen"
+      }
+    },
+    {
+      "name": {
+        "en": "Veliki Preslav",
+        "bg": "Veliki Preslav",
+        "ru": "Veliki Preslav"
+      },
+      "slug": "veliki-preslav-shumen",
+      "region": {
+        "name": {
+          "en": "Shumen",
+          "bg": "Shumen",
+          "ru": "Shumen"
+        },
+        "slug": "shumen"
+      }
+    },
+    {
+      "name": {
+        "en": "Karnobat",
+        "bg": "Karnobat",
+        "ru": "Karnobat"
+      },
+      "slug": "karnobat-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Malko Tarnovo",
+        "bg": "Malko Tarnovo",
+        "ru": "Malko Tarnovo"
+      },
+      "slug": "malko-tarnovo-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Tsarevo",
+        "bg": "Tsarevo",
+        "ru": "Tsarevo"
+      },
+      "slug": "tsarevo-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Primorsko",
+        "bg": "Primorsko",
+        "ru": "Primorsko"
+      },
+      "slug": "primorsko-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Beloslav",
+        "bg": "Beloslav",
+        "ru": "Beloslav"
+      },
+      "slug": "beloslav-varna",
+      "region": {
+        "name": {
+          "en": "Varna",
+          "bg": "Varna",
+          "ru": "Varna"
+        },
+        "slug": "varna"
+      }
+    },
+    {
+      "name": {
+        "en": "Avren",
+        "bg": "Avren",
+        "ru": "Avren"
+      },
+      "slug": "avren-varna",
+      "region": {
+        "name": {
+          "en": "Varna",
+          "bg": "Varna",
+          "ru": "Varna"
+        },
+        "slug": "varna"
+      }
+    },
+    {
+      "name": {
+        "en": "Provadiya",
+        "bg": "Provadiya",
+        "ru": "Provadiya"
+      },
+      "slug": "provadiya-varna",
+      "region": {
+        "name": {
+          "en": "Varna",
+          "bg": "Varna",
+          "ru": "Varna"
+        },
+        "slug": "varna"
+      }
+    },
+    {
+      "name": {
+        "en": "Sozopol",
+        "bg": "Sozopol",
+        "ru": "Sozopol"
+      },
+      "slug": "sozopol-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Sredets",
+        "bg": "Sredets",
+        "ru": "Sredets"
+      },
+      "slug": "sredets-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Sungurlare",
+        "bg": "Sungurlare",
+        "ru": "Sungurlare"
+      },
+      "slug": "sungurlare-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Varbitsa",
+        "bg": "Varbitsa",
+        "ru": "Varbitsa"
+      },
+      "slug": "varbitsa-shumen",
+      "region": {
+        "name": {
+          "en": "Shumen",
+          "bg": "Shumen",
+          "ru": "Shumen"
+        },
+        "slug": "shumen"
+      }
+    },
+    {
+      "name": {
+        "en": "Dalgopol",
+        "bg": "Dalgopol",
+        "ru": "Dalgopol"
+      },
+      "slug": "dalgopol-varna",
+      "region": {
+        "name": {
+          "en": "Varna",
+          "bg": "Varna",
+          "ru": "Varna"
+        },
+        "slug": "varna"
+      }
+    },
+    {
+      "name": {
+        "en": "Smyadovo",
+        "bg": "Smyadovo",
+        "ru": "Smyadovo"
+      },
+      "slug": "smyadovo-shumen",
+      "region": {
+        "name": {
+          "en": "Shumen",
+          "bg": "Shumen",
+          "ru": "Shumen"
+        },
+        "slug": "shumen"
+      }
+    },
+    {
+      "name": {
+        "en": "Dolni Chiflik",
+        "bg": "Dolni Chiflik",
+        "ru": "Dolni Chiflik"
+      },
+      "slug": "dolni-chiflik-varna",
+      "region": {
+        "name": {
+          "en": "Varna",
+          "bg": "Varna",
+          "ru": "Varna"
+        },
+        "slug": "varna"
+      }
+    },
+    {
+      "name": {
+        "en": "Byala",
+        "bg": "Byala",
+        "ru": "Byala"
+      },
+      "slug": "byala-varna",
+      "region": {
+        "name": {
+          "en": "Varna",
+          "bg": "Varna",
+          "ru": "Varna"
+        },
+        "slug": "varna"
+      }
+    },
+    {
+      "name": {
+        "en": "Nesebar",
+        "bg": "Nesebar",
+        "ru": "Nesebar"
+      },
+      "slug": "nesebar-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Pomorie",
+        "bg": "Pomorie",
+        "ru": "Pomorie"
+      },
+      "slug": "pomorie-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Ruen",
+        "bg": "Ruen",
+        "ru": "Ruen"
+      },
+      "slug": "ruen-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Burgas",
+        "bg": "Burgas",
+        "ru": "Burgas"
+      },
+      "slug": "burgas-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Aytos",
+        "bg": "Aytos",
+        "ru": "Aytos"
+      },
+      "slug": "aytos-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Kameno",
+        "bg": "Kameno",
+        "ru": "Kameno"
+      },
+      "slug": "kameno-burgas",
+      "region": {
+        "name": {
+          "en": "Burgas",
+          "bg": "Burgas",
+          "ru": "Burgas"
+        },
+        "slug": "burgas"
+      }
+    },
+    {
+      "name": {
+        "en": "Tundzha",
+        "bg": "Tundzha",
+        "ru": "Tundzha"
+      },
+      "slug": "tundzha-yambol",
+      "region": {
+        "name": {
+          "en": "Yambol",
+          "bg": "Yambol",
+          "ru": "Yambol"
+        },
+        "slug": "yambol"
+      }
+    },
+    {
+      "name": {
+        "en": "Kotel",
+        "bg": "Kotel",
+        "ru": "Kotel"
+      },
+      "slug": "kotel-sliven",
+      "region": {
+        "name": {
+          "en": "Sliven",
+          "bg": "Sliven",
+          "ru": "Sliven"
+        },
+        "slug": "sliven"
+      }
+    },
+    {
+      "name": {
+        "en": "Sliven",
+        "bg": "Sliven",
+        "ru": "Sliven"
+      },
+      "slug": "sliven-sliven",
+      "region": {
+        "name": {
+          "en": "Sliven",
+          "bg": "Sliven",
+          "ru": "Sliven"
+        },
+        "slug": "sliven"
+      }
+    },
+    {
+      "name": {
+        "en": "Straldzha",
+        "bg": "Straldzha",
+        "ru": "Straldzha"
+      },
+      "slug": "straldzha-yambol",
+      "region": {
+        "name": {
+          "en": "Yambol",
+          "bg": "Yambol",
+          "ru": "Yambol"
+        },
+        "slug": "yambol"
+      }
+    },
+    {
+      "name": {
+        "en": "Bolyarovo",
+        "bg": "Bolyarovo",
+        "ru": "Bolyarovo"
+      },
+      "slug": "bolyarovo-yambol",
+      "region": {
+        "name": {
+          "en": "Yambol",
+          "bg": "Yambol",
+          "ru": "Yambol"
+        },
+        "slug": "yambol"
+      }
+    },
+    {
+      "name": {
+        "en": "Elhovo",
+        "bg": "Elhovo",
+        "ru": "Elhovo"
+      },
+      "slug": "elhovo-yambol",
+      "region": {
+        "name": {
+          "en": "Yambol",
+          "bg": "Yambol",
+          "ru": "Yambol"
+        },
+        "slug": "yambol"
+      }
+    },
+    {
+      "name": {
+        "en": "Yambol",
+        "bg": "Yambol",
+        "ru": "Yambol"
+      },
+      "slug": "yambol-yambol",
+      "region": {
+        "name": {
+          "en": "Yambol",
+          "bg": "Yambol",
+          "ru": "Yambol"
+        },
+        "slug": "yambol"
+      }
+    },
+    {
+      "name": {
+        "en": "Dimovo",
+        "bg": "Dimovo",
+        "ru": "Dimovo"
+      },
+      "slug": "dimovo-vidin",
+      "region": {
+        "name": {
+          "en": "Vidin",
+          "bg": "Vidin",
+          "ru": "Vidin"
+        },
+        "slug": "vidin"
+      }
+    },
+    {
+      "name": {
+        "en": "Bregovo",
+        "bg": "Bregovo",
+        "ru": "Bregovo"
+      },
+      "slug": "bregovo-vidin",
+      "region": {
+        "name": {
+          "en": "Vidin",
+          "bg": "Vidin",
+          "ru": "Vidin"
+        },
+        "slug": "vidin"
+      }
+    },
+    {
+      "name": {
+        "en": "Novo Selo",
+        "bg": "Novo Selo",
+        "ru": "Novo Selo"
+      },
+      "slug": "novo-selo-vidin",
+      "region": {
+        "name": {
+          "en": "Vidin",
+          "bg": "Vidin",
+          "ru": "Vidin"
+        },
+        "slug": "vidin"
+      }
+    },
+    {
+      "name": {
+        "en": "Boynitsa",
+        "bg": "Boynitsa",
+        "ru": "Boynitsa"
+      },
+      "slug": "boynitsa-vidin",
+      "region": {
+        "name": {
+          "en": "Vidin",
+          "bg": "Vidin",
+          "ru": "Vidin"
+        },
+        "slug": "vidin"
+      }
+    },
+    {
+      "name": {
+        "en": "Vidin",
+        "bg": "Vidin",
+        "ru": "Vidin"
+      },
+      "slug": "vidin-vidin",
+      "region": {
+        "name": {
+          "en": "Vidin",
+          "bg": "Vidin",
+          "ru": "Vidin"
+        },
+        "slug": "vidin"
+      }
+    },
+    {
+      "name": {
+        "en": "Kula",
+        "bg": "Kula",
+        "ru": "Kula"
+      },
+      "slug": "kula-vidin",
+      "region": {
+        "name": {
+          "en": "Vidin",
+          "bg": "Vidin",
+          "ru": "Vidin"
+        },
+        "slug": "vidin"
+      }
+    },
+    {
+      "name": {
+        "en": "Gramada",
+        "bg": "Gramada",
+        "ru": "Gramada"
+      },
+      "slug": "gramada-vidin",
+      "region": {
+        "name": {
+          "en": "Vidin",
+          "bg": "Vidin",
+          "ru": "Vidin"
+        },
+        "slug": "vidin"
+      }
+    },
+    {
+      "name": {
+        "en": "Makresh",
+        "bg": "Makresh",
+        "ru": "Makresh"
+      },
+      "slug": "makresh-vidin",
+      "region": {
+        "name": {
+          "en": "Vidin",
+          "bg": "Vidin",
+          "ru": "Vidin"
+        },
+        "slug": "vidin"
+      }
+    },
+    {
+      "name": {
+        "en": "Belogradchik",
+        "bg": "Belogradchik",
+        "ru": "Belogradchik"
+      },
+      "slug": "belogradchik-vidin",
+      "region": {
+        "name": {
+          "en": "Vidin",
+          "bg": "Vidin",
+          "ru": "Vidin"
+        },
+        "slug": "vidin"
+      }
+    },
+    {
+      "name": {
+        "en": "Chuprene",
+        "bg": "Chuprene",
+        "ru": "Chuprene"
+      },
+      "slug": "chuprene-vidin",
+      "region": {
+        "name": {
+          "en": "Vidin",
+          "bg": "Vidin",
+          "ru": "Vidin"
+        },
+        "slug": "vidin"
+      }
+    },
+    {
+      "name": {
+        "en": "Ruzhinsi",
+        "bg": "Ruzhinsi",
+        "ru": "Ruzhinsi"
+      },
+      "slug": "ruzhinsi-vidin",
+      "region": {
+        "name": {
+          "en": "Vidin",
+          "bg": "Vidin",
+          "ru": "Vidin"
+        },
+        "slug": "vidin"
+      }
+    },
+    {
+      "name": {
+        "en": "Topolovgrad",
+        "bg": "Topolovgrad",
+        "ru": "Topolovgrad"
+      },
+      "slug": "topolovgrad-haskovo",
+      "region": {
+        "name": {
+          "en": "Haskovo",
+          "bg": "Haskovo",
+          "ru": "Haskovo"
+        },
+        "slug": "haskovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Svilengrad",
+        "bg": "Svilengrad",
+        "ru": "Svilengrad"
+      },
+      "slug": "svilengrad-haskovo",
+      "region": {
+        "name": {
+          "en": "Haskovo",
+          "bg": "Haskovo",
+          "ru": "Haskovo"
+        },
+        "slug": "haskovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Byala Slatina",
+        "bg": "Byala Slatina",
+        "ru": "Byala Slatina"
+      },
+      "slug": "byala-slatina-vratsa",
+      "region": {
+        "name": {
+          "en": "Vratsa",
+          "bg": "Vratsa",
+          "ru": "Vratsa"
+        },
+        "slug": "vratsa"
+      }
+    },
+    {
+      "name": {
+        "en": "Lom",
+        "bg": "Lom",
+        "ru": "Lom"
+      },
+      "slug": "lom-montana",
+      "region": {
+        "name": {
+          "en": "Montana",
+          "bg": "Montana",
+          "ru": "Montana"
+        },
+        "slug": "montana"
+      }
+    },
+    {
+      "name": {
+        "en": "Brusartsi",
+        "bg": "Brusartsi",
+        "ru": "Brusartsi"
+      },
+      "slug": "brusartsi-montana",
+      "region": {
+        "name": {
+          "en": "Montana",
+          "bg": "Montana",
+          "ru": "Montana"
+        },
+        "slug": "montana"
+      }
+    },
+    {
+      "name": {
+        "en": "Medkovets",
+        "bg": "Medkovets",
+        "ru": "Medkovets"
+      },
+      "slug": "medkovets-montana",
+      "region": {
+        "name": {
+          "en": "Montana",
+          "bg": "Montana",
+          "ru": "Montana"
+        },
+        "slug": "montana"
+      }
+    },
+    {
+      "name": {
+        "en": "Chiprovtsi",
+        "bg": "Chiprovtsi",
+        "ru": "Chiprovtsi"
+      },
+      "slug": "chiprovtsi-montana",
+      "region": {
+        "name": {
+          "en": "Montana",
+          "bg": "Montana",
+          "ru": "Montana"
+        },
+        "slug": "montana"
+      }
+    },
+    {
+      "name": {
+        "en": "Yakimovo",
+        "bg": "Yakimovo",
+        "ru": "Yakimovo"
+      },
+      "slug": "yakimovo-montana",
+      "region": {
+        "name": {
+          "en": "Montana",
+          "bg": "Montana",
+          "ru": "Montana"
+        },
+        "slug": "montana"
+      }
+    },
+    {
+      "name": {
+        "en": "Valchedram",
+        "bg": "Valchedram",
+        "ru": "Valchedram"
+      },
+      "slug": "valchedram-montana",
+      "region": {
+        "name": {
+          "en": "Montana",
+          "bg": "Montana",
+          "ru": "Montana"
+        },
+        "slug": "montana"
+      }
+    },
+    {
+      "name": {
+        "en": "Georgi Bamyanovo",
+        "bg": "Georgi Bamyanovo",
+        "ru": "Georgi Bamyanovo"
+      },
+      "slug": "georgi-bamyanovo-montana",
+      "region": {
+        "name": {
+          "en": "Montana",
+          "bg": "Montana",
+          "ru": "Montana"
+        },
+        "slug": "montana"
+      }
+    },
+    {
+      "name": {
+        "en": "Berkovitsa",
+        "bg": "Berkovitsa",
+        "ru": "Berkovitsa"
+      },
+      "slug": "berkovitsa-montana",
+      "region": {
+        "name": {
+          "en": "Montana",
+          "bg": "Montana",
+          "ru": "Montana"
+        },
+        "slug": "montana"
+      }
+    },
+    {
+      "name": {
+        "en": "Varshets",
+        "bg": "Varshets",
+        "ru": "Varshets"
+      },
+      "slug": "varshets-montana",
+      "region": {
+        "name": {
+          "en": "Montana",
+          "bg": "Montana",
+          "ru": "Montana"
+        },
+        "slug": "montana"
+      }
+    },
+    {
+      "name": {
+        "en": "Montana",
+        "bg": "Montana",
+        "ru": "Montana"
+      },
+      "slug": "montana-montana",
+      "region": {
+        "name": {
+          "en": "Montana",
+          "bg": "Montana",
+          "ru": "Montana"
+        },
+        "slug": "montana"
+      }
+    },
+    {
+      "name": {
+        "en": "Boychinovtsi",
+        "bg": "Boychinovtsi",
+        "ru": "Boychinovtsi"
+      },
+      "slug": "boychinovtsi-montana",
+      "region": {
+        "name": {
+          "en": "Montana",
+          "bg": "Montana",
+          "ru": "Montana"
+        },
+        "slug": "montana"
+      }
+    },
+    {
+      "name": {
+        "en": "Hayredin",
+        "bg": "Hayredin",
+        "ru": "Hayredin"
+      },
+      "slug": "hayredin-vratsa",
+      "region": {
+        "name": {
+          "en": "Vratsa",
+          "bg": "Vratsa",
+          "ru": "Vratsa"
+        },
+        "slug": "vratsa"
+      }
+    },
+    {
+      "name": {
+        "en": "Kozloduy",
+        "bg": "Kozloduy",
+        "ru": "Kozloduy"
+      },
+      "slug": "kozloduy-vratsa",
+      "region": {
+        "name": {
+          "en": "Vratsa",
+          "bg": "Vratsa",
+          "ru": "Vratsa"
+        },
+        "slug": "vratsa"
+      }
+    },
+    {
+      "name": {
+        "en": "Oryahovo",
+        "bg": "Oryahovo",
+        "ru": "Oryahovo"
+      },
+      "slug": "oryahovo-vratsa",
+      "region": {
+        "name": {
+          "en": "Vratsa",
+          "bg": "Vratsa",
+          "ru": "Vratsa"
+        },
+        "slug": "vratsa"
+      }
+    },
+    {
+      "name": {
+        "en": "Miziya",
+        "bg": "Miziya",
+        "ru": "Miziya"
+      },
+      "slug": "miziya-vratsa",
+      "region": {
+        "name": {
+          "en": "Vratsa",
+          "bg": "Vratsa",
+          "ru": "Vratsa"
+        },
+        "slug": "vratsa"
+      }
+    },
+    {
+      "name": {
+        "en": "Krivodol",
+        "bg": "Krivodol",
+        "ru": "Krivodol"
+      },
+      "slug": "krivodol-vratsa",
+      "region": {
+        "name": {
+          "en": "Vratsa",
+          "bg": "Vratsa",
+          "ru": "Vratsa"
+        },
+        "slug": "vratsa"
+      }
+    },
+    {
+      "name": {
+        "en": "Vratsa",
+        "bg": "Vratsa",
+        "ru": "Vratsa"
+      },
+      "slug": "vratsa-vratsa",
+      "region": {
+        "name": {
+          "en": "Vratsa",
+          "bg": "Vratsa",
+          "ru": "Vratsa"
+        },
+        "slug": "vratsa"
+      }
+    },
+    {
+      "name": {
+        "en": "Borovan",
+        "bg": "Borovan",
+        "ru": "Borovan"
+      },
+      "slug": "borovan-vratsa",
+      "region": {
+        "name": {
+          "en": "Vratsa",
+          "bg": "Vratsa",
+          "ru": "Vratsa"
+        },
+        "slug": "vratsa"
+      }
+    },
+    {
+      "name": {
+        "en": "Svishtov",
+        "bg": "Svishtov",
+        "ru": "Svishtov"
+      },
+      "slug": "svishtov-veliko-tarnovo",
+      "region": {
+        "name": {
+          "en": "Veliko Tarnovo",
+          "bg": "Veliko Tarnovo",
+          "ru": "Veliko Tarnovo"
+        },
+        "slug": "veliko-tarnovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Knezha",
+        "bg": "Knezha",
+        "ru": "Knezha"
+      },
+      "slug": "knezha-pleven",
+      "region": {
+        "name": {
+          "en": "Pleven",
+          "bg": "Pleven",
+          "ru": "Pleven"
+        },
+        "slug": "pleven"
+      }
+    },
+    {
+      "name": {
+        "en": "Cherven Bryag",
+        "bg": "Cherven Bryag",
+        "ru": "Cherven Bryag"
+      },
+      "slug": "cherven-bryag-pleven",
+      "region": {
+        "name": {
+          "en": "Pleven",
+          "bg": "Pleven",
+          "ru": "Pleven"
+        },
+        "slug": "pleven"
+      }
+    },
+    {
+      "name": {
+        "en": "Iskar",
+        "bg": "Iskar",
+        "ru": "Iskar"
+      },
+      "slug": "iskar-pleven",
+      "region": {
+        "name": {
+          "en": "Pleven",
+          "bg": "Pleven",
+          "ru": "Pleven"
+        },
+        "slug": "pleven"
+      }
+    },
+    {
+      "name": {
+        "en": "Dolni Dabnik",
+        "bg": "Dolni Dabnik",
+        "ru": "Dolni Dabnik"
+      },
+      "slug": "dolni-dabnik-pleven",
+      "region": {
+        "name": {
+          "en": "Pleven",
+          "bg": "Pleven",
+          "ru": "Pleven"
+        },
+        "slug": "pleven"
+      }
+    },
+    {
+      "name": {
+        "en": "Dolna Mitropoliya",
+        "bg": "Dolna Mitropoliya",
+        "ru": "Dolna Mitropoliya"
+      },
+      "slug": "dolna-mitropoliya-pleven",
+      "region": {
+        "name": {
+          "en": "Pleven",
+          "bg": "Pleven",
+          "ru": "Pleven"
+        },
+        "slug": "pleven"
+      }
+    },
+    {
+      "name": {
+        "en": "Gulyantsi",
+        "bg": "Gulyantsi",
+        "ru": "Gulyantsi"
+      },
+      "slug": "gulyantsi-pleven",
+      "region": {
+        "name": {
+          "en": "Pleven",
+          "bg": "Pleven",
+          "ru": "Pleven"
+        },
+        "slug": "pleven"
+      }
+    },
+    {
+      "name": {
+        "en": "Nikopol",
+        "bg": "Nikopol",
+        "ru": "Nikopol"
+      },
+      "slug": "nikopol-pleven",
+      "region": {
+        "name": {
+          "en": "Pleven",
+          "bg": "Pleven",
+          "ru": "Pleven"
+        },
+        "slug": "pleven"
+      }
+    },
+    {
+      "name": {
+        "en": "Pleven",
+        "bg": "Pleven",
+        "ru": "Pleven"
+      },
+      "slug": "pleven-pleven",
+      "region": {
+        "name": {
+          "en": "Pleven",
+          "bg": "Pleven",
+          "ru": "Pleven"
+        },
+        "slug": "pleven"
+      }
+    },
+    {
+      "name": {
+        "en": "Pordim",
+        "bg": "Pordim",
+        "ru": "Pordim"
+      },
+      "slug": "pordim-pleven",
+      "region": {
+        "name": {
+          "en": "Pleven",
+          "bg": "Pleven",
+          "ru": "Pleven"
+        },
+        "slug": "pleven"
+      }
+    },
+    {
+      "name": {
+        "en": "Levski",
+        "bg": "Levski",
+        "ru": "Levski"
+      },
+      "slug": "levski-pleven",
+      "region": {
+        "name": {
+          "en": "Pleven",
+          "bg": "Pleven",
+          "ru": "Pleven"
+        },
+        "slug": "pleven"
+      }
+    },
+    {
+      "name": {
+        "en": "Belene",
+        "bg": "Belene",
+        "ru": "Belene"
+      },
+      "slug": "belene-pleven",
+      "region": {
+        "name": {
+          "en": "Pleven",
+          "bg": "Pleven",
+          "ru": "Pleven"
+        },
+        "slug": "pleven"
+      }
+    },
+    {
+      "name": {
+        "en": "Polski Trambesh",
+        "bg": "Polski Trambesh",
+        "ru": "Polski Trambesh"
+      },
+      "slug": "polski-trambesh-veliko-tarnovo",
+      "region": {
+        "name": {
+          "en": "Veliko Tarnovo",
+          "bg": "Veliko Tarnovo",
+          "ru": "Veliko Tarnovo"
+        },
+        "slug": "veliko-tarnovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Strazhitsa",
+        "bg": "Strazhitsa",
+        "ru": "Strazhitsa"
+      },
+      "slug": "strazhitsa-veliko-tarnovo",
+      "region": {
+        "name": {
+          "en": "Veliko Tarnovo",
+          "bg": "Veliko Tarnovo",
+          "ru": "Veliko Tarnovo"
+        },
+        "slug": "veliko-tarnovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Veliko Tarnovo",
+        "bg": "Veliko Tarnovo",
+        "ru": "Veliko Tarnovo"
+      },
+      "slug": "veliko-tarnovo-veliko-tarnovo",
+      "region": {
+        "name": {
+          "en": "Veliko Tarnovo",
+          "bg": "Veliko Tarnovo",
+          "ru": "Veliko Tarnovo"
+        },
+        "slug": "veliko-tarnovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Ugarchin",
+        "bg": "Ugarchin",
+        "ru": "Ugarchin"
+      },
+      "slug": "ugarchin-lovech",
+      "region": {
+        "name": {
+          "en": "Lovech",
+          "bg": "Lovech",
+          "ru": "Lovech"
+        },
+        "slug": "lovech"
+      }
+    },
+    {
+      "name": {
+        "en": "Lovech",
+        "bg": "Lovech",
+        "ru": "Lovech"
+      },
+      "slug": "lovech-lovech",
+      "region": {
+        "name": {
+          "en": "Lovech",
+          "bg": "Lovech",
+          "ru": "Lovech"
+        },
+        "slug": "lovech"
+      }
+    },
+    {
+      "name": {
+        "en": "Letnitsa",
+        "bg": "Letnitsa",
+        "ru": "Letnitsa"
+      },
+      "slug": "letnitsa-lovech",
+      "region": {
+        "name": {
+          "en": "Lovech",
+          "bg": "Lovech",
+          "ru": "Lovech"
+        },
+        "slug": "lovech"
+      }
+    },
+    {
+      "name": {
+        "en": "Suhindol",
+        "bg": "Suhindol",
+        "ru": "Suhindol"
+      },
+      "slug": "suhindol-veliko-tarnovo",
+      "region": {
+        "name": {
+          "en": "Veliko Tarnovo",
+          "bg": "Veliko Tarnovo",
+          "ru": "Veliko Tarnovo"
+        },
+        "slug": "veliko-tarnovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Pavlikeni",
+        "bg": "Pavlikeni",
+        "ru": "Pavlikeni"
+      },
+      "slug": "pavlikeni-veliko-tarnovo",
+      "region": {
+        "name": {
+          "en": "Veliko Tarnovo",
+          "bg": "Veliko Tarnovo",
+          "ru": "Veliko Tarnovo"
+        },
+        "slug": "veliko-tarnovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Troyan",
+        "bg": "Troyan",
+        "ru": "Troyan"
+      },
+      "slug": "troyan-lovech",
+      "region": {
+        "name": {
+          "en": "Lovech",
+          "bg": "Lovech",
+          "ru": "Lovech"
+        },
+        "slug": "lovech"
+      }
+    },
+    {
+      "name": {
+        "en": "Apriltsi",
+        "bg": "Apriltsi",
+        "ru": "Apriltsi"
+      },
+      "slug": "apriltsi-lovech",
+      "region": {
+        "name": {
+          "en": "Lovech",
+          "bg": "Lovech",
+          "ru": "Lovech"
+        },
+        "slug": "lovech"
+      }
+    },
+    {
+      "name": {
+        "en": "Gabrovo",
+        "bg": "Gabrovo",
+        "ru": "Gabrovo"
+      },
+      "slug": "gabrovo-gabrovo",
+      "region": {
+        "name": {
+          "en": "Gabrovo",
+          "bg": "Gabrovo",
+          "ru": "Gabrovo"
+        },
+        "slug": "gabrovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Sevlievo",
+        "bg": "Sevlievo",
+        "ru": "Sevlievo"
+      },
+      "slug": "sevlievo-gabrovo",
+      "region": {
+        "name": {
+          "en": "Gabrovo",
+          "bg": "Gabrovo",
+          "ru": "Gabrovo"
+        },
+        "slug": "gabrovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Gorna Oryahovitsa",
+        "bg": "Gorna Oryahovitsa",
+        "ru": "Gorna Oryahovitsa"
+      },
+      "slug": "gorna-oryahovitsa-veliko-tarnovo",
+      "region": {
+        "name": {
+          "en": "Veliko Tarnovo",
+          "bg": "Veliko Tarnovo",
+          "ru": "Veliko Tarnovo"
+        },
+        "slug": "veliko-tarnovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Lyaskovets",
+        "bg": "Lyaskovets",
+        "ru": "Lyaskovets"
+      },
+      "slug": "lyaskovets-veliko-tarnovo",
+      "region": {
+        "name": {
+          "en": "Veliko Tarnovo",
+          "bg": "Veliko Tarnovo",
+          "ru": "Veliko Tarnovo"
+        },
+        "slug": "veliko-tarnovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Elena",
+        "bg": "Elena",
+        "ru": "Elena"
+      },
+      "slug": "elena-veliko-tarnovo",
+      "region": {
+        "name": {
+          "en": "Veliko Tarnovo",
+          "bg": "Veliko Tarnovo",
+          "ru": "Veliko Tarnovo"
+        },
+        "slug": "veliko-tarnovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Zlataritsa",
+        "bg": "Zlataritsa",
+        "ru": "Zlataritsa"
+      },
+      "slug": "zlataritsa-veliko-tarnovo",
+      "region": {
+        "name": {
+          "en": "Veliko Tarnovo",
+          "bg": "Veliko Tarnovo",
+          "ru": "Veliko Tarnovo"
+        },
+        "slug": "veliko-tarnovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Tryavna",
+        "bg": "Tryavna",
+        "ru": "Tryavna"
+      },
+      "slug": "tryavna-gabrovo",
+      "region": {
+        "name": {
+          "en": "Gabrovo",
+          "bg": "Gabrovo",
+          "ru": "Gabrovo"
+        },
+        "slug": "gabrovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Dryanovo",
+        "bg": "Dryanovo",
+        "ru": "Dryanovo"
+      },
+      "slug": "dryanovo-gabrovo",
+      "region": {
+        "name": {
+          "en": "Gabrovo",
+          "bg": "Gabrovo",
+          "ru": "Gabrovo"
+        },
+        "slug": "gabrovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Teteven",
+        "bg": "Teteven",
+        "ru": "Teteven"
+      },
+      "slug": "teteven-lovech",
+      "region": {
+        "name": {
+          "en": "Lovech",
+          "bg": "Lovech",
+          "ru": "Lovech"
+        },
+        "slug": "lovech"
+      }
+    },
+    {
+      "name": {
+        "en": "Svoge",
+        "bg": "Svoge",
+        "ru": "Svoge"
+      },
+      "slug": "svoge-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Mezdra",
+        "bg": "Mezdra",
+        "ru": "Mezdra"
+      },
+      "slug": "mezdra-vratsa",
+      "region": {
+        "name": {
+          "en": "Vratsa",
+          "bg": "Vratsa",
+          "ru": "Vratsa"
+        },
+        "slug": "vratsa"
+      }
+    },
+    {
+      "name": {
+        "en": "Etropole",
+        "bg": "Etropole",
+        "ru": "Etropole"
+      },
+      "slug": "etropole-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Botevgrad",
+        "bg": "Botevgrad",
+        "ru": "Botevgrad"
+      },
+      "slug": "botevgrad-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Roman",
+        "bg": "Roman",
+        "ru": "Roman"
+      },
+      "slug": "roman-vratsa",
+      "region": {
+        "name": {
+          "en": "Vratsa",
+          "bg": "Vratsa",
+          "ru": "Vratsa"
+        },
+        "slug": "vratsa"
+      }
+    },
+    {
+      "name": {
+        "en": "Lukovit",
+        "bg": "Lukovit",
+        "ru": "Lukovit"
+      },
+      "slug": "lukovit-lovech",
+      "region": {
+        "name": {
+          "en": "Lovech",
+          "bg": "Lovech",
+          "ru": "Lovech"
+        },
+        "slug": "lovech"
+      }
+    },
+    {
+      "name": {
+        "en": "Pravets",
+        "bg": "Pravets",
+        "ru": "Pravets"
+      },
+      "slug": "pravets-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Yablanitsa",
+        "bg": "Yablanitsa",
+        "ru": "Yablanitsa"
+      },
+      "slug": "yablanitsa-lovech",
+      "region": {
+        "name": {
+          "en": "Lovech",
+          "bg": "Lovech",
+          "ru": "Lovech"
+        },
+        "slug": "lovech"
+      }
+    },
+    {
+      "name": {
+        "en": "Breznik",
+        "bg": "Breznik",
+        "ru": "Breznik"
+      },
+      "slug": "breznik-pernik",
+      "region": {
+        "name": {
+          "en": "Pernik",
+          "bg": "Pernik",
+          "ru": "Pernik"
+        },
+        "slug": "pernik"
+      }
+    },
+    {
+      "name": {
+        "en": "Treklyano",
+        "bg": "Treklyano",
+        "ru": "Treklyano"
+      },
+      "slug": "treklyano-kyustendil",
+      "region": {
+        "name": {
+          "en": "Kyustendil",
+          "bg": "Kyustendil",
+          "ru": "Kyustendil"
+        },
+        "slug": "kyustendil"
+      }
+    },
+    {
+      "name": {
+        "en": "Tran",
+        "bg": "Tran",
+        "ru": "Tran"
+      },
+      "slug": "tran-pernik",
+      "region": {
+        "name": {
+          "en": "Pernik",
+          "bg": "Pernik",
+          "ru": "Pernik"
+        },
+        "slug": "pernik"
+      }
+    },
+    {
+      "name": {
+        "en": "Godech",
+        "bg": "Godech",
+        "ru": "Godech"
+      },
+      "slug": "godech-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Dragoman",
+        "bg": "Dragoman",
+        "ru": "Dragoman"
+      },
+      "slug": "dragoman-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Kostinbrod",
+        "bg": "Kostinbrod",
+        "ru": "Kostinbrod"
+      },
+      "slug": "kostinbrod-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Slivnitsa",
+        "bg": "Slivnitsa",
+        "ru": "Slivnitsa"
+      },
+      "slug": "slivnitsa-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Bozhurishte",
+        "bg": "Bozhurishte",
+        "ru": "Bozhurishte"
+      },
+      "slug": "bozhurishte-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Krumovgrad",
+        "bg": "Krumovgrad",
+        "ru": "Krumovgrad"
+      },
+      "slug": "krumovgrad-kardzhali",
+      "region": {
+        "name": {
+          "en": "Kardzhali",
+          "bg": "Kardzhali",
+          "ru": "Kardzhali"
+        },
+        "slug": "kardzhali"
+      }
+    },
+    {
+      "name": {
+        "en": "Rudozem",
+        "bg": "Rudozem",
+        "ru": "Rudozem"
+      },
+      "slug": "rudozem-smolyan",
+      "region": {
+        "name": {
+          "en": "Smolyan",
+          "bg": "Smolyan",
+          "ru": "Smolyan"
+        },
+        "slug": "smolyan"
+      }
+    },
+    {
+      "name": {
+        "en": "Madan",
+        "bg": "Madan",
+        "ru": "Madan"
+      },
+      "slug": "madan-smolyan",
+      "region": {
+        "name": {
+          "en": "Smolyan",
+          "bg": "Smolyan",
+          "ru": "Smolyan"
+        },
+        "slug": "smolyan"
+      }
+    },
+    {
+      "name": {
+        "en": "Ardino",
+        "bg": "Ardino",
+        "ru": "Ardino"
+      },
+      "slug": "ardino-kardzhali",
+      "region": {
+        "name": {
+          "en": "Kardzhali",
+          "bg": "Kardzhali",
+          "ru": "Kardzhali"
+        },
+        "slug": "kardzhali"
+      }
+    },
+    {
+      "name": {
+        "en": "Zlatograd",
+        "bg": "Zlatograd",
+        "ru": "Zlatograd"
+      },
+      "slug": "zlatograd-smolyan",
+      "region": {
+        "name": {
+          "en": "Smolyan",
+          "bg": "Smolyan",
+          "ru": "Smolyan"
+        },
+        "slug": "smolyan"
+      }
+    },
+    {
+      "name": {
+        "en": "Nedelino",
+        "bg": "Nedelino",
+        "ru": "Nedelino"
+      },
+      "slug": "nedelino-smolyan",
+      "region": {
+        "name": {
+          "en": "Smolyan",
+          "bg": "Smolyan",
+          "ru": "Smolyan"
+        },
+        "slug": "smolyan"
+      }
+    },
+    {
+      "name": {
+        "en": "Kardzhali",
+        "bg": "Kardzhali",
+        "ru": "Kardzhali"
+      },
+      "slug": "kardzhali-kardzhali",
+      "region": {
+        "name": {
+          "en": "Kardzhali",
+          "bg": "Kardzhali",
+          "ru": "Kardzhali"
+        },
+        "slug": "kardzhali"
+      }
+    },
+    {
+      "name": {
+        "en": "Kirkovo",
+        "bg": "Kirkovo",
+        "ru": "Kirkovo"
+      },
+      "slug": "kirkovo-kardzhali",
+      "region": {
+        "name": {
+          "en": "Kardzhali",
+          "bg": "Kardzhali",
+          "ru": "Kardzhali"
+        },
+        "slug": "kardzhali"
+      }
+    },
+    {
+      "name": {
+        "en": "Dzhebel",
+        "bg": "Dzhebel",
+        "ru": "Dzhebel"
+      },
+      "slug": "dzhebel-kardzhali",
+      "region": {
+        "name": {
+          "en": "Kardzhali",
+          "bg": "Kardzhali",
+          "ru": "Kardzhali"
+        },
+        "slug": "kardzhali"
+      }
+    },
+    {
+      "name": {
+        "en": "Momchilgrad",
+        "bg": "Momchilgrad",
+        "ru": "Momchilgrad"
+      },
+      "slug": "momchilgrad-kardzhali",
+      "region": {
+        "name": {
+          "en": "Kardzhali",
+          "bg": "Kardzhali",
+          "ru": "Kardzhali"
+        },
+        "slug": "kardzhali"
+      }
+    },
+    {
+      "name": {
+        "en": "Harmanli",
+        "bg": "Harmanli",
+        "ru": "Harmanli"
+      },
+      "slug": "harmanli-haskovo",
+      "region": {
+        "name": {
+          "en": "Haskovo",
+          "bg": "Haskovo",
+          "ru": "Haskovo"
+        },
+        "slug": "haskovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Stambolovo",
+        "bg": "Stambolovo",
+        "ru": "Stambolovo"
+      },
+      "slug": "stambolovo-haskovo",
+      "region": {
+        "name": {
+          "en": "Haskovo",
+          "bg": "Haskovo",
+          "ru": "Haskovo"
+        },
+        "slug": "haskovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Lyubimets",
+        "bg": "Lyubimets",
+        "ru": "Lyubimets"
+      },
+      "slug": "lyubimets-haskovo",
+      "region": {
+        "name": {
+          "en": "Haskovo",
+          "bg": "Haskovo",
+          "ru": "Haskovo"
+        },
+        "slug": "haskovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Madzharovo",
+        "bg": "Madzharovo",
+        "ru": "Madzharovo"
+      },
+      "slug": "madzharovo-haskovo",
+      "region": {
+        "name": {
+          "en": "Haskovo",
+          "bg": "Haskovo",
+          "ru": "Haskovo"
+        },
+        "slug": "haskovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Ivaylovgrad",
+        "bg": "Ivaylovgrad",
+        "ru": "Ivaylovgrad"
+      },
+      "slug": "ivaylovgrad-haskovo",
+      "region": {
+        "name": {
+          "en": "Haskovo",
+          "bg": "Haskovo",
+          "ru": "Haskovo"
+        },
+        "slug": "haskovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Tvarditsa",
+        "bg": "Tvarditsa",
+        "ru": "Tvarditsa"
+      },
+      "slug": "tvarditsa-sliven",
+      "region": {
+        "name": {
+          "en": "Sliven",
+          "bg": "Sliven",
+          "ru": "Sliven"
+        },
+        "slug": "sliven"
+      }
+    },
+    {
+      "name": {
+        "en": "Anton",
+        "bg": "Anton",
+        "ru": "Anton"
+      },
+      "slug": "anton-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Sopot",
+        "bg": "Sopot",
+        "ru": "Sopot"
+      },
+      "slug": "sopot-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Karlovo",
+        "bg": "Karlovo",
+        "ru": "Karlovo"
+      },
+      "slug": "karlovo-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Pavel Banya",
+        "bg": "Pavel Banya",
+        "ru": "Pavel Banya"
+      },
+      "slug": "pavel-banya-stara-zagora",
+      "region": {
+        "name": {
+          "en": "Stara Zagora",
+          "bg": "Stara Zagora",
+          "ru": "Stara Zagora"
+        },
+        "slug": "stara-zagora"
+      }
+    },
+    {
+      "name": {
+        "en": "Kazanlak",
+        "bg": "Kazanlak",
+        "ru": "Kazanlak"
+      },
+      "slug": "kazanlak-stara-zagora",
+      "region": {
+        "name": {
+          "en": "Stara Zagora",
+          "bg": "Stara Zagora",
+          "ru": "Stara Zagora"
+        },
+        "slug": "stara-zagora"
+      }
+    },
+    {
+      "name": {
+        "en": "Maglizh",
+        "bg": "Maglizh",
+        "ru": "Maglizh"
+      },
+      "slug": "maglizh-stara-zagora",
+      "region": {
+        "name": {
+          "en": "Stara Zagora",
+          "bg": "Stara Zagora",
+          "ru": "Stara Zagora"
+        },
+        "slug": "stara-zagora"
+      }
+    },
+    {
+      "name": {
+        "en": "Nikolaevo",
+        "bg": "Nikolaevo",
+        "ru": "Nikolaevo"
+      },
+      "slug": "nikolaevo-stara-zagora",
+      "region": {
+        "name": {
+          "en": "Stara Zagora",
+          "bg": "Stara Zagora",
+          "ru": "Stara Zagora"
+        },
+        "slug": "stara-zagora"
+      }
+    },
+    {
+      "name": {
+        "en": "Gurkovo",
+        "bg": "Gurkovo",
+        "ru": "Gurkovo"
+      },
+      "slug": "gurkovo-stara-zagora",
+      "region": {
+        "name": {
+          "en": "Stara Zagora",
+          "bg": "Stara Zagora",
+          "ru": "Stara Zagora"
+        },
+        "slug": "stara-zagora"
+      }
+    },
+    {
+      "name": {
+        "en": "Galabovo",
+        "bg": "Galabovo",
+        "ru": "Galabovo"
+      },
+      "slug": "galabovo-stara-zagora",
+      "region": {
+        "name": {
+          "en": "Stara Zagora",
+          "bg": "Stara Zagora",
+          "ru": "Stara Zagora"
+        },
+        "slug": "stara-zagora"
+      }
+    },
+    {
+      "name": {
+        "en": "Nova Zagora",
+        "bg": "Nova Zagora",
+        "ru": "Nova Zagora"
+      },
+      "slug": "nova-zagora-sliven",
+      "region": {
+        "name": {
+          "en": "Sliven",
+          "bg": "Sliven",
+          "ru": "Sliven"
+        },
+        "slug": "sliven"
+      }
+    },
+    {
+      "name": {
+        "en": "Stara Zagora",
+        "bg": "Stara Zagora",
+        "ru": "Stara Zagora"
+      },
+      "slug": "stara-zagora-stara-zagora",
+      "region": {
+        "name": {
+          "en": "Stara Zagora",
+          "bg": "Stara Zagora",
+          "ru": "Stara Zagora"
+        },
+        "slug": "stara-zagora"
+      }
+    },
+    {
+      "name": {
+        "en": "Radnevo",
+        "bg": "Radnevo",
+        "ru": "Radnevo"
+      },
+      "slug": "radnevo-stara-zagora",
+      "region": {
+        "name": {
+          "en": "Stara Zagora",
+          "bg": "Stara Zagora",
+          "ru": "Stara Zagora"
+        },
+        "slug": "stara-zagora"
+      }
+    },
+    {
+      "name": {
+        "en": "Chirpan",
+        "bg": "Chirpan",
+        "ru": "Chirpan"
+      },
+      "slug": "chirpan-stara-zagora",
+      "region": {
+        "name": {
+          "en": "Stara Zagora",
+          "bg": "Stara Zagora",
+          "ru": "Stara Zagora"
+        },
+        "slug": "stara-zagora"
+      }
+    },
+    {
+      "name": {
+        "en": "Haskovo",
+        "bg": "Haskovo",
+        "ru": "Haskovo"
+      },
+      "slug": "haskovo-haskovo",
+      "region": {
+        "name": {
+          "en": "Haskovo",
+          "bg": "Haskovo",
+          "ru": "Haskovo"
+        },
+        "slug": "haskovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Mineralni Bani",
+        "bg": "Mineralni Bani",
+        "ru": "Mineralni Bani"
+      },
+      "slug": "mineralni-bani-haskovo",
+      "region": {
+        "name": {
+          "en": "Haskovo",
+          "bg": "Haskovo",
+          "ru": "Haskovo"
+        },
+        "slug": "haskovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Chernoochene",
+        "bg": "Chernoochene",
+        "ru": "Chernoochene"
+      },
+      "slug": "chernoochene-kardzhali",
+      "region": {
+        "name": {
+          "en": "Kardzhali",
+          "bg": "Kardzhali",
+          "ru": "Kardzhali"
+        },
+        "slug": "kardzhali"
+      }
+    },
+    {
+      "name": {
+        "en": "Simeonovgrad",
+        "bg": "Simeonovgrad",
+        "ru": "Simeonovgrad"
+      },
+      "slug": "simeonovgrad-haskovo",
+      "region": {
+        "name": {
+          "en": "Haskovo",
+          "bg": "Haskovo",
+          "ru": "Haskovo"
+        },
+        "slug": "haskovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Dimitrovgrad",
+        "bg": "Dimitrovgrad",
+        "ru": "Dimitrovgrad"
+      },
+      "slug": "dimitrovgrad-haskovo",
+      "region": {
+        "name": {
+          "en": "Haskovo",
+          "bg": "Haskovo",
+          "ru": "Haskovo"
+        },
+        "slug": "haskovo"
+      }
+    },
+    {
+      "name": {
+        "en": "Opan",
+        "bg": "Opan",
+        "ru": "Opan"
+      },
+      "slug": "opan-stara-zagora",
+      "region": {
+        "name": {
+          "en": "Stara Zagora",
+          "bg": "Stara Zagora",
+          "ru": "Stara Zagora"
+        },
+        "slug": "stara-zagora"
+      }
+    },
+    {
+      "name": {
+        "en": "Garmen",
+        "bg": "Garmen",
+        "ru": "Garmen"
+      },
+      "slug": "garmen-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Petrich",
+        "bg": "Petrich",
+        "ru": "Petrich"
+      },
+      "slug": "petrich-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Kresna",
+        "bg": "Kresna",
+        "ru": "Kresna"
+      },
+      "slug": "kresna-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Bansko",
+        "bg": "Bansko",
+        "ru": "Bansko"
+      },
+      "slug": "bansko-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Strumyarni",
+        "bg": "Strumyarni",
+        "ru": "Strumyarni"
+      },
+      "slug": "strumyarni-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Sandanski",
+        "bg": "Sandanski",
+        "ru": "Sandanski"
+      },
+      "slug": "sandanski-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Hadzhidimovo",
+        "bg": "Hadzhidimovo",
+        "ru": "Hadzhidimovo"
+      },
+      "slug": "hadzhidimovo-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Gotse Delchev",
+        "bg": "Gotse Delchev",
+        "ru": "Gotse Delchev"
+      },
+      "slug": "gotse-delchev-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Satovcha",
+        "bg": "Satovcha",
+        "ru": "Satovcha"
+      },
+      "slug": "satovcha-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Asenovgrad",
+        "bg": "Asenovgrad",
+        "ru": "Asenovgrad"
+      },
+      "slug": "asenovgrad-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Devin",
+        "bg": "Devin",
+        "ru": "Devin"
+      },
+      "slug": "devin-smolyan",
+      "region": {
+        "name": {
+          "en": "Smolyan",
+          "bg": "Smolyan",
+          "ru": "Smolyan"
+        },
+        "slug": "smolyan"
+      }
+    },
+    {
+      "name": {
+        "en": "Kuklen",
+        "bg": "Kuklen",
+        "ru": "Kuklen"
+      },
+      "slug": "kuklen-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Smolyan",
+        "bg": "Smolyan",
+        "ru": "Smolyan"
+      },
+      "slug": "smolyan-smolyan",
+      "region": {
+        "name": {
+          "en": "Smolyan",
+          "bg": "Smolyan",
+          "ru": "Smolyan"
+        },
+        "slug": "smolyan"
+      }
+    },
+    {
+      "name": {
+        "en": "Chepelare",
+        "bg": "Chepelare",
+        "ru": "Chepelare"
+      },
+      "slug": "chepelare-smolyan",
+      "region": {
+        "name": {
+          "en": "Smolyan",
+          "bg": "Smolyan",
+          "ru": "Smolyan"
+        },
+        "slug": "smolyan"
+      }
+    },
+    {
+      "name": {
+        "en": "Parvomay",
+        "bg": "Parvomay",
+        "ru": "Parvomay"
+      },
+      "slug": "parvomay-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Banite",
+        "bg": "Banite",
+        "ru": "Banite"
+      },
+      "slug": "banite-smolyan",
+      "region": {
+        "name": {
+          "en": "Smolyan",
+          "bg": "Smolyan",
+          "ru": "Smolyan"
+        },
+        "slug": "smolyan"
+      }
+    },
+    {
+      "name": {
+        "en": "Laki",
+        "bg": "Laki",
+        "ru": "Laki"
+      },
+      "slug": "laki-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Dospat",
+        "bg": "Dospat",
+        "ru": "Dospat"
+      },
+      "slug": "dospat-smolyan",
+      "region": {
+        "name": {
+          "en": "Smolyan",
+          "bg": "Smolyan",
+          "ru": "Smolyan"
+        },
+        "slug": "smolyan"
+      }
+    },
+    {
+      "name": {
+        "en": "Borino",
+        "bg": "Borino",
+        "ru": "Borino"
+      },
+      "slug": "borino-smolyan",
+      "region": {
+        "name": {
+          "en": "Smolyan",
+          "bg": "Smolyan",
+          "ru": "Smolyan"
+        },
+        "slug": "smolyan"
+      }
+    },
+    {
+      "name": {
+        "en": "Bratya Daskalovi",
+        "bg": "Bratya Daskalovi",
+        "ru": "Bratya Daskalovi"
+      },
+      "slug": "bratya-daskalovi-stara-zagora",
+      "region": {
+        "name": {
+          "en": "Stara Zagora",
+          "bg": "Stara Zagora",
+          "ru": "Stara Zagora"
+        },
+        "slug": "stara-zagora"
+      }
+    },
+    {
+      "name": {
+        "en": "Brezovo",
+        "bg": "Brezovo",
+        "ru": "Brezovo"
+      },
+      "slug": "brezovo-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Kyustendil",
+        "bg": "Kyustendil",
+        "ru": "Kyustendil"
+      },
+      "slug": "kyustendil-kyustendil",
+      "region": {
+        "name": {
+          "en": "Kyustendil",
+          "bg": "Kyustendil",
+          "ru": "Kyustendil"
+        },
+        "slug": "kyustendil"
+      }
+    },
+    {
+      "name": {
+        "en": "Nevestino",
+        "bg": "Nevestino",
+        "ru": "Nevestino"
+      },
+      "slug": "nevestino-kyustendil",
+      "region": {
+        "name": {
+          "en": "Kyustendil",
+          "bg": "Kyustendil",
+          "ru": "Kyustendil"
+        },
+        "slug": "kyustendil"
+      }
+    },
+    {
+      "name": {
+        "en": "Zemen",
+        "bg": "Zemen",
+        "ru": "Zemen"
+      },
+      "slug": "zemen-pernik",
+      "region": {
+        "name": {
+          "en": "Pernik",
+          "bg": "Pernik",
+          "ru": "Pernik"
+        },
+        "slug": "pernik"
+      }
+    },
+    {
+      "name": {
+        "en": "Kovachevtsi",
+        "bg": "Kovachevtsi",
+        "ru": "Kovachevtsi"
+      },
+      "slug": "kovachevtsi-pernik",
+      "region": {
+        "name": {
+          "en": "Pernik",
+          "bg": "Pernik",
+          "ru": "Pernik"
+        },
+        "slug": "pernik"
+      }
+    },
+    {
+      "name": {
+        "en": "Elin Pelin",
+        "bg": "Elin Pelin",
+        "ru": "Elin Pelin"
+      },
+      "slug": "elin-pelin-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Pirdop",
+        "bg": "Pirdop",
+        "ru": "Pirdop"
+      },
+      "slug": "pirdop-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Chelopech",
+        "bg": "Chelopech",
+        "ru": "Chelopech"
+      },
+      "slug": "chelopech-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Zlatitsa",
+        "bg": "Zlatitsa",
+        "ru": "Zlatitsa"
+      },
+      "slug": "zlatitsa-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Chavdar",
+        "bg": "Chavdar",
+        "ru": "Chavdar"
+      },
+      "slug": "chavdar-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Zlatitsa",
+        "bg": "Zlatitsa",
+        "ru": "Zlatitsa"
+      },
+      "slug": "zlatitsa-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Mirkovo",
+        "bg": "Mirkovo",
+        "ru": "Mirkovo"
+      },
+      "slug": "mirkovo-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Gorna Malina",
+        "bg": "Gorna Malina",
+        "ru": "Gorna Malina"
+      },
+      "slug": "gorna-malina-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Stolichna",
+        "bg": "Stolichna",
+        "ru": "Stolichna"
+      },
+      "slug": "stolichna-sofia-city",
+      "region": {
+        "name": {
+          "en": "Sofia City",
+          "bg": "Sofia City",
+          "ru": "Sofia City"
+        },
+        "slug": "sofia-city"
+      }
+    },
+    {
+      "name": {
+        "en": "Pernik",
+        "bg": "Pernik",
+        "ru": "Pernik"
+      },
+      "slug": "pernik-pernik",
+      "region": {
+        "name": {
+          "en": "Pernik",
+          "bg": "Pernik",
+          "ru": "Pernik"
+        },
+        "slug": "pernik"
+      }
+    },
+    {
+      "name": {
+        "en": "Radomir",
+        "bg": "Radomir",
+        "ru": "Radomir"
+      },
+      "slug": "radomir-pernik",
+      "region": {
+        "name": {
+          "en": "Pernik",
+          "bg": "Pernik",
+          "ru": "Pernik"
+        },
+        "slug": "pernik"
+      }
+    },
+    {
+      "name": {
+        "en": "Rakovski",
+        "bg": "Rakovski",
+        "ru": "Rakovski"
+      },
+      "slug": "rakovski-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Sadovo",
+        "bg": "Sadovo",
+        "ru": "Sadovo"
+      },
+      "slug": "sadovo-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Bobov Dol",
+        "bg": "Bobov Dol",
+        "ru": "Bobov Dol"
+      },
+      "slug": "bobov-dol-kyustendil",
+      "region": {
+        "name": {
+          "en": "Kyustendil",
+          "bg": "Kyustendil",
+          "ru": "Kyustendil"
+        },
+        "slug": "kyustendil"
+      }
+    },
+    {
+      "name": {
+        "en": "Simitli",
+        "bg": "Simitli",
+        "ru": "Simitli"
+      },
+      "slug": "simitli-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Rodopi",
+        "bg": "Rodopi",
+        "ru": "Rodopi"
+      },
+      "slug": "rodopi-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Batak",
+        "bg": "Batak",
+        "ru": "Batak"
+      },
+      "slug": "batak-pazardzhik",
+      "region": {
+        "name": {
+          "en": "Pazardzhik",
+          "bg": "Pazardzhik",
+          "ru": "Pazardzhik"
+        },
+        "slug": "pazardzhik"
+      }
+    },
+    {
+      "name": {
+        "en": "Koprivshtitsa",
+        "bg": "Koprivshtitsa",
+        "ru": "Koprivshtitsa"
+      },
+      "slug": "koprivshtitsa-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Hisarya",
+        "bg": "Hisarya",
+        "ru": "Hisarya"
+      },
+      "slug": "hisarya-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Kaloyanovo",
+        "bg": "Kaloyanovo",
+        "ru": "Kaloyanovo"
+      },
+      "slug": "kaloyanovo-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Panagyurishte",
+        "bg": "Panagyurishte",
+        "ru": "Panagyurishte"
+      },
+      "slug": "panagyurishte-pazardzhik",
+      "region": {
+        "name": {
+          "en": "Pazardzhik",
+          "bg": "Pazardzhik",
+          "ru": "Pazardzhik"
+        },
+        "slug": "pazardzhik"
+      }
+    },
+    {
+      "name": {
+        "en": "Pazardzhik",
+        "bg": "Pazardzhik",
+        "ru": "Pazardzhik"
+      },
+      "slug": "pazardzhik-pazardzhik",
+      "region": {
+        "name": {
+          "en": "Pazardzhik",
+          "bg": "Pazardzhik",
+          "ru": "Pazardzhik"
+        },
+        "slug": "pazardzhik"
+      }
+    },
+    {
+      "name": {
+        "en": "Peshtera",
+        "bg": "Peshtera",
+        "ru": "Peshtera"
+      },
+      "slug": "peshtera-pazardzhik",
+      "region": {
+        "name": {
+          "en": "Pazardzhik",
+          "bg": "Pazardzhik",
+          "ru": "Pazardzhik"
+        },
+        "slug": "pazardzhik"
+      }
+    },
+    {
+      "name": {
+        "en": "Strelcha",
+        "bg": "Strelcha",
+        "ru": "Strelcha"
+      },
+      "slug": "strelcha-pazardzhik",
+      "region": {
+        "name": {
+          "en": "Pazardzhik",
+          "bg": "Pazardzhik",
+          "ru": "Pazardzhik"
+        },
+        "slug": "pazardzhik"
+      }
+    },
+    {
+      "name": {
+        "en": "Saedinenie",
+        "bg": "Saedinenie",
+        "ru": "Saedinenie"
+      },
+      "slug": "saedinenie-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Maritsa",
+        "bg": "Maritsa",
+        "ru": "Maritsa"
+      },
+      "slug": "maritsa-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Plovdiv",
+        "bg": "Plovdiv",
+        "ru": "Plovdiv"
+      },
+      "slug": "plovdiv-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Bratsigovo",
+        "bg": "Bratsigovo",
+        "ru": "Bratsigovo"
+      },
+      "slug": "bratsigovo-pazardzhik",
+      "region": {
+        "name": {
+          "en": "Pazardzhik",
+          "bg": "Pazardzhik",
+          "ru": "Pazardzhik"
+        },
+        "slug": "pazardzhik"
+      }
+    },
+    {
+      "name": {
+        "en": "Stamboliyski",
+        "bg": "Stamboliyski",
+        "ru": "Stamboliyski"
+      },
+      "slug": "stamboliyski-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Krichim",
+        "bg": "Krichim",
+        "ru": "Krichim"
+      },
+      "slug": "krichim-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Perushtitsa",
+        "bg": "Perushtitsa",
+        "ru": "Perushtitsa"
+      },
+      "slug": "perushtitsa-plovdiv",
+      "region": {
+        "name": {
+          "en": "Plovdiv",
+          "bg": "Plovdiv",
+          "ru": "Plovdiv"
+        },
+        "slug": "plovdiv"
+      }
+    },
+    {
+      "name": {
+        "en": "Blagoevgrad",
+        "bg": "Blagoevgrad",
+        "ru": "Blagoevgrad"
+      },
+      "slug": "blagoevgrad-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Dupnitsa",
+        "bg": "Dupnitsa",
+        "ru": "Dupnitsa"
+      },
+      "slug": "dupnitsa-kyustendil",
+      "region": {
+        "name": {
+          "en": "Kyustendil",
+          "bg": "Kyustendil",
+          "ru": "Kyustendil"
+        },
+        "slug": "kyustendil"
+      }
+    },
+    {
+      "name": {
+        "en": "Sapareva Banya",
+        "bg": "Sapareva Banya",
+        "ru": "Sapareva Banya"
+      },
+      "slug": "sapareva-banya-kyustendil",
+      "region": {
+        "name": {
+          "en": "Kyustendil",
+          "bg": "Kyustendil",
+          "ru": "Kyustendil"
+        },
+        "slug": "kyustendil"
+      }
+    },
+    {
+      "name": {
+        "en": "Boboshevo",
+        "bg": "Boboshevo",
+        "ru": "Boboshevo"
+      },
+      "slug": "boboshevo-kyustendil",
+      "region": {
+        "name": {
+          "en": "Kyustendil",
+          "bg": "Kyustendil",
+          "ru": "Kyustendil"
+        },
+        "slug": "kyustendil"
+      }
+    },
+    {
+      "name": {
+        "en": "Rila",
+        "bg": "Rila",
+        "ru": "Rila"
+      },
+      "slug": "rila-kyustendil",
+      "region": {
+        "name": {
+          "en": "Kyustendil",
+          "bg": "Kyustendil",
+          "ru": "Kyustendil"
+        },
+        "slug": "kyustendil"
+      }
+    },
+    {
+      "name": {
+        "en": "Kocherinovo",
+        "bg": "Kocherinovo",
+        "ru": "Kocherinovo"
+      },
+      "slug": "kocherinovo-kyustendil",
+      "region": {
+        "name": {
+          "en": "Kyustendil",
+          "bg": "Kyustendil",
+          "ru": "Kyustendil"
+        },
+        "slug": "kyustendil"
+      }
+    },
+    {
+      "name": {
+        "en": "Ihtiman",
+        "bg": "Ihtiman",
+        "ru": "Ihtiman"
+      },
+      "slug": "ihtiman-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Samokov",
+        "bg": "Samokov",
+        "ru": "Samokov"
+      },
+      "slug": "samokov-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Dolna Banya",
+        "bg": "Dolna Banya",
+        "ru": "Dolna Banya"
+      },
+      "slug": "dolna-banya-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Razlog",
+        "bg": "Razlog",
+        "ru": "Razlog"
+      },
+      "slug": "razlog-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Kostenets",
+        "bg": "Kostenets",
+        "ru": "Kostenets"
+      },
+      "slug": "kostenets-sofia",
+      "region": {
+        "name": {
+          "en": "Sofia",
+          "bg": "Sofia",
+          "ru": "Sofia"
+        },
+        "slug": "sofia"
+      }
+    },
+    {
+      "name": {
+        "en": "Lesichovo",
+        "bg": "Lesichovo",
+        "ru": "Lesichovo"
+      },
+      "slug": "lesichovo-pazardzhik",
+      "region": {
+        "name": {
+          "en": "Pazardzhik",
+          "bg": "Pazardzhik",
+          "ru": "Pazardzhik"
+        },
+        "slug": "pazardzhik"
+      }
+    },
+    {
+      "name": {
+        "en": "Septemvri",
+        "bg": "Septemvri",
+        "ru": "Septemvri"
+      },
+      "slug": "septemvri-pazardzhik",
+      "region": {
+        "name": {
+          "en": "Pazardzhik",
+          "bg": "Pazardzhik",
+          "ru": "Pazardzhik"
+        },
+        "slug": "pazardzhik"
+      }
+    },
+    {
+      "name": {
+        "en": "Rakitovo",
+        "bg": "Rakitovo",
+        "ru": "Rakitovo"
+      },
+      "slug": "rakitovo-pazardzhik",
+      "region": {
+        "name": {
+          "en": "Pazardzhik",
+          "bg": "Pazardzhik",
+          "ru": "Pazardzhik"
+        },
+        "slug": "pazardzhik"
+      }
+    },
+    {
+      "name": {
+        "en": "Belitsa",
+        "bg": "Belitsa",
+        "ru": "Belitsa"
+      },
+      "slug": "belitsa-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Yakoruda",
+        "bg": "Yakoruda",
+        "ru": "Yakoruda"
+      },
+      "slug": "yakoruda-blagoevgrad",
+      "region": {
+        "name": {
+          "en": "Blagoevgrad",
+          "bg": "Blagoevgrad",
+          "ru": "Blagoevgrad"
+        },
+        "slug": "blagoevgrad"
+      }
+    },
+    {
+      "name": {
+        "en": "Belovo",
+        "bg": "Belovo",
+        "ru": "Belovo"
+      },
+      "slug": "belovo-pazardzhik",
+      "region": {
+        "name": {
+          "en": "Pazardzhik",
+          "bg": "Pazardzhik",
+          "ru": "Pazardzhik"
+        },
+        "slug": "pazardzhik"
+      }
+    }
+  ],
+  "meta": {
+    "unmatchedAssignedByNearest": 0
+  }
+}

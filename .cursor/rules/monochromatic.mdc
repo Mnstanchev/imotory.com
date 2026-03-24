@@ -1,0 +1,158 @@
+---
+description: Rules for maintaining a consistent monochromatic color palette across the application
+globs: ["**/*.tsx", "**/*.ts"]
+alwaysApply: true
+---
+
+# Monochromatic Color Palette Rules
+
+## Core Colors
+
+- **Background Colors**
+  ```typescript
+  // ✅ DO: Use these background colors
+  "bg-white"          // Primary background
+  "bg-gray-50"        // Subtle background, hover states
+  "bg-gray-100"       // Stronger background, active states
+  "bg-gray-900"       // Dark background for contrast (e.g., buttons)
+  
+  // ❌ DON'T: Use transparent backgrounds or other colors
+  "bg-transparent"    // Avoid transparent backgrounds
+  "bg-zinc-*"        // Avoid zinc or other gray variants
+  "bg-black"         // Use gray-900 instead
+  ```
+
+- **Text Colors**
+  ```typescript
+  // ✅ DO: Use these text colors
+  "text-gray-900"     // Primary text
+  "text-gray-700"     // Secondary text
+  "text-gray-600"     // Tertiary text
+  "text-gray-500"     // Muted text
+  "text-gray-400"     // Extra muted text
+  
+  // ❌ DON'T: Use other color variants
+  "text-zinc-*"      // Avoid zinc variants
+  "text-black"       // Use gray-900 instead
+  ```
+
+- **Border Colors**
+  ```typescript
+  // ✅ DO: Use these border colors
+  "border-gray-200"   // Primary border
+  "border-gray-300"   // Stronger border
+  
+  // ❌ DON'T: Use other border colors
+  "border-zinc-*"    // Avoid zinc variants
+  ```
+
+## Component-Specific Rules
+
+### Dropdowns
+- **Content Background**: Must be solid white with a border
+  ```typescript
+  // ✅ DO:
+  "bg-white border border-gray-200 shadow-md"
+  
+  // ❌ DON'T:
+  "bg-popover"       // Avoid semantic colors
+  "bg-transparent"   // Never use transparent backgrounds
+  ```
+
+- **Items**:
+  ```typescript
+  // ✅ DO:
+  "hover:bg-gray-50"  // Hover state
+  "text-gray-700"     // Default text
+  "text-gray-900"     // Active text
+  
+  // ❌ DON'T:
+  "hover:bg-accent"   // Avoid semantic colors
+  "focus:bg-accent"   // Use gray scale instead
+  ```
+
+### Modals/Dialogs
+- **Overlay**: Semi-transparent dark background
+  ```typescript
+  // ✅ DO:
+  "bg-gray-900/50"    // 50% opacity black overlay
+  
+  // ❌ DON'T:
+  "bg-black/50"       // Avoid pure black
+  ```
+
+- **Content**: Solid white background with border
+  ```typescript
+  // ✅ DO:
+  "bg-white border border-gray-200 shadow-xl"
+  
+  // ❌ DON'T:
+  "bg-background"     // Avoid semantic colors
+  ```
+
+### Buttons
+- **Primary**:
+  ```typescript
+  // ✅ DO:
+  "bg-gray-900 text-white hover:bg-gray-800"
+  
+  // ❌ DON'T:
+  "bg-primary"       // Avoid semantic colors
+  ```
+
+- **Secondary/Outline**:
+  ```typescript
+  // ✅ DO:
+  "border-gray-200 hover:bg-gray-50 text-gray-700"
+  
+  // ❌ DON'T:
+  "border-input"     // Avoid semantic colors
+  ```
+
+## Implementation Notes
+
+1. **Consistency**: Always use the same color values for similar UI elements
+2. **Accessibility**: Ensure sufficient contrast between text and background
+3. **Hover States**: Use lighter grays (gray-50, gray-100) for hover effects
+4. **Shadows**: Use shadows to create depth instead of different background colors
+5. **Dark Mode**: Currently not supported - remove all dark mode classes
+
+## Examples
+
+### Dropdown Menu
+```typescript
+// ✅ DO:
+<DropdownMenuContent className="bg-white border border-gray-200 shadow-md">
+  <DropdownMenuItem className="text-gray-700 hover:bg-gray-50 hover:text-gray-900">
+    Item
+  </DropdownMenuItem>
+</DropdownMenuContent>
+
+// ❌ DON'T:
+<DropdownMenuContent className="bg-popover">
+  <DropdownMenuItem className="hover:bg-accent">
+    Item
+  </DropdownMenuItem>
+</DropdownMenuContent>
+```
+
+### Modal/Dialog
+```typescript
+// ✅ DO:
+<Dialog>
+  <DialogOverlay className="bg-gray-900/50" />
+  <DialogContent className="bg-white border border-gray-200 shadow-xl">
+    <DialogTitle className="text-gray-900">Title</DialogTitle>
+    <DialogDescription className="text-gray-600">Description</DialogDescription>
+  </DialogContent>
+</Dialog>
+
+// ❌ DON'T:
+<Dialog>
+  <DialogOverlay className="bg-black/50" />
+  <DialogContent className="bg-background">
+    <DialogTitle className="text-foreground">Title</DialogTitle>
+    <DialogDescription className="text-muted-foreground">Description</DialogDescription>
+  </DialogContent>
+</Dialog>
+```
