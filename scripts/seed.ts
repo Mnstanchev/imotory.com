@@ -13,21 +13,13 @@ async function main() {
       password: hashedPassword,
       firstName: "Admin",
       lastName: "User",
-    // ... 187 lines omitted
-    {
-    // ... 186 lines omitted
-    {
-    // ... 185 lines omitted
-    {
-    // ... 184 lines omitted
-    {
-    // ... 183 lines omitted
-    {
-    // ... 182 lines omitted
-  }
-    // ... 181 lines omitted
+      role: "ADMIN",
+      emailVerified: new Date(),
+    },
+  });
+  console.log("✓ Admin user created: admin@imotory.com / admin123");
+  console.log("User ID:", adminUser.id);
 }
-// ... 180 more lines (total: 202)
 
 main()
   .then(async () => {
