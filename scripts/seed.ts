@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { PrismaClient, ListingType, PropertyType, LocationType } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 async function main() {
   // Create admin user
   const hashedPassword = await bcrypt.hash("admin123", 12);
-  await prisma.user.upsert({
+  const adminUser = await prisma.user.upsert({
     where: { email: "admin@imotory.com" },
     update: {},
     create: {
@@ -16,11 +16,12 @@ async function main() {
       firstName: "Admin",
       lastName: "User",
       role: "ADMIN",
-      isEmailVerified: true,
-      isActive: true,
+      emailVerified: new Date(),
     },
   });
   console.log("✓ Admin user created: admin@imotory.com / admin123");
+  console.log("User ID:", adminUser.id);
+  return;
 
   // Base data
   const [catApartments, catHouses] = await Promise.all([
