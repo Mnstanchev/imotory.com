@@ -30,9 +30,13 @@ const cacheConfig = {
 // CORS configuration
 const corsConfig = {
   allowedOrigins: [
-    'http://localhost:3000',     // Local development
-    'http://localhost:3001',     // Local frontend
-    'https://property-website.vercel.app', // Production frontend (update this)
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'https://imotory.com',
+    'https://www.imotory.com',
+    'https://admin.imotory.com',
+    'https://property-website.vercel.app',
+    'https://property-website-backend-only.vercel.app',
   ],
   allowedMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: [
@@ -67,9 +71,9 @@ const securityHeaders = {
     default-src 'self' 'unsafe-inline' 'unsafe-eval';
     script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.vercel.app https://*.vercel-scripts.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    img-src 'self' blob: data: https://*.vercel.app https://*.neon.tech;
+    img-src 'self' blob: data: https://*.vercel.app https://*.neon.tech https://*.imotory.com;
     font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self' https://*.vercel.app https://*.neon.tech https://api.resend.com https://va.vercel-analytics.com ws: wss:;
+    connect-src 'self' https://*.vercel.app https://*.neon.tech https://*.imotory.com https://api.resend.com https://va.vercel-analytics.com ws: wss:;
     frame-src 'self';
     worker-src 'self' blob:;
   `.replace(/\s+/g, ' ').trim().replace(/# .*?;/g, ';')
