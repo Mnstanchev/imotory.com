@@ -139,3 +139,6 @@ pnpm-lock.yaml
 
 # Bun
 bun.lockb
+
+# macOS
+.DS_Store

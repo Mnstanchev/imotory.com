@@ -72,6 +72,17 @@ const nextConfig: NextConfig = {
 
   // Configure Turbopack for Next.js 16+
   turbopack: {},
+
+  // Allow Next.js <Image> to load from backend domain
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'admin.imotory.com',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
