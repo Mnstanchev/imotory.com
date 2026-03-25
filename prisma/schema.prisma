@@ -339,6 +339,19 @@ model Session {
   @@map("sessions")
 }
 
+model Image {
+  id         String   @id @default(cuid())
+  data       Bytes
+  mimeType   String   @default("image/webp")
+  size       Int
+  entityType String?
+  entityId   String?
+  createdAt  DateTime @default(now())
+
+  @@index([entityType, entityId])
+  @@map("images")
+}
+
 model emailTemplate {
   id        String   @id @default(cuid())
   name      String   @unique

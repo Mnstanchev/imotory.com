@@ -241,6 +241,8 @@
           "terrace": "Terrace (m²)",
           "maintenance_fee": "Maintenance Fee",
           "address": "Address",
+          "address_in_lang": "Address ({lang})",
+          "condition_in_lang": "Condition ({lang})",
           "postal_code": "Postal Code",
           "latitude": "Latitude",
           "longitude": "Longitude",

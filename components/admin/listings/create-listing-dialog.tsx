@@ -286,7 +286,7 @@ export function CreateListingDialog({ open, onOpenChange, onSuccess, listingId }
         agentId: formData.get('agentId'),
         
         // Address and coordinates
-        address: addressesByLang,
+        address: addressesByLang.bg ? addressesByLang : undefined,
         postalCode: formData.get('postalCode') || undefined,
         latitude: formData.get('latitude') ? parseFloat(formData.get('latitude') as string) : undefined,
         longitude: formData.get('longitude') ? parseFloat(formData.get('longitude') as string) : undefined,
@@ -318,7 +318,7 @@ export function CreateListingDialog({ open, onOpenChange, onSuccess, listingId }
         
         // Building information
         buildingType: formData.get('buildingType') || undefined,
-        buildingCondition: buildingConditionByLang,
+        buildingCondition: buildingConditionByLang.bg ? buildingConditionByLang : undefined,
         maintenanceFee: formData.get('maintenanceFee') ? parseFloat(formData.get('maintenanceFee') as string) : undefined,
         
         // Climate and ownership
@@ -328,7 +328,7 @@ export function CreateListingDialog({ open, onOpenChange, onSuccess, listingId }
         
         // Status and availability
         status: formData.get('status') || 'ACTIVE',
-        availableFrom: formData.get('availableFrom') || undefined,
+        availableFrom: formData.get('availableFrom') ? new Date(formData.get('availableFrom') as string).toISOString() : undefined,
         
         // Media and features
         features: featuresByLang,

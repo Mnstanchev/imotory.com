@@ -241,6 +241,8 @@
           "terrace": "Тераса (м²)",
           "maintenance_fee": "Такса поддръжка",
           "address": "Адрес",
+          "address_in_lang": "Адрес ({lang})",
+          "condition_in_lang": "Състояние ({lang})",
           "postal_code": "Пощенски код",
           "latitude": "Географска ширина",
           "longitude": "Географска дължина",

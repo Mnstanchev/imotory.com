@@ -50,6 +50,16 @@ export async function processImage(
     .toFile(outputPath)
 }
 
+export async function processImageToBuffer(
+  buffer: Buffer,
+  quality: number = 80
+): Promise<Buffer> {
+  return sharp(buffer)
+    .resize(1920, 1080, { fit: 'inside', withoutEnlargement: true })
+    .webp({ quality })
+    .toBuffer()
+}
+
 export async function ensureDirectoryExists(dirPath: string): Promise<void> {
   try {
     await fs.access(dirPath)

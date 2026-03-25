@@ -1,29 +1,46 @@
-import { NextRequest } from 'next/server';
-import { createResponse, createErrorResponse } from '@/src/lib/api-utils';
-import { handleImageUpload } from '@/src/lib/upload-utils';
+import { NextRequest, NextResponse } from 'next/server'
+import { requireAdmin } from '@/src/lib/api-auth'
+import { validateFileType, validateFileSize, defaultUploadOptions, processImageToBuffer } from '@/src/lib/upload-utils'
+import { prisma } from '@/src/lib/prisma'
 
 export async function POST(request: NextRequest) {
   try {
-    const { requireAdmin } = await import('@/src/lib/api-auth');
-    const authResult = await requireAdmin(request);
-    
-    if (!authResult.success) {
-      return authResult.error;
+    const authResult = await requireAdmin(request)
+    if (!authResult.success) return authResult.error
+
+    const formData = await request.formData()
+    const file = formData.get('file') as File
+    const entityId = formData.get('entityId') as string | null
+
+    if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 })
+
+    if (!validateFileType(file.type, defaultUploadOptions.allowedTypes)) {
+      return NextResponse.json({ error: 'Invalid file type. Only JPEG, JPG, and PNG are allowed' }, { status: 400 })
+    }
+    if (!validateFileSize(file.size, defaultUploadOptions.maxSize)) {
+      return NextResponse.json({ error: 'File too large. Maximum size is 5MB' }, { status: 400 })
     }
 
-    const formData = await request.formData();
-    const file = formData.get('file') as File;
+    const buffer = Buffer.from(await file.arrayBuffer())
+    const webpBuffer = await processImageToBuffer(buffer)
 
-    if (!file) {
-      return createErrorResponse('No file provided', 400);
-    }
+    const image = await prisma.image.create({
+      data: {
+        data: webpBuffer,
+        mimeType: 'image/webp',
+        size: webpBuffer.length,
+        entityType: 'category',
+        entityId: entityId ?? undefined,
+      },
+    })
 
-    const uploadPath = 'categories';
-    const result = await handleImageUpload(file, uploadPath);
-
-    return createResponse(result);
+    return NextResponse.json({
+      success: true,
+      url: `/api/images/${image.id}`,
+      fileName: image.id,
+    })
   } catch (error) {
-    
-    return createErrorResponse('Failed to upload image', 500);
+    console.error('Category upload error:', error)
+    return NextResponse.json({ error: 'Failed to upload image' }, { status: 500 })
   }
 }

@@ -1,102 +1,66 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireAdmin } from '@/src/lib/api-auth'
-import { 
-  generateFileName, 
-  getPublicUrl, 
-  processImage, 
-  ensureDirectoryExists,
-  validateFileType,
-  validateFileSize,
-  defaultUploadOptions,
-  getFilesInDirectory,
-  deleteFile
-} from '@/src/lib/upload-utils'
-import fs from 'fs/promises'
-import path from 'path'
+import { validateFileType, validateFileSize, defaultUploadOptions, processImageToBuffer } from '@/src/lib/upload-utils'
+import { prisma } from '@/src/lib/prisma'
 
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ listingId: string }> }
 ) {
   try {
-    const { listingId } = await params;
+    const { listingId } = await params
     const authResult = await requireAdmin(request)
-    if (!authResult.success) {
-      return authResult.error
-    }
+    if (!authResult.success) return authResult.error
 
     const formData = await request.formData()
     const file = formData.get('file') as File
 
-    if (!file) {
-      return NextResponse.json(
-        { error: 'No file provided' },
-        { status: 400 }
-      )
-    }
+    if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 })
 
-    // Validate file type and size
     if (!validateFileType(file.type, defaultUploadOptions.allowedTypes)) {
-      return NextResponse.json(
-        { error: 'Invalid file type. Only JPEG, JPG, and PNG are allowed' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Invalid file type. Only JPEG, JPG, and PNG are allowed' }, { status: 400 })
     }
-
     if (!validateFileSize(file.size, defaultUploadOptions.maxSize)) {
-      return NextResponse.json(
-        { error: 'File too large. Maximum size is 5MB' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'File too large. Maximum size is 5MB' }, { status: 400 })
     }
-
-    const uploadDir = path.join(process.cwd(), 'public/images/listings', listingId)
-    await ensureDirectoryExists(uploadDir)
-
-    const fileName = generateFileName(file.name)
-    const filePath = `${uploadDir}/${fileName}`
 
     const buffer = Buffer.from(await file.arrayBuffer())
-    await processImage(buffer, filePath, defaultUploadOptions.quality)
+    const webpBuffer = await processImageToBuffer(buffer)
 
-    const publicUrl = getPublicUrl('listing', listingId, fileName)
+    const image = await prisma.image.create({
+      data: {
+        data: webpBuffer,
+        mimeType: 'image/webp',
+        size: webpBuffer.length,
+        entityType: 'listing',
+        entityId: listingId,
+      },
+    })
 
     return NextResponse.json({
       success: true,
-      url: publicUrl,
-      fileName,
-      listingId: listingId
+      url: `/api/images/${image.id}`,
+      fileName: image.id,
+      listingId,
     })
-
   } catch (error) {
-
-    return NextResponse.json(
-      { error: 'Failed to upload image' },
-      { status: 500 }
-    )
+    console.error('Listing upload error:', error)
+    return NextResponse.json({ error: 'Failed to upload image' }, { status: 500 })
   }
 }
 
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ listingId: string }> }
 ) {
-  try {
-    const { listingId } = await params;
-    const uploadDir = path.join(process.cwd(), 'public/images/listings', listingId)
-    const files = await getFilesInDirectory(uploadDir)
-    
-    const images = files.map(file => ({
-      url: getPublicUrl('listing', listingId, file),
-      fileName: file
-    }))
-
-    return NextResponse.json({ images })
-
-  } catch (error) {
-
-    return NextResponse.json({ images: [] })
-  }
+  const { listingId } = await params
+  const images = await prisma.image.findMany({
+    where: { entityType: 'listing', entityId: listingId },
+    select: { id: true },
+  })
+  return NextResponse.json({
+    images: images.map(img => ({ url: `/api/images/${img.id}`, fileName: img.id })),
+  })
 }
 
 export async function DELETE(
@@ -104,46 +68,23 @@ export async function DELETE(
   { params }: { params: Promise<{ listingId: string }> }
 ) {
   try {
-    const { listingId } = await params;
+    const { listingId } = await params
     const authResult = await requireAdmin(request)
-    if (!authResult.success) {
-      return authResult.error
-    }
+    if (!authResult.success) return authResult.error
 
     const { searchParams } = new URL(request.url)
     const fileName = searchParams.get('fileName')
+    if (!fileName) return NextResponse.json({ error: 'fileName parameter is required' }, { status: 400 })
 
-    if (!fileName) {
-      return NextResponse.json(
-        { error: 'fileName parameter is required' },
-        { status: 400 }
-      )
-    }
+    // fileName is the image id
+    const imageId = fileName.replace('/api/images/', '')
+    await prisma.image.deleteMany({
+      where: { id: imageId, entityType: 'listing', entityId: listingId },
+    })
 
-    if (fileName.includes('/') || fileName.includes('\\')) {
-      return NextResponse.json(
-        { error: 'Invalid file name' },
-        { status: 400 }
-      )
-    }
-
-    const filePath = path.join(process.cwd(), 'public/images/listings', listingId, fileName)
-    await deleteFile(filePath)
-
-    return NextResponse.json({ success: true, message: 'Image deleted successfully' })
-
+    return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Error deleting listing image:', error)
-    return NextResponse.json(
-      { error: 'Failed to delete image' },
-      { status: 500 }
-    )
+    console.error('Delete listing image error:', error)
+    return NextResponse.json({ error: 'Failed to delete image' }, { status: 500 })
   }
-}
-
-// Disable body parser for multipart uploads
-export const config = {
-  api: {
-    bodyParser: false,
-  },
 }
