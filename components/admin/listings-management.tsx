@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
+import { useQueryClient } from '@tanstack/react-query';
 import { CreateListingDialog } from '@/components/admin/listings/create-listing-dialog';
 import { Building, Plus, Search, Filter, Edit, Trash2, Eye, MoreVertical, Loader2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
@@ -69,6 +70,7 @@ export function ListingsManagement() {
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [editingListingId, setEditingListingId] = useState<string | null>(null);
   const router = useRouter();
+  const queryClient = useQueryClient();
   const { t, currentLanguage } = useLanguage();
 
   // TanStack Query hooks
@@ -386,7 +388,7 @@ export function ListingsManagement() {
         onSuccess={() => {
           setCreateDialogOpen(false);
           setEditingListingId(null);
-          // TanStack Query will automatically refetch due to cache invalidation in the mutation
+          queryClient.invalidateQueries({ queryKey: ['listings'] });
         }}
         listingId={editingListingId}
       />
